@@ -1,0 +1,3 @@
+ehs_homepage:
+    path:     /
+    defaults: { _controller: EhsBundle:Default:index }
