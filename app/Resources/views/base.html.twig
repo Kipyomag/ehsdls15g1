@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='fr'>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -10,7 +10,29 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="container">
+            <header class='page-header'>
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"> <a href="#">Accueil</a> </li>
+                        <li> <a href="#">Liens</a> </li>
+                        <li> <a href="#">Archives</a> </li>
+                        <li> <a href="#">Truc</a> </li>
+                        <li> <a href="#">Contact</a> </li>
+                        <li class="disabled"> <a href="#">Forum</a> </li>
+                    </ul>
+                </nav>
+            </header
+
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+            
+            <footer>
+                IMIE - groupe1 dl 15
+            </footer>
+        </div> <!--end container-->
     </body>
 </html>
