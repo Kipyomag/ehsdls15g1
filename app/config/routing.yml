@@ -1,9 +1,3 @@
 ehs:
     resource: "@EhsBundle/Resources/config/routing.yml"
     prefix:   /
-
-# IbrowsNewsletter
-ibrows_newsletter:
-    resource: "@IbrowsNewsletterBundle/Controller/"
-    type:     annotation
-    prefix:   /newsletter

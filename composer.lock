@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "553451a91606144568d5f32ad8c305c2",
-    "content-hash": "aa070e79df37cf18735b4c7e59fc11e8",
+    "hash": "221784eec1127cfb6fc20baceb064db0",
+    "content-hash": "0dd0360953b0a9f443504d177f8ad1b9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -776,53 +776,6 @@
             "time": "2016-01-05 21:34:58"
         },
         {
-            "name": "ibrows/newsletter-bundle",
-            "version": "4.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ibrows/IbrowsNewsletterBundle.git",
-                "reference": "03533c2a8bb65ddf6c01e2e23f08c452deee9f02"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ibrows/IbrowsNewsletterBundle/zipball/03533c2a8bb65ddf6c01e2e23f08c452deee9f02",
-                "reference": "03533c2a8bb65ddf6c01e2e23f08c452deee9f02",
-                "shasum": ""
-            },
-            "require": {
-                "stfalcon/tinymce-bundle": "^0.4",
-                "symfony/symfony": ">=2.8"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Ibrows\\Bundle\\NewsletterBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dominik Spengler",
-                    "email": "dominik.spengler@ibrows.ch"
-                },
-                {
-                    "name": "Mike Meier",
-                    "email": "mike.meier@ibrows.ch"
-                }
-            ],
-            "description": "Symfony NewsletterBundle",
-            "homepage": "https://github.com/ibrows/IbrowsNewsletterBundle",
-            "keywords": [
-                "ibrows",
-                "newsletter",
-                "symfony"
-            ],
-            "time": "2016-05-13 16:00:01"
-        },
-        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -1286,64 +1239,6 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-11-07 08:07:40"
-        },
-        {
-            "name": "stfalcon/tinymce-bundle",
-            "version": "v0.4.0",
-            "target-dir": "Stfalcon/Bundle/TinymceBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stfalcon/TinymceBundle.git",
-                "reference": "5f8ed022dd6a606c8f0b4da97f524b9864cd0e29"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/5f8ed022dd6a606c8f0b4da97f524b9864cd0e29",
-                "reference": "5f8ed022dd6a606c8f0b4da97f524b9864cd0e29",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/symfony": ">=2.1"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Stfalcon\\Bundle\\TinymceBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stepan Tanasiychuk",
-                    "email": "ceo@stfalcon.com",
-                    "homepage": "http://blog.stfalcon.com"
-                },
-                {
-                    "name": "Igor Negrutsa",
-                    "email": "progi2007@gmail.com",
-                    "homepage": "http://igor-negrutsa.info"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/stfalcon/TinymceBundle/contributors"
-                }
-            ],
-            "description": "This Bundle integrates TinyMCE WYSIWYG editor into a Symfony2 project.",
-            "keywords": [
-                "editor",
-                "tinymce",
-                "wysiwyg"
-            ],
-            "time": "2015-12-15 15:50:30"
         },
         {
             "name": "swiftmailer/swiftmailer",
