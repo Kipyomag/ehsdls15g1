@@ -1,0 +1,19 @@
+EhsBundle\Entity\Articles:
+    type: entity
+    table: null
+    repositoryClass: EhsBundle\Repository\ArticlesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        contenu:
+            type: text
+        chapeau:
+            type: text
+    lifecycleCallbacks: {  }
