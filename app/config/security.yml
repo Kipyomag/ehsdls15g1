@@ -13,8 +13,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        default:
             anonymous: ~
+            http_basic: ~
+    #access_control:
+        #- { path: ^/articles/new, role: ROLE_ADMIN }
             # activate different ways to authenticate
 
             # http_basic: ~

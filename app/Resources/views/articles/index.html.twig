@@ -2,7 +2,7 @@
 
 {% block body %}
     
-    <h1>Articles list</h1>
+    <h1>Liste des articles</h1>
 
     <table class="table">
         <thead>
@@ -24,10 +24,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('articles_show', { 'id': article.id }) }}">show</a>
+                            <a href="{{ path('articles_show', { 'id': article.id }) }}">Montrer</a>
                         </li>
                         <li>
-                            <a href="{{ path('articles_edit', { 'id': article.id }) }}">edit</a>
+                            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +43,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('articles_new') }}">Create a new entry</a>
+            <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
         </li>
     </ul>
 {% endblock %}
