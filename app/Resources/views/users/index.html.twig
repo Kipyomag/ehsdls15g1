@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
     <h1>Users list</h1>
 
@@ -39,10 +41,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('users_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('users_show', { 'id': user.id }) }}">Montrer</a>
                         </li>
                         <li>
-                            <a href="{{ path('users_edit', { 'id': user.id }) }}">edit</a>
+                            <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>
                         </li>
                     </ul>
                 </td>
@@ -53,7 +55,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('users_new') }}">Create a new entry</a>
+            <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
         </li>
     </ul>
 {% endblock %}
