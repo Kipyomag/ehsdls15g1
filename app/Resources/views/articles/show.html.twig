@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
+
+{% block stylesheets %}
+    <link href="../../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../web/public/style/style.css" rel="stylesheet">
+{% endblock %}
+
+
+
 {% block body %}
     <h1>Articles</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>

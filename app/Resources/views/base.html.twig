@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
         {% block stylesheets %}
+            <link href="../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
             <link href="../../../web/public/style/style.css" rel="stylesheet">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -25,12 +25,14 @@
                         <li class="disabled"> <a href="#">Forum</a> </li>
                     </ul>
                 </nav>
-            </header
-
-            {% block body %}{% endblock %}
-            {% block javascripts %}{% endblock %}
+            </header>
             
-            <footer>
+            <div class="row">
+                {% block body %}{% endblock %}
+                {% block javascripts %}{% endblock %}
+            </div>
+            
+            <footer class="">
                 IMIE - groupe1 dl 15
             </footer>
         </div> <!--end container-->
