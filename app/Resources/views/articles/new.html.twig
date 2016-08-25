@@ -4,7 +4,7 @@
     <h1>Création d'articles</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, { 'attr': {'class': 'todo'} }) }}
         <input type="submit" value="Creation" />
     {{ form_end(form) }}
 

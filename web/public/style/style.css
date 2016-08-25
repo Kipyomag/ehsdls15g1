@@ -7,3 +7,12 @@ footer {
 #topNavbar {
     background-color: #28a4c9;
 }
+
+#article {
+    height: 18em;
+}
+
+.test {
+    background-color: red;
+    color: red;
+}
