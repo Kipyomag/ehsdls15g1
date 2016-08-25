@@ -1,45 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+      
+    <!-- MAIN ARTICLE -->
+    <div class="jumbotron">
+        <h1>MAIN ARTIcle</h1>
+        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+    </div>
     
-    <h1>Articles list</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Chapeau</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    
+    <!-- ALL ARTICLES -->
+    <div class="row">
         {% for article in articles %}
-            <tr>
-                <td><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.titre }}</td>
-                <td>{{ article.contenu }}</td>
-                <td>{{ article.chapeau }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('articles_show', { 'id': article.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('articles_edit', { 'id': article.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            
-            <div>
-
+            <div class="col-xs-6 col-lg-4">
+                <h2>{{ article.titre }}</h2>
+                <p>{{ article.chapeau }}</p>
+                <p><a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a></p>
+                <p><a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a></p>
             </div>
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
+    
+    
+        
+    
 
     <ul>
         <li>
