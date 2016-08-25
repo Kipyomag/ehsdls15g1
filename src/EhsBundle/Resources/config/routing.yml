@@ -1,3 +1,7 @@
+ehs_users:
+   resource: "@EhsBundle/Resources/config/routing/users.yml"
+   prefix:   /users
+   
 ehs_articles:
     resource: "@EhsBundle/Resources/config/routing/articles.yml"
     prefix:   /articles
@@ -5,3 +9,4 @@ ehs_articles:
 ehs_homepage:
     path:     /
     defaults: { _controller: EhsBundle:Default:index }
+
