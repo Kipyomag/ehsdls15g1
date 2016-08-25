@@ -1,4 +1,6 @@
 imports:
+    - { resource: stfalcon_tinymce.yml }
+    - { resource: ibrows_newsletter.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
@@ -40,6 +42,32 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
+        types:
+            nostreamblob: Ibrows\Bundle\NewsletterBundle\DBAL\Types\NoStreamBlobType
+        connections:
+            default:
+                driver:   %database_driver%
+                host:     %database_host%
+                port:     %database_port%
+                dbname:   %database_name%
+                user:     %database_user%
+                password: %database_password%
+                charset:  UTF8
+            mandantA:
+                driver:   %database_driver_mandanta%
+                host:     %database_host_mandanta%
+                port:     %database_port_mandanta%
+                dbname:   %database_name_mandanta%
+                user:     %database_user_mandanta%
+                password: %database_password_mandanta%
+                charset:  UTF8
+            mandantB:
+                driver:   %database_driver_mandantb%
+                host:     %database_host_mandantb%
+                port:     %database_port_mandantb%
+                dbname:   %database_name_mandantb%
+                user:     %database_user_mandantb%
+                password: %database_password_mandantb%
         driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
@@ -58,6 +86,29 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    YourBundle: ~
+                    # FOSUserBundle: ~
+                    # ...
+            mandantA:
+                connection: mandantA
+                mappings:
+                    ibrows_newsletter:
+                        type: annotation
+                        prefix: YourBundle\Entity\Newsletter
+                        dir: "%kernel.root_dir%/../src/Ibrows/YourBundle/Entity/Newsletter"
+                        is_bundle: false
+            mandantB:
+                connection: mandantB
+                mappings:
+                    ibrows_newsletter:
+                        type: annotation
+                        prefix: YourBundle\Entity\Newsletter
+                        dir: "%kernel.root_dir%/../src/Ibrows/YourBundle/Entity/Newsletter"
+                        is_bundle: false
 
 # Swiftmailer Configuration
 swiftmailer:
