@@ -5,6 +5,7 @@ namespace EhsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ArticlesType extends AbstractType
 {
@@ -16,8 +17,13 @@ class ArticlesType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('contenu')
             ->add('chapeau')
+            ->add('contenu')
+            ->add('author', EntityType::class, array(
+                'class' => 'EhsBundle:Users',
+                'property'=>'nom',
+                'label' =>'Auteur:'))
+            
         ;
     }
     

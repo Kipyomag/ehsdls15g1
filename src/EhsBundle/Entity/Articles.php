@@ -41,6 +41,12 @@ class Articles
      * @ORM\Column(name="chapeau", type="text")
      */
     private $chapeau;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="articles")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $author;
 
 
     /**
@@ -124,5 +130,15 @@ class Articles
     {
         return $this->chapeau;
     }
+    
+    function getAuthor() {
+        return $this->author;
+    }
+
+    function setAuthor($author) {
+        $this->author = $author;
+    }
+
+
 }
 

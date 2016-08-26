@@ -30,6 +30,9 @@
                     <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                     <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                 </p>
+                <p>
+                    auteur: {{ article.author.nom }}
+                </p>
             </div>
         {% endfor %}
     </div>

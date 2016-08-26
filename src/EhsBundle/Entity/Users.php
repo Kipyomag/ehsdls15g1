@@ -97,6 +97,16 @@ class Users
      * @ORM\Column(name="statut", type="string", length=20)
      */
     private $statut;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Articles", mappedBy="author")
+     */
+    private $articles;
+    
+    
+    public function __construct() {
+        $this->articles = new ArrayCollection();
+    }
 
 
     /**
@@ -372,5 +382,15 @@ class Users
     {
         return $this->statut;
     }
+    
+    function getArticles() {
+        return $this->articles;
+    }
+
+    function setArticles($articles) {
+        $this->articles = $articles;
+    }
+
+
 }
 
