@@ -10,3 +10,6 @@ ehs_homepage:
     path:     /
     defaults: { _controller: EhsBundle:Default:index }
 
+ehs_comment:
+        resource: "@EhsBundle/Resources/config/routing/comment.yml"
+        prefix:   /comment

@@ -31,6 +31,17 @@
             </tr>
         </tbody>
     </table>
+            
+    
+    <table class="table">
+    {% for comment in article.comments %}
+            <tr>
+                <th>{{ comment.creationDate|date("m/d/Y") }}</th>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.author.nom }}</td>
+            </tr>
+    {% endfor %}
+    </table>
 
     <ul>
         <li>

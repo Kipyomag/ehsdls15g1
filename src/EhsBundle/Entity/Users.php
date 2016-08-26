@@ -103,9 +103,15 @@ class Users
      */
     private $articles;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
+     */
+    private $comments;
+    
     
     public function __construct() {
         $this->articles = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -389,6 +395,14 @@ class Users
 
     function setArticles($articles) {
         $this->articles = $articles;
+    }
+
+    function getComments() {
+        return $this->comments;
+    }
+
+    function setComments($comments) {
+        $this->comments = $comments;
     }
 
 

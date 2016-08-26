@@ -48,6 +48,14 @@ class Articles
      */
     private $author;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+     */
+    private $comments;
+    
+    public function __construct() {
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -137,6 +145,14 @@ class Articles
 
     function setAuthor($author) {
         $this->author = $author;
+    }
+
+    function getComments() {
+        return $this->comments;
+    }
+
+    function setComments($comments) {
+        $this->comments = $comments;
     }
 
 
