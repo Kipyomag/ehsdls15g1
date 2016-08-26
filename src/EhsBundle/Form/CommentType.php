@@ -5,6 +5,7 @@ namespace EhsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CommentType extends AbstractType
 {
@@ -14,9 +15,9 @@ class CommentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /* todo replace author by author logged */
         $builder
             ->add('content')
-            ->add('creationDate', 'datetime')
             ->add('author', EntityType::class, array(
                 'class' => 'EhsBundle:Users',
                 'property'=>'nom',
