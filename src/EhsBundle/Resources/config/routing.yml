@@ -13,3 +13,7 @@ ehs_homepage:
 ehs_newsletter:
     resource: "@EhsBundle/Resources/config/routing/newsletter.yml"
     prefix:   /newsletter
+
+ehs_comment:
+        resource: "@EhsBundle/Resources/config/routing/comment.yml"
+        prefix:   /comment

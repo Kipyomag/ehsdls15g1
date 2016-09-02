@@ -9,7 +9,21 @@
 
 
 {% block body %}
-    <h1>Articles</h1>
+    <h1>Article</h1>
+    
+    <ul>
+        <li>
+            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
+        </li>
+        <li>
+            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 
     <table class="table">
         <tbody>
@@ -31,18 +45,22 @@
             </tr>
         </tbody>
     </table>
+            
+    <h1>Commentaires</h1>
+    <table class="table">
+    {% for comment in article.comments %}
+            <tr>
+                <th>{{ comment.creationDate|date("m/d/Y") }}</th>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.author.nom }}</td>
+            </tr>
+    {% endfor %}
+    </table>
+    
+    {{ form_start(comment_form) }}
+        {{ form_widget(comment_form) }}
+        <input type="submit" value="Creation" />
+    {{ form_end(comment_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    
 {% endblock %}
