@@ -17,14 +17,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        default:
-            anonymous: ~
-            http_basic: ~
-
         main:
+            anonymous: ~
             form_login:
-                login_path: login
-                check_path: login
+                login_path: users_login
+                check_path: users_login
             pattern:    ^/
             http_basic: ~
             provider: our_db_provider

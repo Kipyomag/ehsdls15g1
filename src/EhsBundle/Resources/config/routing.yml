@@ -1,7 +1,7 @@
 ehs_users:
    resource: "@EhsBundle/Resources/config/routing/users.yml"
    prefix:   /users
-   
+
 ehs_articles:
     resource: "@EhsBundle/Resources/config/routing/articles.yml"
     prefix:   /articles

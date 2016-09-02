@@ -35,15 +35,14 @@ class UsersController extends Controller
      */
     public function newAction(Request $request)
     {
+        phpinfo();die();
         $user = new Users();
         $form = $this->createForm('EhsBundle\Form\UsersType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($user, $user->getPassword());
-
             $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
