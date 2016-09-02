@@ -6,7 +6,7 @@ articles_index:
 articles_show:
     path:     /{id}/show
     defaults: { _controller: "EhsBundle:Articles:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 articles_new:
     path:     /new

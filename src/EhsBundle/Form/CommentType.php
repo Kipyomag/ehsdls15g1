@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ArticlesType extends AbstractType
+class CommentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,15 +15,13 @@ class ArticlesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /* todo replace author by author logged */
         $builder
-            ->add('titre')
-            ->add('chapeau')
-            ->add('contenu')
+            ->add('content')
             ->add('author', EntityType::class, array(
                 'class' => 'EhsBundle:Users',
                 'property'=>'nom',
                 'label' =>'Auteur:'))
-            
         ;
     }
     
@@ -33,7 +31,7 @@ class ArticlesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EhsBundle\Entity\Articles'
+            'data_class' => 'EhsBundle\Entity\Comment'
         ));
     }
 }

@@ -3,6 +3,7 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Articles
@@ -41,7 +42,21 @@ class Articles
      * @ORM\Column(name="chapeau", type="text")
      */
     private $chapeau;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="articles")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $author;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+     */
+    private $comments;
+    
+    public function __construct() {
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -124,5 +139,23 @@ class Articles
     {
         return $this->chapeau;
     }
+    
+    function getAuthor() {
+        return $this->author;
+    }
+
+    function setAuthor($author) {
+        $this->author = $author;
+    }
+
+    function getComments() {
+        return $this->comments;
+    }
+
+    function setComments($comments) {
+        $this->comments = $comments;
+    }
+
+
 }
 

@@ -3,7 +3,11 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Users
@@ -105,6 +109,22 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(name="statut", type="string", length=20)
      */
     private $statut;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Articles", mappedBy="author")
+     */
+    private $articles;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
+     */
+    private $comments;
+    
+    
+    public function __construct() {
+        $this->articles = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
 
     /**
@@ -433,5 +453,24 @@ class Users implements UserInterface, \Serializable
     {
         return $this->username;
     }
+
+    
+    function getArticles() {
+        return $this->articles;
+    }
+
+    function setArticles($articles) {
+        $this->articles = $articles;
+    }
+
+    function getComments() {
+        return $this->comments;
+    }
+
+    function setComments($comments) {
+        $this->comments = $comments;
+    }
+
+
 }
 
