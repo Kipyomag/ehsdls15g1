@@ -39,14 +39,12 @@ class UsersController extends Controller
         $form = $this->createForm('EhsBundle\Form\UsersType', $user);
         $form->handleRequest($request);
 
-
-$plainPassword = 'ryanpass';
-$encoder = $this->container->get('security.password_encoder');
-$encoded = $encoder->encodePassword($user, $plainPassword);
-
-$user->setPassword($encoded);
-
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+
+            $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();

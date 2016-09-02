@@ -32,6 +32,13 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
@@ -412,6 +419,14 @@ class Users implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
+    }
+
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     public function getUsername()

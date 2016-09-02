@@ -1,6 +1,6 @@
 <?php
 
-namespace EHS\UsersBundle\Controller;
+namespace EhsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

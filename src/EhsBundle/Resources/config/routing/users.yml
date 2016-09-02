@@ -25,4 +25,4 @@ users_delete:
 
 users_login:
     path:     /login
-    defaults: { _controller: "EhsBundle:Users:login"}
+    defaults: { _controller: "EhsBundle:Security:login" }
