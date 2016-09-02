@@ -31,7 +31,7 @@
                     <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                 </p>
                 <p>
-                    auteur: {{ article.author.nom }}
+                    auteur: {{ article.author.username }}
                 </p>
             </div>
         {% endfor %}

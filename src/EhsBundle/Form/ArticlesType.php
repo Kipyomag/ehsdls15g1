@@ -19,10 +19,6 @@ class ArticlesType extends AbstractType
             ->add('titre')
             ->add('chapeau')
             ->add('contenu')
-            ->add('author', EntityType::class, array(
-                'class' => 'EhsBundle:Users',
-                'property'=>'nom',
-                'label' =>'Auteur:'))
             
         ;
     }

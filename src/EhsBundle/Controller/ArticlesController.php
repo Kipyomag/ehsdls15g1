@@ -41,6 +41,13 @@ class ArticlesController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+                throw $this->createAccessDeniedException();
+            }
+            $user = $this->getUser();
+            
+            $article->setAuthor($user);
+    
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
@@ -66,6 +73,14 @@ class ArticlesController extends Controller
         $commentForm = $this->createForm('EhsBundle\Form\CommentType', $comment);
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+                throw $this->createAccessDeniedException();
+            }
+            $user = $this->getUser();
+            
+            $comment->setAuthor($user);
+            
+            
             $comment->setArticle($article);
             $comment->setCreationDate(new \DateTime());
             $em = $this->getDoctrine()->getManager();

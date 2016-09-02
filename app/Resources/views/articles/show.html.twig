@@ -52,7 +52,7 @@
             <tr>
                 <th>{{ comment.creationDate|date("m/d/Y") }}</th>
                 <td>{{ comment.content }}</td>
-                <td>{{ comment.author.nom }}</td>
+                <td>{{ comment.author.username }}</td>
             </tr>
     {% endfor %}
     </table>
