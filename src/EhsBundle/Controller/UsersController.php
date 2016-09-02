@@ -35,7 +35,7 @@ class UsersController extends Controller
      */
     public function newAction(Request $request)
     {
-        phpinfo();die();
+        
         $user = new Users();
         $form = $this->createForm('EhsBundle\Form\UsersType', $user);
         $form->handleRequest($request);
