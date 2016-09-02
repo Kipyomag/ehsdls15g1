@@ -22,3 +22,7 @@ users_delete:
     path:     /{id}/delete
     defaults: { _controller: "EhsBundle:Users:delete" }
     methods:  DELETE
+
+users_login:
+    path:     /login
+    defaults: { _controller: "EhsBundle:Users:login"}

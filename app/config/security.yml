@@ -1,11 +1,15 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    encoders:
+        EhsBundle\Entity\Users:
+            algorithm: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+            entity:
+                class: EhsBundle:Users
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -16,6 +20,11 @@ security:
         default:
             anonymous: ~
             http_basic: ~
+
+        main:
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
     #access_control:
         #- { path: ^/articles/new, role: ROLE_ADMIN }
             # activate different ways to authenticate
