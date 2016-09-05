@@ -36,7 +36,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
     private $username;
 
@@ -106,9 +106,9 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=20)
+     * @ORM\Column(name="role", type="string", length=50)
      */
-    private $role;
+    private $roles;
     
     /**
      * @ORM\OneToMany(targetEntity="Articles", mappedBy="author")
@@ -124,6 +124,7 @@ class Users implements UserInterface, \Serializable
     public function __construct() {
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
 
@@ -380,30 +381,20 @@ class Users implements UserInterface, \Serializable
     /**
      * Set role
      *
-     * @param string $role
+     * @param string $roles
      *
      * @return Users
      */
-    public function setRole($role)
+    public function setRoles($roles)
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
 
-    /**
-     * Get role
-     *
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
     public function getRoles()
     {
-        return explode(',', $this->role);
+        return $this->roles->toArray();
     }
 
     public function getSalt()

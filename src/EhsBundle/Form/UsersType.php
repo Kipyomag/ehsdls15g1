@@ -5,6 +5,7 @@ namespace EhsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UsersType extends AbstractType
 {
@@ -26,7 +27,9 @@ class UsersType extends AbstractType
             ->add('ville')
             ->add('region')
             ->add('pays')
-            ->add('statut')
+            ->add('role', 'choice', array(
+            'choices' => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),
+        ))
         ;
     }
     

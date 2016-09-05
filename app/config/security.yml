@@ -1,6 +1,10 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    role_hierarchy:
+        ROLE_USER:       ROLE_USER
+        ROLE_ADMIN:      ROLE_ADMIN
+
     encoders:
         EhsBundle\Entity\Users:
             algorithm: bcrypt
@@ -25,8 +29,10 @@ security:
             pattern:    ^/
             http_basic: ~
             provider: our_db_provider
-    #access_control:
-        #- { path: ^/articles/new, role: ROLE_ADMIN }
+
+    access_control:
+        - { path: ^/articles/new, role: ROLE_ADMIN }
+        - { path: ^/articles, role: ROLE_USER }
             # activate different ways to authenticate
 
             # http_basic: ~
