@@ -11,21 +11,34 @@ class SecurityController extends Controller
 
     public function loginAction(Request $request)
     {
-    	$authenticationUtils = $this->get('security.authentication_utils');
+    	if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+			
+			$this->get('session')->getFlashBag()->set('danger', 'Vous êtes déjà connecté.');
 
-	    // get the login error if there is one
-	    $error = $authenticationUtils->getLastAuthenticationError();
+            return $this->redirectToRoute('articles_index');
+		} else {
 
-	    // last username entered by the user
-	    $lastUsername = $authenticationUtils->getLastUsername();
+			$authenticationUtils = $this->get('security.authentication_utils');
 
-	    return $this->render(
-	        'users/login.html.twig',
-	        array(
-	            // last username entered by the user
-	            'last_username' => $lastUsername,
-	            'error'         => $error,
-	        )
-	    );
+			// get the login error if there is one
+			$error = $authenticationUtils->getLastAuthenticationError();
+
+			// last username entered by the user
+			$lastUsername = $authenticationUtils->getLastUsername();
+
+			return $this->render(
+				'users/login.html.twig',
+				array(
+					// last username entered by the user
+					'last_username' => $lastUsername,
+					'error'         => $error,
+				)
+			);
+		}
     }
+
+	public function logoutAction()
+	{
+		throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+	}
 }

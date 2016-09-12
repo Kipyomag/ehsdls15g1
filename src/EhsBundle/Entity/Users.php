@@ -3,7 +3,13 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Users
@@ -26,13 +32,17 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
     private $username;
 
@@ -40,6 +50,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $nom;
 
@@ -47,6 +62,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $prenom;
 
@@ -68,6 +88,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/(0|\+33)[1-9]([-. ]?[0-9]{2}){4}/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $telephone;
 
@@ -82,6 +107,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=50)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre ville ne peut pas contenir de nombre"
+     * )
      */
     private $ville;
 
@@ -89,6 +119,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="region", type="string", length=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre région ne peut pas contenir de nombre"
+     * )
      */
     private $region;
 
@@ -96,15 +131,36 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=50)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre pays ne peut pas contenir de nombre"
+     * )
      */
     private $pays;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=20)
+     * @ORM\Column(name="role", type="string", length=20)
      */
-    private $statut;
+    private $role;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Articles", mappedBy="author")
+     */
+    private $articles;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
+     */
+    private $comments;
+    
+    
+    public function __construct() {
+        $this->articles = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
 
     /**
@@ -358,27 +414,32 @@ class Users implements UserInterface, \Serializable
     }
 
     /**
-     * Set statut
+     * Set role
      *
-     * @param string $statut
+     * @param string $role
      *
      * @return Users
      */
-    public function setStatut($statut)
+    public function setRole($role)
     {
-        $this->statut = $statut;
+        $this->role = $role;
 
         return $this;
     }
 
     /**
-     * Get statut
+     * Get role
      *
      * @return string
      */
-    public function getStatut()
+    public function getRole()
     {
-        return $this->statut;
+        return $this->role;
+    }
+
+    public function getRoles()
+    {
+        return explode(',', $this->role);
     }
 
     public function getSalt()
@@ -386,11 +447,6 @@ class Users implements UserInterface, \Serializable
         // you *may* need a real salt depending on your encoder
         // see section on salt below
         return null;
-    }
-
-    public function getRoles()
-    {
-        return array('ROLE_USER');
     }
 
     public function eraseCredentials()
@@ -433,5 +489,24 @@ class Users implements UserInterface, \Serializable
     {
         return $this->username;
     }
+
+    
+    function getArticles() {
+        return $this->articles;
+    }
+
+    function setArticles($articles) {
+        $this->articles = $articles;
+    }
+
+    function getComments() {
+        return $this->comments;
+    }
+
+    function setComments($comments) {
+        $this->comments = $comments;
+    }
+
+
 }
 

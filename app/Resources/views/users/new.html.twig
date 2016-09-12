@@ -1,18 +1,57 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Creation d'utilisateur</h1>
+    <div>
+        <h1 align="center">Inscription</h1>
+            <div class="formInscription">
+                {{ form_start(form) }}
+                
+                    <table class="tableFieldset">
+                        <tr><td>{{ form_widget(form.email) }}</td></tr>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Creation" />
-    {{ form_end(form) }}
+                        <tr><td>{{ form_label(form.username, "Nom d'utilisateur") }}</td></tr>
+                        <tr><td>{{ form_widget(form.username) }}</td></tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('users_index') }}">Retour vers la liste</a>
-        </li>
-    </ul>
+                        <tr><td>{{ form_label(form.nom, "Nom") }}</td></tr>
+                        <tr><td>{{ form_widget(form.nom) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.prenom, "Prénom") }}</td></tr>
+                        <tr><td>{{ form_widget(form.prenom) }}</td></tr>
+
+                        <tr><td>{{ form_widget(form.password) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.genre, "Genre") }}</td></tr>
+                        <tr><td>{{ form_widget(form.genre) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.telephone, "Téléphone") }}</td></tr>
+                        <tr><td>{{ form_widget(form.telephone) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.adresse, "Adresse") }}</td></tr>
+                        <tr><td>{{ form_widget(form.adresse) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.ville, "Ville") }}</td></tr>
+                        <tr><td>{{ form_widget(form.ville) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.region, "Région") }}</td></tr>
+                        <tr><td>{{ form_widget(form.region) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.pays, "Pays") }}</td></tr>
+                        <tr><td>{{ form_widget(form.pays) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.role, "Rôle") }}</td></tr>
+                        <tr><td>{{ form_widget(form.role) }}</td></tr>
+                    
+                        <tr align="center"><td><button type="submit" class="btn btn-primary">S'inscrire</button></td></tr>
+                    </table>
+                
+                {{ form_end(form) }}
+        </div>
+    </div>
+
+    
 {% endblock %}
+
+
+    

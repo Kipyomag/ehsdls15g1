@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    #database_host: mysql.hostinger.fr
+    database_host: 127.0.0.1
+    database_port: null
+    #database_name: u175745472_ehs
+    database_name: ehs
+    #database_user: u175745472_ehs
+    database_user: root
+    #database_password: testehs
+    database_password: ~
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: EHSDL15
+    mailer_password: ehsdl15g1
+    mailer_encryption: ssl
+    secret: ThisTokenIsNotSoSecretChangeIt

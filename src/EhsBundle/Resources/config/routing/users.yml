@@ -26,3 +26,15 @@ users_delete:
 users_login:
     path:     /login
     defaults: { _controller: "EhsBundle:Security:login" }
+
+users_logout:
+    path:     /logout
+    defaults: { _controller: "EhsBundle:Security:logout" }
+
+users_passwordLost:
+    path:     /passwordLost
+    defaults: { _controller: "EhsBundle:Users:reset" }
+
+users_passwordLostConfirm:
+    path:     /passwordLostConfirm
+    defaults: { _controller: "EhsBundle:Users:resetNow" }

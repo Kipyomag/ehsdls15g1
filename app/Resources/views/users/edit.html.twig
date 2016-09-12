@@ -1,26 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link href="../../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../../web/public/style/style.css" rel="stylesheet">
-{% endblock %}
+{% block title %}Edition du profil{% endblock %}
 
 {% block body %}
-    <h1>Edition des utilisateurs</h1>
+    <div>
+        <h1 align="center">Edition du profil</h1>
+            <div class="formEdition">
+                {{ form_start(edit_form) }}
+                    <table class="tableFieldset">
+                        <tr><td>{{ form_widget(edit_form.email) }}</td></tr>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edition" />
-    {{ form_end(edit_form) }}
+                        <tr><td>{{ form_widget(edit_form.password) }}</td></tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('users_index') }}">Retour vers la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        <tr><td>{{ form_label(edit_form.telephone, "Téléphone") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.telephone) }}</td></tr>
+
+                        <tr><td>{{ form_label(edit_form.adresse, "Adresse") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.adresse) }}</td></tr>
+
+                        <tr><td>{{ form_label(edit_form.ville, "Ville") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.ville) }}</td></tr>
+
+                        <tr><td>{{ form_label(edit_form.region, "Région") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.region) }}</td></tr>
+
+                        <tr><td>{{ form_label(edit_form.pays, "Pays") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.pays) }}</td></tr>
+
+                        <tr><td>{{ form_label(edit_form.role, "Rôle") }}</td></tr>
+                        <tr><td>{{ form_widget(edit_form.role) }}</td></tr>
+                    
+                        <tr align="center"><td><input type="submit" class="btn btn-primary" value="Editer" /></td></tr>
+                        {{ form_end(edit_form) }}
+                        {{ form_start(delete_form) }}
+                        <tr align="center"><td><input type="submit" class="btn btn-primary" value="Supprimer mon compte" /></td></tr>
+                        {{ form_end(delete_form) }}
+                    </table>
+            </div>
+        </div>
+        
 {% endblock %}

@@ -15,19 +15,32 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
+            ->add('email', 'repeated', array(
+                'type' => 'email',
+                'invalid_message' => 'Les e-mails doivent correspondre.',
+                'first_name'      => 'Choisissez_votre_e-mail',
+                'second_name'     => 'Retapper_votre_e-mail',
+            ))
             ->add('username')
             ->add('nom')
             ->add('prenom')
-            ->add('password')
-            ->add('genre')
+            ->add('password', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Les mots de passes doivent correspondre.',
+                'first_name'      => 'Choisissez_votre_mot_de_passe',
+                'second_name'     => 'Retapper_votre_mot_de_passe',
+            ))
+            ->add('genre', 'choice', array(
+            'choices' => array('Homme' => 'Homme', 'Femme' => 'Femme'),
+            ))
             ->add('telephone')
             ->add('adresse')
             ->add('ville')
             ->add('region')
             ->add('pays')
-            ->add('statut')
-        ;
+            ->add('role', 'choice', array(
+            'choices' => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),
+            ));
     }
     
     /**
