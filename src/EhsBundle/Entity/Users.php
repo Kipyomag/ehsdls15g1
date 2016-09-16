@@ -81,6 +81,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/^0[1-689][0-9]{8}$/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $telephone;
 

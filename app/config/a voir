@@ -11,7 +11,7 @@ faire un systeme de recuperation de mot de passe (fait)
 regex formulaire (regex téléphone ne fonctionne pas) (fait)
 voir pour utilisation de la methode salt pour un meilleur encodage des mots de passe
 améliorer le formulaire d'edition de profil
-permettre l'authentification par mail
+permettre l'authentification par mail (fait)
 faire un systeme de groupe (medecin, intervenant, membre, ?)
 
 

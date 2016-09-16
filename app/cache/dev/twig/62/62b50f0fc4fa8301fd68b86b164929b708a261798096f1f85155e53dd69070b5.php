@@ -22,32 +22,32 @@ class __TwigTemplate_723dbe3a8904ea8e17baa04a7ac571eed74828b8a36730f945a416bca4c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cae7b80f6c97a1fb6b20312d96f8a64311e867743268697c1b9c89c967940503 = $this->env->getExtension("native_profiler");
-        $__internal_cae7b80f6c97a1fb6b20312d96f8a64311e867743268697c1b9c89c967940503->enter($__internal_cae7b80f6c97a1fb6b20312d96f8a64311e867743268697c1b9c89c967940503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "users/passwordLost.html.twig"));
+        $__internal_1abdb7f09ee2c09ec855723371e815c2ba2d6fb7efda9f9c7b618a9e180ae1f5 = $this->env->getExtension("native_profiler");
+        $__internal_1abdb7f09ee2c09ec855723371e815c2ba2d6fb7efda9f9c7b618a9e180ae1f5->enter($__internal_1abdb7f09ee2c09ec855723371e815c2ba2d6fb7efda9f9c7b618a9e180ae1f5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "users/passwordLost.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_cae7b80f6c97a1fb6b20312d96f8a64311e867743268697c1b9c89c967940503->leave($__internal_cae7b80f6c97a1fb6b20312d96f8a64311e867743268697c1b9c89c967940503_prof);
+        $__internal_1abdb7f09ee2c09ec855723371e815c2ba2d6fb7efda9f9c7b618a9e180ae1f5->leave($__internal_1abdb7f09ee2c09ec855723371e815c2ba2d6fb7efda9f9c7b618a9e180ae1f5_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_eee2f787b3d5da440d8098efdd55017e77456a67d12f723d5bfc33c0c0630d33 = $this->env->getExtension("native_profiler");
-        $__internal_eee2f787b3d5da440d8098efdd55017e77456a67d12f723d5bfc33c0c0630d33->enter($__internal_eee2f787b3d5da440d8098efdd55017e77456a67d12f723d5bfc33c0c0630d33_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_965f9df18cd1fcaf4ca3da9cda22e507a3b59cf91d584dd97bf849a3c0f90ec1 = $this->env->getExtension("native_profiler");
+        $__internal_965f9df18cd1fcaf4ca3da9cda22e507a3b59cf91d584dd97bf849a3c0f90ec1->enter($__internal_965f9df18cd1fcaf4ca3da9cda22e507a3b59cf91d584dd97bf849a3c0f90ec1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Connection";
         
-        $__internal_eee2f787b3d5da440d8098efdd55017e77456a67d12f723d5bfc33c0c0630d33->leave($__internal_eee2f787b3d5da440d8098efdd55017e77456a67d12f723d5bfc33c0c0630d33_prof);
+        $__internal_965f9df18cd1fcaf4ca3da9cda22e507a3b59cf91d584dd97bf849a3c0f90ec1->leave($__internal_965f9df18cd1fcaf4ca3da9cda22e507a3b59cf91d584dd97bf849a3c0f90ec1_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_2619f14146994eaae31a173907a7da9d3bf3c45d3fbb9a1da27507d00895b593 = $this->env->getExtension("native_profiler");
-        $__internal_2619f14146994eaae31a173907a7da9d3bf3c45d3fbb9a1da27507d00895b593->enter($__internal_2619f14146994eaae31a173907a7da9d3bf3c45d3fbb9a1da27507d00895b593_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_10dfbb656618ade2f6561050ef0f2b31754a572be0861682ab808ad4f3d37780 = $this->env->getExtension("native_profiler");
+        $__internal_10dfbb656618ade2f6561050ef0f2b31754a572be0861682ab808ad4f3d37780->enter($__internal_10dfbb656618ade2f6561050ef0f2b31754a572be0861682ab808ad4f3d37780_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "<div>
@@ -69,7 +69,7 @@ class __TwigTemplate_723dbe3a8904ea8e17baa04a7ac571eed74828b8a36730f945a416bca4c
         echo $this->env->getExtension('routing')->getPath("users_passwordLostConfirm");
         echo "\" method=\"post\">
             <table class=\"tableFieldset\">
-                <tr align=\"center\"><td><label for=\"username\">Nom d'utilisateur:</label></td></tr>
+                <tr align=\"center\"><td><label for=\"username\">E-mail:</label></td></tr>
                 <tr align=\"center\"><td><input type=\"text\" id=\"username\" name=\"_username\" value=\"";
         // line 16
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
@@ -85,7 +85,7 @@ class __TwigTemplate_723dbe3a8904ea8e17baa04a7ac571eed74828b8a36730f945a416bca4c
 
 ";
         
-        $__internal_2619f14146994eaae31a173907a7da9d3bf3c45d3fbb9a1da27507d00895b593->leave($__internal_2619f14146994eaae31a173907a7da9d3bf3c45d3fbb9a1da27507d00895b593_prof);
+        $__internal_10dfbb656618ade2f6561050ef0f2b31754a572be0861682ab808ad4f3d37780->leave($__internal_10dfbb656618ade2f6561050ef0f2b31754a572be0861682ab808ad4f3d37780_prof);
 
     }
 
@@ -118,7 +118,7 @@ class __TwigTemplate_723dbe3a8904ea8e17baa04a7ac571eed74828b8a36730f945a416bca4c
 /* */
 /*             <form action="{{ path('users_passwordLostConfirm') }}" method="post">*/
 /*             <table class="tableFieldset">*/
-/*                 <tr align="center"><td><label for="username">Nom d'utilisateur:</label></td></tr>*/
+/*                 <tr align="center"><td><label for="username">E-mail:</label></td></tr>*/
 /*                 <tr align="center"><td><input type="text" id="username" name="_username" value="{{ last_username }}" /></td></tr>*/
 /* */
 /*                 <input type="hidden" name="_target_path" value="ehs_homepage" />*/

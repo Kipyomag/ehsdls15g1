@@ -177,7 +177,7 @@ class UsersController extends Controller
 
         $username = &$params["_username"];
         $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $user = $em->getRepository("EhsBundle:Users")->findOneBy(array("username" => $username));
+        $user = $em->getRepository("EhsBundle:Users")->findOneBy(array("email" => $username));
 
         if ($user == null) {
             return $this->redirectToRoute('users_login');
