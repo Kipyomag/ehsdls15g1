@@ -1,1 +1,12 @@
 389a24,::1,GET,http://localhost/ehs/web/app_dev.php/users/login,1473689676,,200
+6a49fd,::1,GET,http://localhost/ehs/web/app_dev.php/users/login,1474015169,,200
+14f87f,::1,POST,http://localhost/ehs/web/app_dev.php/users/login,1474015180,,302
+a71718,::1,GET,http://localhost/ehs/web/app_dev.php/,1474015181,,200
+2541e8,::1,GET,http://localhost/ehs/web/app_dev.php/articles/,1474015186,,200
+13f307,::1,GET,http://localhost/ehs/web/app_dev.php/articles/new,1474015196,,200
+4266fa,::1,POST,http://localhost/ehs/web/app_dev.php/articles/new,1474015213,,302
+f4a1cc,::1,GET,http://localhost/ehs/web/app_dev.php/articles/2/show,1474015215,,200
+11536f,::1,POST,http://localhost/ehs/web/app_dev.php/articles/2/show,1474015222,,302
+4075b7,::1,GET,http://localhost/ehs/web/app_dev.php/articles/2/show,1474015223,,200
+c91a5d,::1,GET,http://localhost/ehs/web/app_dev.php/users/logout,1474015270,,302
+6d5429,::1,GET,http://localhost/ehs/web/app_dev.php/users/login,1474015271,,200

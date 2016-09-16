@@ -577,7 +577,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.default_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'mysql.hostinger.fr', 'port' => NULL, 'dbname' => 'u175745472_coc', 'user' => 'u175745472_pod', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'ehs', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array());
     }
 
     /**
@@ -2073,7 +2073,7 @@ class appDevDebugProjectContainer extends Container
 
         $m = new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $i, 'users_login', false);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($h, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.our_db_provider')), 'main', $a, $c), 2 => $j, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $i, 'main', $k, $l, array('check_path' => 'users_login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\BasicAuthenticationListener($b, $f, 'main', $m, $a), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57d6b84a88f680.46510877', $a, $f), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $h, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $i, 'main', $m, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($h, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.our_db_provider')), 'main', $a, $c), 2 => $j, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $i, 'main', $k, $l, array('check_path' => 'users_login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\BasicAuthenticationListener($b, $f, 'main', $m, $a), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57dbafbd677dc6.19247305', $a, $f), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $h, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $i, 'main', $m, NULL, NULL, $a, false));
     }
 
     /**
@@ -3434,7 +3434,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.our_db_provider'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57d6b84a88f680.46510877')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.our_db_provider'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57dbafbd677dc6.19247305')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -3655,15 +3655,16 @@ class appDevDebugProjectContainer extends Container
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
-            'database_host' => 'mysql.hostinger.fr',
+            'database_host' => '127.0.0.1',
             'database_port' => NULL,
-            'database_name' => 'u175745472_coc',
-            'database_user' => 'u175745472_pod',
+            'database_name' => 'ehs',
+            'database_user' => 'root',
             'database_password' => NULL,
-            'mailer_transport' => 'smtp',
-            'mailer_host' => '127.0.0.1',
-            'mailer_user' => NULL,
-            'mailer_password' => NULL,
+            'mailer_transport' => 'gmail',
+            'mailer_host' => 'smtp.gmail.com',
+            'mailer_user' => 'EHSDL15',
+            'mailer_password' => 'ehsdl15g1',
+            'mailer_encryption' => 'ssl',
             'secret' => 'ThisTokenIsNotSoSecretChangeIt',
             'locale' => 'en',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
