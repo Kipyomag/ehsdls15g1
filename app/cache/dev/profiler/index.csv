@@ -159,4 +159,3 @@ b6ce11,::1,GET,http://localhost/ehs/web/app_dev.php/,1474032294,,200
 7b20f6,::1,GET,http://localhost/ehs/web/app_dev.php/users/31/show,1474033451,,200
 65cd5f,::1,GET,http://localhost/ehs/web/app_dev.php/users/31/show,1474033468,,200
 f150a8,::1,GET,http://localhost/ehs/web/app_dev.php/users/31/edit,1474033473,,200
-878f7e,::1,GET,http://localhost/ehsdls15g1/web/app_dev.php/newsletter/,1474036094,,200
