@@ -2,23 +2,3 @@ newsletter_index:
     path:     /
     defaults: { _controller: "EhsBundle:Newsletter:index" }
     methods:  GET
-
-newsletter_show:
-    path:     /{id}/show
-    defaults: { _controller: "EhsBundle:Newsletter:show" }
-    methods:  GET
-
-newsletter_new:
-    path:     /new
-    defaults: { _controller: "EhsBundle:Newsletter:new" }
-    methods:  [GET, POST]
-
-newsletter_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "EhsBundle:Newsletter:edit" }
-    methods:  [GET, POST]
-
-newsletter_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "EhsBundle:Newsletter:delete" }
-    methods:  DELETE
