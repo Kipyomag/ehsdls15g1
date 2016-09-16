@@ -42,13 +42,6 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=255)
      * @Assert\Regex(
      *     pattern="/\d/",
@@ -88,11 +81,6 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
-     * @Assert\Regex(
-     *     pattern="/(0|\+33)[1-9]([-. ]?[0-9]{2}){4}/",
-     *     match=false,
-     *     message="Votre nom ne peut pas contenir de nombre"
-     * )
      */
     private $telephone;
 
@@ -458,7 +446,7 @@ class Users implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt,
@@ -470,24 +458,16 @@ class Users implements UserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
     }
 
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     

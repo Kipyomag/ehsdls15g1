@@ -21,7 +21,6 @@ class UsersType extends AbstractType
                 'first_name'      => 'Choisissez_votre_e-mail',
                 'second_name'     => 'Retapper_votre_e-mail',
             ))
-            ->add('username')
             ->add('nom')
             ->add('prenom')
             ->add('password', 'repeated', array(
