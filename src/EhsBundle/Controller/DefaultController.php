@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('EhsBundle:Default:index.html.twig');
+        return $this->redirectToRoute('articles_index');
     }
 }

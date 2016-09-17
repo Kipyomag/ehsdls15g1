@@ -38,7 +38,7 @@ class UsersType extends AbstractType
             ->add('region')
             ->add('pays')
             ->add('role', 'choice', array(
-            'choices' => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),
+            'choices' => array('ROLE_USER' => 'Utilisateur', 'ROLE_MODERATEUR' => 'Modérateur', 'ROLE_ADMIN' => 'Administrateur'),
             ));
     }
     

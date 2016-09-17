@@ -64,10 +64,10 @@ class Users extends \EhsBundle\Entity\Users implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'nom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'prenom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'genre', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'telephone', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'adresse', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'ville', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'region', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'pays', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'role', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'articles', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'comments'];
+            return ['__isInitialized__', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'nom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'prenom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'genre', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'telephone', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'adresse', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'ville', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'region', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'pays', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'role', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'articles', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'comments'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'nom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'prenom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'genre', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'telephone', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'adresse', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'ville', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'region', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'pays', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'role', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'articles', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'comments'];
+        return ['__isInitialized__', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'nom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'prenom', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'genre', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'telephone', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'adresse', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'ville', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'region', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'pays', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'role', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'articles', '' . "\0" . 'EhsBundle\\Entity\\Users' . "\0" . 'comments'];
     }
 
     /**
@@ -483,17 +483,6 @@ class Users extends \EhsBundle\Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'unserialize', [$serialized]);
 
         return parent::unserialize($serialized);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUsername($username)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$username]);
-
-        return parent::setUsername($username);
     }
 
     /**

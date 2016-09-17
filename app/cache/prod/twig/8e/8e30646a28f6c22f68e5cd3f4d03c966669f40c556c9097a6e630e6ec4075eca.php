@@ -54,7 +54,7 @@ class __TwigTemplate_5a137b46f9a3d5fcd46e16eea69afc7777b51052b92d631279fc31f1f1e
         echo $this->env->getExtension('routing')->getPath("users_login");
         echo "\" method=\"post\">
             <table class=\"tableFieldset\">
-                <tr align=\"center\"><td><label for=\"username\">Nom d'utilisateur:</label></td></tr>
+                <tr align=\"center\"><td><label for=\"username\">E-mail:</label></td></tr>
                 <tr align=\"center\"><td><input type=\"text\" id=\"username\" name=\"_username\" value=\"";
         // line 16
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : null), "html", null, true);
@@ -107,7 +107,7 @@ class __TwigTemplate_5a137b46f9a3d5fcd46e16eea69afc7777b51052b92d631279fc31f1f1e
 /* */
 /*             <form action="{{ path('users_login') }}" method="post">*/
 /*             <table class="tableFieldset">*/
-/*                 <tr align="center"><td><label for="username">Nom d'utilisateur:</label></td></tr>*/
+/*                 <tr align="center"><td><label for="username">E-mail:</label></td></tr>*/
 /*                 <tr align="center"><td><input type="text" id="username" name="_username" value="{{ last_username }}" /></td></tr>*/
 /* */
 /*                 <tr align="center"><td><label for="password">Mot de passe:</label></td></tr>*/

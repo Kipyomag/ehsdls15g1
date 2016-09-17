@@ -22,32 +22,32 @@ class __TwigTemplate_2287eecfde1a58c19443cfe27f02b339d8d2e6ed188cd58c34073338f47
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_774f28d2a5cc8da47d6f953cc0e4f2d185dc626d34fbae82fbcc912559ed272c = $this->env->getExtension("native_profiler");
-        $__internal_774f28d2a5cc8da47d6f953cc0e4f2d185dc626d34fbae82fbcc912559ed272c->enter($__internal_774f28d2a5cc8da47d6f953cc0e4f2d185dc626d34fbae82fbcc912559ed272c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":users:login.html.twig"));
+        $__internal_149dacf73ab90201be10b8b9cf561cfaa6f5aea8648da0fe948c0bf99669c9ec = $this->env->getExtension("native_profiler");
+        $__internal_149dacf73ab90201be10b8b9cf561cfaa6f5aea8648da0fe948c0bf99669c9ec->enter($__internal_149dacf73ab90201be10b8b9cf561cfaa6f5aea8648da0fe948c0bf99669c9ec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":users:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_774f28d2a5cc8da47d6f953cc0e4f2d185dc626d34fbae82fbcc912559ed272c->leave($__internal_774f28d2a5cc8da47d6f953cc0e4f2d185dc626d34fbae82fbcc912559ed272c_prof);
+        $__internal_149dacf73ab90201be10b8b9cf561cfaa6f5aea8648da0fe948c0bf99669c9ec->leave($__internal_149dacf73ab90201be10b8b9cf561cfaa6f5aea8648da0fe948c0bf99669c9ec_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1ad45801a9741e87755eb49f3e5105d59456618b927138b6f0a8cf4a0496e06e = $this->env->getExtension("native_profiler");
-        $__internal_1ad45801a9741e87755eb49f3e5105d59456618b927138b6f0a8cf4a0496e06e->enter($__internal_1ad45801a9741e87755eb49f3e5105d59456618b927138b6f0a8cf4a0496e06e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_88fb90fed6b4345e2426e5f70844ecd580bb3040bf88485849edc141c3e20b71 = $this->env->getExtension("native_profiler");
+        $__internal_88fb90fed6b4345e2426e5f70844ecd580bb3040bf88485849edc141c3e20b71->enter($__internal_88fb90fed6b4345e2426e5f70844ecd580bb3040bf88485849edc141c3e20b71_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Connexion";
         
-        $__internal_1ad45801a9741e87755eb49f3e5105d59456618b927138b6f0a8cf4a0496e06e->leave($__internal_1ad45801a9741e87755eb49f3e5105d59456618b927138b6f0a8cf4a0496e06e_prof);
+        $__internal_88fb90fed6b4345e2426e5f70844ecd580bb3040bf88485849edc141c3e20b71->leave($__internal_88fb90fed6b4345e2426e5f70844ecd580bb3040bf88485849edc141c3e20b71_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_37dc7874cda30ca00a7830fc3790a65f086a53542c42e1dd60b51b2ed9924e42 = $this->env->getExtension("native_profiler");
-        $__internal_37dc7874cda30ca00a7830fc3790a65f086a53542c42e1dd60b51b2ed9924e42->enter($__internal_37dc7874cda30ca00a7830fc3790a65f086a53542c42e1dd60b51b2ed9924e42_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_3f4a0bc8c088304c07532eb7dcebc9f036af835a450f27090359aebd1d3b4d55 = $this->env->getExtension("native_profiler");
+        $__internal_3f4a0bc8c088304c07532eb7dcebc9f036af835a450f27090359aebd1d3b4d55->enter($__internal_3f4a0bc8c088304c07532eb7dcebc9f036af835a450f27090359aebd1d3b4d55_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "<div>
@@ -69,7 +69,7 @@ class __TwigTemplate_2287eecfde1a58c19443cfe27f02b339d8d2e6ed188cd58c34073338f47
         echo $this->env->getExtension('routing')->getPath("users_login");
         echo "\" method=\"post\">
             <table class=\"tableFieldset\">
-                <tr align=\"center\"><td><label for=\"username\">Nom d'utilisateur:</label></td></tr>
+                <tr align=\"center\"><td><label for=\"username\">E-mail:</label></td></tr>
                 <tr align=\"center\"><td><input type=\"text\" id=\"username\" name=\"_username\" value=\"";
         // line 16
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
@@ -92,7 +92,7 @@ class __TwigTemplate_2287eecfde1a58c19443cfe27f02b339d8d2e6ed188cd58c34073338f47
 
 ";
         
-        $__internal_37dc7874cda30ca00a7830fc3790a65f086a53542c42e1dd60b51b2ed9924e42->leave($__internal_37dc7874cda30ca00a7830fc3790a65f086a53542c42e1dd60b51b2ed9924e42_prof);
+        $__internal_3f4a0bc8c088304c07532eb7dcebc9f036af835a450f27090359aebd1d3b4d55->leave($__internal_3f4a0bc8c088304c07532eb7dcebc9f036af835a450f27090359aebd1d3b4d55_prof);
 
     }
 
@@ -125,7 +125,7 @@ class __TwigTemplate_2287eecfde1a58c19443cfe27f02b339d8d2e6ed188cd58c34073338f47
 /* */
 /*             <form action="{{ path('users_login') }}" method="post">*/
 /*             <table class="tableFieldset">*/
-/*                 <tr align="center"><td><label for="username">Nom d'utilisateur:</label></td></tr>*/
+/*                 <tr align="center"><td><label for="username">E-mail:</label></td></tr>*/
 /*                 <tr align="center"><td><input type="text" id="username" name="_username" value="{{ last_username }}" /></td></tr>*/
 /* */
 /*                 <tr align="center"><td><label for="password">Mot de passe:</label></td></tr>*/

@@ -3,7 +3,8 @@
 security:
     role_hierarchy:
         ROLE_USER:       ROLE_USER
-        ROLE_ADMIN:      ROLE_USER
+        ROLE_MODERATEUR: ROLE_USER
+        ROLE_ADMIN:      [ROLE_USER, ROLE_MODERATEUR]
 
     encoders:
         EhsBundle\Entity\Users:
@@ -35,7 +36,14 @@ security:
                 target: users_login
 
     access_control:
+        # - { path: ^/users/new, role: ROLE_ADMIN }
+        - { path: ^/users/show, role: ROLE_ADMIN }
         - { path: ^/articles/new, role: ROLE_ADMIN }
+        - { path: ^/articles/edit, role: ROLE_MODERATEUR }
+        - { path: ^/comment/new, role: ROLE_USER }
+        - { path: ^/comment/edit, role: ROLE_MODERATEUR }
+        - { path: ^/newsletter, role: ROLE_ADMIN }
+
             # activate different ways to authenticate
 
             # http_basic: ~

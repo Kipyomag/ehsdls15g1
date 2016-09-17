@@ -54,82 +54,77 @@ class __TwigTemplate_f7bc31ab290abd063647b0d11bba6f6227ac41f2bcd1957b7502c2824d5
         echo "</td>
                         </tr>
                         <tr>
-                            <th>Username</th>
-                            <td>";
-        // line 20
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "username", array()), "html", null, true);
-        echo "</td>
-                        </tr>
-                        <tr>
                             <th>Nom</th>
                             <td>";
-        // line 24
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "nom", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Prenom</th>
                             <td>";
-        // line 28
+        // line 24
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "prenom", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Genre</th>
                             <td>";
-        // line 32
+        // line 28
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "genre", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Telephone</th>
                             <td>";
-        // line 36
+        // line 32
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "telephone", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Adresse</th>
                             <td>";
-        // line 40
+        // line 36
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "adresse", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Ville</th>
                             <td>";
-        // line 44
+        // line 40
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "ville", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Region</th>
                             <td>";
-        // line 48
+        // line 44
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "region", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Pays</th>
                             <td>";
-        // line 52
+        // line 48
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "pays", array()), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
                             <th>Role</th>
                             <td>";
-        // line 56
+        // line 52
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "role", array()), "html", null, true);
         echo "</td>
                         </tr>
                     </table>
-                <p align =\"center\">
-                <input type=\"submit\" href=\"";
-        // line 60
+                <ul>
+                    <li>
+                        <a href=\"";
+        // line 57
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("users_edit", array("id" => $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "id", array()))), "html", null, true);
-        echo "\" class=\"btn btn-primary\" value=\"Editer\" />
-                </p>
+        echo "\">Edition</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -149,7 +144,7 @@ class __TwigTemplate_f7bc31ab290abd063647b0d11bba6f6227ac41f2bcd1957b7502c2824d5
 
     public function getDebugInfo()
     {
-        return array (  130 => 60,  123 => 56,  116 => 52,  109 => 48,  102 => 44,  95 => 40,  88 => 36,  81 => 32,  74 => 28,  67 => 24,  60 => 20,  53 => 16,  46 => 12,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  124 => 57,  116 => 52,  109 => 48,  102 => 44,  95 => 40,  88 => 36,  81 => 32,  74 => 28,  67 => 24,  60 => 20,  53 => 16,  46 => 12,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -168,10 +163,6 @@ class __TwigTemplate_f7bc31ab290abd063647b0d11bba6f6227ac41f2bcd1957b7502c2824d5
 /*                         <tr>*/
 /*                             <th>Email</th>*/
 /*                             <td>{{ user.email }}</td>*/
-/*                         </tr>*/
-/*                         <tr>*/
-/*                             <th>Username</th>*/
-/*                             <td>{{ user.username }}</td>*/
 /*                         </tr>*/
 /*                         <tr>*/
 /*                             <th>Nom</th>*/
@@ -210,9 +201,11 @@ class __TwigTemplate_f7bc31ab290abd063647b0d11bba6f6227ac41f2bcd1957b7502c2824d5
 /*                             <td>{{ user.role }}</td>*/
 /*                         </tr>*/
 /*                     </table>*/
-/*                 <p align ="center">*/
-/*                 <input type="submit" href="{{ path('users_edit', { 'id': user.id }) }}" class="btn btn-primary" value="Editer" />*/
-/*                 </p>*/
+/*                 <ul>*/
+/*                     <li>*/
+/*                         <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>*/
+/*                     </li>*/
+/*                 </ul>*/
 /*             </div>*/
 /*         </div>*/
 /* */
