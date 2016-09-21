@@ -56,18 +56,20 @@ class UsersController extends Controller
                 $em->persist($user);
                 $em->flush();
                 $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
-                return $this->redirectToRoute('users_show', array('id' => $user->getId()));
+                $params = $request->request->all();
             }
-
             return $this->render('users/new.html.twig', array(
                 'user' => $user,
                 'form' => $form->createView(),
             ));
+            
         /*} else {
             $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
 
             return $this->redirectToRoute('articles_index');
         }*/
+
+        
     }
 
     /**
@@ -76,12 +78,19 @@ class UsersController extends Controller
      */
     public function showAction(Users $user)
     {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('users/show.html.twig', array(
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -90,6 +99,7 @@ class UsersController extends Controller
      */
     public function editAction(Request $request, Users $user)
     {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('EhsBundle\Form\UsersEditType', $user);
         $editForm->handleRequest($request);
@@ -112,6 +122,13 @@ class UsersController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**

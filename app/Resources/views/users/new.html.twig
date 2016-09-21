@@ -5,40 +5,49 @@
 {% block body %}
     <div>
         <h1 align="center">Inscription</h1>
-            <div class="formInscription">
+            <div>
                 {{ form_start(form) }}
                 
-                    <table class="tableFieldset">
-                        <tr><td>{{ form_widget(form.email) }}</td></tr>
+                    <table align="center">
+                    {% for emailField in form.email %}
+                            <tr><td>{{ form_label(emailField) }}</td></tr>
+                            <tr><td>{{ form_widget(emailField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+                    {% endfor %}
 
                         <tr><td>{{ form_label(form.nom, "Nom") }}</td></tr>
-                        <tr><td>{{ form_widget(form.nom) }}</td></tr>
+                        <tr><td>{{ form_widget(form.nom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.prenom, "Prénom") }}</td></tr>
-                        <tr><td>{{ form_widget(form.prenom) }}</td></tr>
+                        <tr><td>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
-                        <tr><td>{{ form_widget(form.password) }}</td></tr>
+                    {% for passwordField in form.password %}
+                            <tr><td>{{ form_label(passwordField) }}</td></tr>
+                            <tr><td>{{ form_widget(passwordField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+                    {% endfor %}
 
                         <tr><td>{{ form_label(form.genre, "Genre") }}</td></tr>
-                        <tr><td>{{ form_widget(form.genre) }}</td></tr>
+                        <tr><td>{{ form_widget(form.genre, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.telephone, "Téléphone") }}</td></tr>
-                        <tr><td>{{ form_widget(form.telephone) }}</td></tr>
+                        <tr><td>{{ form_widget(form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.adresse, "Adresse") }}</td></tr>
-                        <tr><td>{{ form_widget(form.adresse) }}</td></tr>
+                        <tr><td>{{ form_widget(form.adresse, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.ville, "Ville") }}</td></tr>
-                        <tr><td>{{ form_widget(form.ville) }}</td></tr>
+                        <tr><td>{{ form_widget(form.ville, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.region, "Région") }}</td></tr>
-                        <tr><td>{{ form_widget(form.region) }}</td></tr>
+                        <tr><td>{{ form_widget(form.region, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                         <tr><td>{{ form_label(form.pays, "Pays") }}</td></tr>
-                        <tr><td>{{ form_widget(form.pays) }}</td></tr>
+                        <tr><td>{{ form_widget(form.pays, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
-                        <tr><td>{{ form_label(form.role, "Rôle") }}</td></tr>
-                        <tr><td>{{ form_widget(form.role) }}</td></tr>
+                        <div class="hidden">
+                            <input type="hidden" name="{{ form_widget(form.role) }}">
+                        </div>
+
+                        
                     
                         <tr align="center"><td><button type="submit" class="btn btn-primary">S'inscrire</button></td></tr>
                     </table>

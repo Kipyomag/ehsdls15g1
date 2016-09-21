@@ -310,6 +310,71 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        if (0 === strpos($pathinfo, '/admin')) {
+            // admin_index
+            if (rtrim($pathinfo, '/') === '/admin') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_admin_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'admin_index');
+                }
+
+                return array (  '_controller' => 'EhsBundle\\Controller\\AdminController::indexAction',  '_route' => 'admin_index',);
+            }
+            not_admin_index:
+
+            // admin_users_new
+            if ($pathinfo === '/admin/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_admin_users_new;
+                }
+
+                return array (  '_controller' => 'EhsBundle\\Controller\\AdminController::newAction',  '_route' => 'admin_users_new',);
+            }
+            not_admin_users_new:
+
+            // admin_users_edit
+            if (preg_match('#^/admin/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_admin_users_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_users_edit')), array (  '_controller' => 'EhsBundle\\Controller\\AdminController::editAction',));
+            }
+            not_admin_users_edit:
+
+            if (0 === strpos($pathinfo, '/admin/liste')) {
+                // admin_listeMembres
+                if ($pathinfo === '/admin/listeMembres') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_listeMembres;
+                    }
+
+                    return array (  '_controller' => 'EhsBundle\\Controller\\AdminController::ListeMembresAction',  '_route' => 'admin_listeMembres',);
+                }
+                not_admin_listeMembres:
+
+                // admin_listeArticles
+                if ($pathinfo === '/admin/listeArticles') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_listeArticles;
+                    }
+
+                    return array (  '_controller' => 'EhsBundle\\Controller\\AdminController::ListeArticlesAction',  '_route' => 'admin_listeArticles',);
+                }
+                not_admin_listeArticles:
+
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

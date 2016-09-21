@@ -1,0 +1,24 @@
+admin_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:Admin:index" }
+    methods:  GET
+
+admin_users_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:Admin:new" }
+    methods:  [GET, POST]
+
+admin_users_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EhsBundle:Admin:edit" }
+    methods:  [GET, POST]
+
+admin_listeMembres:
+    path:     /listeMembres
+    defaults: { _controller: "EhsBundle:Admin:ListeMembres" }
+    methods:  GET
+
+admin_listeArticles:
+    path:     /listeArticles
+    defaults: { _controller: "EhsBundle:Admin:ListeArticles" }
+    methods:  GET

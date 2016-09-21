@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 class UsersEditType extends AbstractType
 {
     /**
@@ -15,14 +19,14 @@ class UsersEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'repeated', array(
-                'type' => 'email',
+            ->add('email', RepeatedType::class, array(
+                'type' => EmailType::class,
                 'invalid_message' => 'Les addresse e-mail doivent correspondre.',
                 'first_name'      => 'Modifier_votre_e-mail',
                 'second_name'     => 'Retapper_votre_e-mail',
             ))
-            ->add('password', 'repeated', array(
-                'type' => 'password',
+            ->add('password', RepeatedType::class, array(
+                'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passes doivent correspondre.',
                 'first_name'      => 'Modifier_votre_mot_de_passe',
                 'second_name'     => 'Retapper_votre_mot_de_passe',
@@ -31,10 +35,7 @@ class UsersEditType extends AbstractType
             ->add('adresse')
             ->add('ville')
             ->add('region')
-            ->add('pays')
-            ->add('role', 'choice', array(
-            'choices' => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),
-            ));
+            ->add('pays');
     }
     
     /**

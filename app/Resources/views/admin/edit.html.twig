@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition du profil{% endblock %}
+
+{% block body %}
+    <h1 align="center">Edition du profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+        {{ form_start(edit_form) }}
+            <table align="center">
+            {% for emailField in edit_form.email %}
+                <tr><td>{{ form_label(emailField) }}</td></tr>
+                <tr><td>{{ form_widget(emailField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+            {% endfor %}
+
+            {% for passwordField in edit_form.password %}
+                <tr><td>{{ form_label(passwordField) }}</td></tr>
+                <tr><td>{{ form_widget(passwordField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+            {% endfor %}
+
+                <tr><td>{{ form_label(edit_form.telephone, "Téléphone") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.adresse, "Adresse") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.adresse, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.ville, "Ville") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.ville, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.region, "Région") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.region, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.pays, "Pays") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.pays, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.role, "Rôle") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.role, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            
+                <tr align="center"><td><input type="submit" class="btn btn-primary" value="Editer" /></td></tr>
+        {{ form_end(edit_form) }}
+
+        {{ form_start(delete_form) }}
+                <tr align="center"><td><input type="submit" class="btn btn-primary" value="Supprimer mon compte" /></td></tr>
+        {{ form_end(delete_form) }}
+            </table>
+        
+{% endblock %}

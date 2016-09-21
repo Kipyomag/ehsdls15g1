@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un utilisateur{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 align="center">Ajouter un utilisateur</h1>
+            <div>
+                {{ form_start(form) }}
+                
+                    <table align="center">
+                    {% for emailField in form.email %}
+                            <tr><td>{{ form_label(emailField) }}</td></tr>
+                            <tr><td>{{ form_widget(emailField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+                    {% endfor %}
+
+                        <tr><td>{{ form_label(form.nom, "Nom") }}</td></tr>
+                        <tr><td>{{ form_widget(form.nom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.prenom, "Prénom") }}</td></tr>
+                        <tr><td>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                    {% for passwordField in form.password %}
+                            <tr><td>{{ form_label(passwordField) }}</td></tr>
+                            <tr><td>{{ form_widget(passwordField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+                    {% endfor %}
+
+                        <tr><td>{{ form_label(form.genre, "Genre") }}</td></tr>
+                        <tr><td>{{ form_widget(form.genre, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.telephone, "Téléphone") }}</td></tr>
+                        <tr><td>{{ form_widget(form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.adresse, "Adresse") }}</td></tr>
+                        <tr><td>{{ form_widget(form.adresse, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.ville, "Ville") }}</td></tr>
+                        <tr><td>{{ form_widget(form.ville, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.region, "Région") }}</td></tr>
+                        <tr><td>{{ form_widget(form.region, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.pays, "Pays") }}</td></tr>
+                        <tr><td>{{ form_widget(form.pays, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr><td>{{ form_label(form.role) }}</td></tr>
+                        <tr><td>{{ form_widget(form.role, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                        <tr align="center"><td><button type="submit" class="btn btn-primary">Ajouter</button></td></tr>
+                    </table>
+                
+                {{ form_end(form) }}
+        </div>
+    </div>
+
+    
+{% endblock %}
+
+
+    
