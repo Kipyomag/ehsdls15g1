@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EhsBundle\Entity\Newsletter;
 use EhsBundle\Form\NewsletterType;
-use \DrewM\MailChimp\MailChimp;
+
 /**
  * Newsletter controller.
  *

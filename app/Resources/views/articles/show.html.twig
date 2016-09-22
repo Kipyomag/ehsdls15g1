@@ -1,66 +1,58 @@
 {% extends 'base.html.twig' %}
 
-
-{% block stylesheets %}
-    <link href="../../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../../web/public/style/style.css" rel="stylesheet">
-{% endblock %}
-
-
-
 {% block body %}
     <h1>Article</h1>
-    
-    <ul>
-        <li>
-            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div>
+        <ul>
+            <li>
+                <a href="{{ path('articles_index') }}">Retour vers la liste</a>
+            </li>
+            <li>
+                <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ article.contenu }}</td>
-            </tr>
-            <tr>
-                <th>Chapeau</th>
-                <td>{{ article.chapeau }}</td>
-            </tr>
-        </tbody>
-    </table>
-            
-    <h1>Commentaires</h1>
-    <table class="table">
-    {% for comment in article.comments %}
-            <tr>
-                <th>{{ comment.creationDate|date("m/d/Y") }}</th>
-                <td>{{ comment.content }}</td>
-                <td>{{ comment.author.username }}</td>
-            </tr>
-    {% endfor %}
-    </table>
-    
-    {{ form_start(comment_form) }}
-        {{ form_widget(comment_form) }}
-        <input type="submit" value="Creation" />
-    {{ form_end(comment_form) }}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ article.id }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ article.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Contenu</th>
+                    <td>{{ article.contenu }}</td>
+                </tr>
+                <tr>
+                    <th>Chapeau</th>
+                    <td>{{ article.chapeau }}</td>
+                </tr>
+            </tbody>
+        </table>
+                
+        <h1>Commentaires</h1>
+        <table class="table">
+        {% for comment in article.comments %}
+                <tr>
+                    <th>{{ comment.creationDate|date("m/d/Y") }}</th>
+                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.author.username }}</td>
+                </tr>
+        {% endfor %}
+        </table>
+        
+        {{ form_start(comment_form) }}
+            {{ form_widget(comment_form) }}
+            <input type="submit" value="Creation" />
+        {{ form_end(comment_form) }}
 
-    
+    </div>
 {% endblock %}

@@ -20,13 +20,21 @@ class UsersController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
 
-        $users = $em->getRepository('EhsBundle:Users')->findAll();
+            $em = $this->getDoctrine()->getManager();
 
-        return $this->render('users/index.html.twig', array(
-            'users' => $users,
-        ));
+            $users = $em->getRepository('EhsBundle:Users')->findAll();
+
+            return $this->render('users/index.html.twig', array(
+                'users' => $users,
+            ));
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -35,25 +43,33 @@ class UsersController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new Users();
-        $form = $this->createForm('EhsBundle\Form\UsersType', $user);
-        $form->handleRequest($request);
+        //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            $user = new Users();
+            $form = $this->createForm('EhsBundle\Form\UsersType', $user);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $encoder = $this->container->get('security.password_encoder');
-            $encoded = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($encoded);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $encoder = $this->container->get('security.password_encoder');
+                $encoded = $encoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($encoded);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
+                $params = $request->request->all();
+            }
+            return $this->render('users/new.html.twig', array(
+                'user' => $user,
+                'form' => $form->createView(),
+            ));
+            
+        /*} else {
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
 
-            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
-        }
+            return $this->redirectToRoute('articles_index');
+        }*/
 
-        return $this->render('users/new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
-        ));
+        
     }
 
     /**
@@ -62,12 +78,19 @@ class UsersController extends Controller
      */
     public function showAction(Users $user)
     {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('users/show.html.twig', array(
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -76,14 +99,20 @@ class UsersController extends Controller
      */
     public function editAction(Request $request, Users $user)
     {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('EhsBundle\Form\UsersType', $user);
+        $editForm = $this->createForm('EhsBundle\Form\UsersEditType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->set('success', 'Vos changements on bien été mis à jour.');
 
             return $this->redirectToRoute('users_edit', array('id' => $user->getId()));
         }
@@ -93,6 +122,13 @@ class UsersController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -109,7 +145,7 @@ class UsersController extends Controller
             $em->remove($user);
             $em->flush();
         }
-
+        $this->get('session')->getFlashBag()->set('success', 'Utilisateur supprimé.');
         return $this->redirectToRoute('users_index');
     }
 
@@ -127,5 +163,80 @@ class UsersController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+    public function resetAction(Request $request) {
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+			// get the login error if there is one
+			$error = $authenticationUtils->getLastAuthenticationError();
+
+			// last username entered by the user
+			$lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render(
+				'users/passwordLost.html.twig',
+				array(
+					// last username entered by the user
+					'last_username' => $lastUsername,
+					'error'         => $error,
+				)
+			);
+    }
+
+    public function resetNowAction(Request $request)
+    {
+        function str_random($lenght){
+            $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
+            return substr(str_shuffle(str_repeat($alphabet, $lenght)), 0, $lenght);
+        }
+        $params = $request->request->all();
+
+        $username = &$params["_username"];
+        $em = $this->container->get("doctrine.orm.default_entity_manager");
+        $user = $em->getRepository("EhsBundle:Users")->findOneBy(array("email" => $username));
+
+        if ($user == null) {
+            return $this->redirectToRoute('users_login');
+        }
+
+        $password = str_random(10);
+        $encoder = $this->container->get('security.password_encoder');
+        $encoded = $encoder->encodePassword($user, $password);
+        $user->setPassword($encoded);
+        $em->persist($user);
+        $em->flush();
+        // On envoie le mot de passe par mail
+        /*mail($user->getEmail(), "Votre nouveau mot de passe", "Bonjour,\n\nVoici votre nouveau mot de passe: $password");
+        */
+        $mail = $user->getEmail();
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Votre nouveau mot de passe')
+        ->setFrom('send@example.com')
+        ->setTo($mail)
+        ->setBody(
+            /*$this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'Emails/registration.html.twig',
+                array('name' => $name)
+            ),*/
+            'Voici votre nouveau mot de passe: ' . $password
+        )
+        /*
+         * If you also want to include a plaintext version of the message
+        ->addPart(
+            $this->renderView(
+                'Emails/registration.txt.twig',
+                array('name' => $name)
+            ),
+            'text/plain'
+        )
+        */
+    ;
+    $this->get('mailer')->send($message);
+
+
+        $this->get('session')->getFlashBag()->set('success', 'Votre nouveau mot de passe vous a été envoyé sur l\'adresse e-mail que vous avez renseigné lors de votre inscription.');
+        return $this->redirectToRoute('users_login');
     }
 }
