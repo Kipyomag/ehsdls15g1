@@ -18,10 +18,6 @@ class CommentType extends AbstractType
         /* todo replace author by author logged */
         $builder
             ->add('content')
-            ->add('author', EntityType::class, array(
-                'class' => 'EhsBundle:Users',
-                'property'=>'nom',
-                'label' =>'Auteur:'))
         ;
     }
     
