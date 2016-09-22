@@ -1,81 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link href="../../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../../web/public/style/style.css" rel="stylesheet">
-{% endblock %}
+{% block title %}Profil{% endblock %}
 
 {% block body %}
-    <h1>Users</h1>
+        <h1>Profil</h1>
+                <table align="center">
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ user.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prenom</th>
+                            <td>{{ user.prenom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Genre</th>
+                            <td>{{ user.genre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>{{ user.telephone }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ user.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ville</th>
+                            <td>{{ user.ville }}</td>
+                        </tr>
+                        <tr>
+                            <th>Region</th>
+                            <td>{{ user.region }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pays</th>
+                            <td>{{ user.pays }}</td>
+                        </tr>
+                        <tr>
+                            <th>Role</th>
+                            <td>{{ user.role }}</td>
+                        </tr>
+                    </table>
+                <ul>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin_users_edit', { 'id': user.id }) }}">Edition</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>
+                    </li>
+                    {% endif %}
+                </ul>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Genre</th>
-                <td>{{ user.genre }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ user.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ user.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ user.ville }}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ user.region }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ user.pays }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ user.role }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('users_index') }}">Retour vers la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    
 {% endblock %}

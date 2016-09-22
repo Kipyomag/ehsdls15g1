@@ -15,5 +15,9 @@ ehs_newsletter:
     prefix:   /newsletter
 
 ehs_comment:
-        resource: "@EhsBundle/Resources/config/routing/comment.yml"
-        prefix:   /comment
+    resource: "@EhsBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+ehs_admin:
+    resource: "@EhsBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin

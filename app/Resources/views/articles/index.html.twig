@@ -4,37 +4,40 @@
       
     
     <!-- MAIN ARTICLE -->
-    <div class="jumbotron">
-        <h1>MAIN ARTIcle</h1>
-        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+    <div>
+        <div class="jumbotron">
+            <h1>MAIN ARTIcle</h1>
+            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+            
+            <p>
+                <a class="btn btn-default" href="#" role="button">Voir</a>
+                <a class="btn btn-default" href="#" role="button">Modifier</a>
+            </p>
+            <ul>
+            <li>
+                <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
+            </li>
+        </ul>
+        </div>
         
-        <p>
-            <a class="btn btn-default" href="#" role="button">Voir</a>
-            <a class="btn btn-default" href="#" role="button">Modifier</a>
-        </p>
-    </div>
-    
-    <ul>
-        <li>
-            <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
-        </li>
-    </ul>
-    
-    <!-- ALL ARTICLES -->
-    <div class="row">
-        {% for article in articles %}
-            <div id="article" class="col-xs-6 col-lg-4">
-                <h2>{{ article.titre }}</h2>
-                <p>{{ article.chapeau }}</p>
-                <p>
-                    <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
-                    <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
-                </p>
-                <p>
-                    auteur: {{ article.author.username }}
-                </p>
-            </div>
-        {% endfor %}
+        
+        
+        <!-- ALL ARTICLES -->
+        <div class="rowArticle">
+            {% for article in articles %}
+                <div id="article" class="col-xs-6 col-lg-4">
+                    <h2>{{ article.titre }}</h2>
+                    <p>{{ article.chapeau }}</p>
+                    <p>
+                        <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                        <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                    </p>
+                    <p>
+                        auteur: {{ article.author.username }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
     
     

@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Users
@@ -29,21 +31,23 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $nom;
 
@@ -51,6 +55,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $prenom;
 
@@ -86,6 +95,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=50)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre ville ne peut pas contenir de nombre"
+     * )
      */
     private $ville;
 
@@ -93,6 +107,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="region", type="string", length=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre région ne peut pas contenir de nombre"
+     * )
      */
     private $region;
 
@@ -100,6 +119,11 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=50)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre pays ne peut pas contenir de nombre"
+     * )
      */
     private $pays;
 
@@ -422,7 +446,7 @@ class Users implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt,
@@ -434,24 +458,16 @@ class Users implements UserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
     }
 
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     

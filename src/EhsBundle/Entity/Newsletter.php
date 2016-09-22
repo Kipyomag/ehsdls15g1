@@ -64,7 +64,3 @@ class Newsletter
     }
 }
 
-
-
-
-
