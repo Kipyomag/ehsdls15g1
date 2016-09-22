@@ -3,7 +3,8 @@
 security:
     role_hierarchy:
         ROLE_USER:       ROLE_USER
-        ROLE_ADMIN:      ROLE_ADMIN
+        ROLE_MODERATEUR: ROLE_USER
+        ROLE_ADMIN:      [ROLE_USER, ROLE_MODERATEUR]
 
     encoders:
         EhsBundle\Entity\Users:
@@ -13,7 +14,7 @@ security:
         our_db_provider:
             entity:
                 class: EhsBundle:Users
-                property: username
+                property: email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -29,10 +30,20 @@ security:
             pattern:    ^/
             http_basic: ~
             provider: our_db_provider
+        
+            logout:
+                path: users_logout
+                target: users_login
 
     access_control:
+        # - { path: ^/users/new, role: ROLE_ADMIN }
+        - { path: ^/users/show, role: ROLE_ADMIN }
         - { path: ^/articles/new, role: ROLE_ADMIN }
-        - { path: ^/articles, role: ROLE_USER }
+        - { path: ^/articles/edit, role: ROLE_MODERATEUR }
+        - { path: ^/comment/new, role: ROLE_USER }
+        - { path: ^/comment/edit, role: ROLE_MODERATEUR }
+        - { path: ^/newsletter, role: ROLE_ADMIN }
+
             # activate different ways to authenticate
 
             # http_basic: ~
