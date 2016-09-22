@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panneau d'administrateur{% endblock %}
+
+{% block body %}
+      
+    
+    <!-- MAIN ARTICLE -->
+    <div>
+        <div>
+            <h1>Administration</h1>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_users_new') }}">ajouter un utilisateur</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_listeArticles') }}">Liste des articles</a>
+                    </li>
+                    <li>
+                        <a href="#">Consulter les archives</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+    
+    
+        
+    
+
+{% endblock %}

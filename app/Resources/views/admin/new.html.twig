@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Ajouter un utilisateur{% endblock %}
 
 {% block body %}
     <div>
-        <h1 align="center">Inscription</h1>
+        <h1 align="center">Ajouter un utilisateur</h1>
             <div>
                 {{ form_start(form) }}
                 
@@ -43,13 +43,10 @@
                         <tr><td>{{ form_label(form.pays, "Pays") }}</td></tr>
                         <tr><td>{{ form_widget(form.pays, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
-                        <div class="hidden">
-                            <input type="hidden" name="{{ form_widget(form.role) }}">
-                        </div>
+                        <tr><td>{{ form_label(form.role) }}</td></tr>
+                        <tr><td>{{ form_widget(form.role, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
-                        
-                    
-                        <tr align="center"><td><button type="submit" class="btn btn-primary">S'inscrire</button></td></tr>
+                        <tr align="center"><td><button type="submit" class="btn btn-primary">Ajouter</button></td></tr>
                     </table>
                 
                 {{ form_end(form) }}

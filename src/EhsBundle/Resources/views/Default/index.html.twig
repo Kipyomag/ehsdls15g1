@@ -1,1 +1,30 @@
-Hello World!
+{% extends '::base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('public/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('public/style/style.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('public/style/styleIndex.css') }}" type="text/css" media="all" />
+{% endblock %}
+{% block ImgIndex %}
+    <div id="GrandeIntro">
+    <img src="{{ asset('public/images/handicap.jpg') }}" width="100%" height="100%">
+    </div>
+{% endblock %}
+{% block classNav %}
+    <nav id="topNavbar" class="navbar navbar">
+{% endblock %}
+{% block body %}
+    <div class="connexion">
+        <p>Connectez-vous</p>
+    </div>
+    <div class="inscription">
+        <p>Créer un compte</p>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/js/index.js') }}"></script>
+{% endblock %}

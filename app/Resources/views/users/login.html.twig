@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Connexion{% endblock %}
+
 {% block body %}
-    {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<h1 align="center">Connexion</h1>
+    <div>
+        {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    <form action="{{ path('users_login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <form action="{{ path('users_login') }}" method="post">
+            <table align="center">
+                <tr align="center"><td><label for="username">E-mail:</label></td></tr>
+                <tr align="center"><td><input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" /></td></tr>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+                <tr align="center"><td><label for="password">Mot de passe:</label></td></tr>
+                <tr align="center"><td><input type="password" class="form-control" id="password" name="_password" /></td></tr>
 
-        <input type="hidden" name="_target_path" value="articles_index" />
+                <input type="hidden" name="_target_path" value="ehs_homepage" />
+
+                <tr align="center"><td><button type="submit" class="btn btn-primary">Connexion</button></tr></td>
+            </table>
+        </form>
+
+        <p align="center"><a href="{{ path('users_passwordLost') }}">Mot de passe perdu?</a></p>
+    </div>
 
 
-        <button type="submit">login</button>
-    </form>
 {% endblock %}
+
+            

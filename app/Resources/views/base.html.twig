@@ -3,68 +3,102 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Bienvenue!{% endblock %}</title>
+        <title>{% block title %}{% endblock %} | EHS</title>
+
         {% block stylesheets %}
-            <link href="../../../web/public/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="../../../web/public/style/style.css" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('public/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('public/style/style.css') }}" type="text/css" media="all" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
         <nav id="topNavbar" class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">LOGO</a>
+                    <a class="" href="{{ path('ehs_homepage') }}"><img src="{{ asset('public/images/logo.png') }}" width="80px" height"30px"></a>
                 </div>
-                <div id="navbar">
-                    <ul class="nav navbar-nav">
+                    <div id="navbar">
+                        <ul class="nav navbar-nav">
+                            {% if app.user %}
 
-                        <li><a href="#">L'association</a></li>
-                        <li><a href="#">Nos actions</a></li>
-                        <li><a href="#">Agir & soutenirs</a></li>
-                        <li><a href="#">Presse</a></li>
-                        <li><a href="#">Médias</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+                                {#{% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('users_new') }}">Inscription</a></li>
+                                {% endif %}#}
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('admin_index') }}">Administration</a></li>
+                                {% endif %}        
+                                <li><a href="{{ path('users_show', { 'id': app.user.id }) }}">Profil</a></li>
+                                <li><a href="{{ path('articles_index') }}">Articles</a></li>
+                                <li><a href="#">L'association</a></li>
+                                <li><a href="#">Nos actions</a></li>
+                                <li><a href="#">Agir & soutenirs</a></li>
+                                <li><a href="#">Presse</a></li>
+                                <li><a href="#">Médias</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{ path('users_logout') }}">Déconnection</a></li>
+                            {% else %}
+                                <li><a href="{{ path('users_new') }}">Inscription</a></li>
+                                <li><a href="{{ path('users_login') }}">Connexion</a></li>
+                                <li><a href="{{ path('articles_index') }}">Articles</a></li>
+                                <li><a href="#">L'association</a></li>
+                                <li><a href="#">Nos actions</a></li>
+                                <li><a href="#">Agir & soutenirs</a></li>
+                                <li><a href="#">Presse</a></li>
+                                <li><a href="#">Médias</a></li>
+                                <li><a href="#">Contact</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-9">
-                    {% block body %}{% endblock %}
-                    {% block javascripts %}{% endblock %}
+            </nav>
+        <body>
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    <p align="center">{{ flashMessage }}</p>
                 </div>
+            {% endfor %}
             
-                <div class="col-xs-6 col-sm-3" id="sidebar">
-                    <div>
-                        CALENDRIER
-                    </div>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                    </div>
-                  </div>
+            {% for flashMessage in app.session.flashbag.get('danger') %}
+                <div class="alert alert-danger">
+                    <p align="center">{{ flashMessage }}</p>
                 </div>
+            {% endfor %}
+
+        {% if app.user %}
+        <p align="center"><strong>{{ app.user.prenom }} {{ app.user.nom }} - {{ app.user.email }}</strong></p>
+        {% endif %}
+            <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-9">
+                                {% block body %}{% endblock %}
+                            </div>
+                        
+                            <div class="col-xs-6 col-sm-3" id="sidebar">
+                                <div>
+                                    CALENDRIER
+                                </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item active">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                    <a href="#" class="list-group-item">Link</a>
+                                </div>
+                            </div>
+                            </div>
             </div>
-                
-            <hr>
+        </body>
+        <footer>
+            <div class="container">
+                <p>IMIE - 2016 - dl15</p>
+            </div>
+        </footer>
 
-            <footer>
-                <div class="container">
-                    <p>IMIE - 2016 - dl15</p>
-                </div>
-            </footer>
-        </div>
-
-    </body>
-</html>
+        {% block javascripts %}
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
