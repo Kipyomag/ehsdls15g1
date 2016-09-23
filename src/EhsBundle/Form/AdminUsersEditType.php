@@ -26,12 +26,6 @@ class AdminUsersEditType extends AbstractType
                 'first_name'      => 'Modifier_votre_e-mail',
                 'second_name'     => 'Retapper_votre_e-mail',
             ))
-            ->add('password', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passes doivent correspondre.',
-                'first_name'      => 'Modifier_votre_mot_de_passe',
-                'second_name'     => 'Retapper_votre_mot_de_passe',
-            ))
             ->add('telephone')
             ->add('adresse')
             ->add('ville')

@@ -119,9 +119,10 @@ class ArticlesController extends Controller
      */
     public function editAction(Request $request, Articles $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
-        $editForm = $this->createForm('EhsBundle\Form\ArticlesType', $article);
-        $editForm->handleRequest($request);
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR')) {
+            $deleteForm = $this->createDeleteForm($article);
+            $editForm = $this->createForm('EhsBundle\Form\ArticlesType', $article);
+            $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
@@ -141,11 +142,18 @@ class ArticlesController extends Controller
             return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
         }
 
-        return $this->render('articles/edit.html.twig', array(
-            'article' => $article,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('articles/edit.html.twig', array(
+                'article' => $article,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
+
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'êtes pas autorisé à accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -154,16 +162,23 @@ class ArticlesController extends Controller
      */
     public function deleteAction(Request $request, Articles $article)
     {
-        $form = $this->createDeleteForm($article);
-        $form->handleRequest($request);
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR')) {
+            $form = $this->createDeleteForm($article);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($article);
-            $em->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($article);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('articles_index');
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'êtes pas autorisé à accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
         }
-
-        return $this->redirectToRoute('articles_index');
     }
 
     /**

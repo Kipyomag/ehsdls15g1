@@ -31,7 +31,33 @@ class AdminController extends Controller
         }
     }
 
-        /**
+    /**
+     * Chercher un utilisateur.
+     *
+     */
+    public function searchUsersAction(Request $request)
+    {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $search = $request->request->get('search');          
+            /* A terminer */
+            $users = $em->getRepository('EhsBundle:Users')->findBy(array('nom' => $search));
+
+            return $this->render('admin/.html.twig', array(
+                'users' => $users,
+            ));
+
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
+    }
+
+    /**
      * Creates a new Users entity.
      *
      */
@@ -75,9 +101,6 @@ class AdminController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $encoder = $this->container->get('security.password_encoder');
-            $encoded = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -225,5 +248,28 @@ class AdminController extends Controller
 
         $this->get('session')->getFlashBag()->set('success', 'Votre nouveau mot de passe vous a été envoyé sur l\'adresse e-mail que vous avez renseigné lors de votre inscription.');
         return $this->redirectToRoute('users_login');
+    }
+
+    /**
+     * Displays a form to edit an existing Comment entity.
+     *
+     */
+    public function editCommentAction(Request $request, Comment $comment)
+    {
+        $editForm = $this->createForm('EhsBundle\Form\CommentType', $comment);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_comment_edit', array('id' => $comment->getId()));
+        }
+
+        return $this->render('admin/editComment.html.twig', array(
+            'comment' => $comment,
+            'edit_form' => $editForm->createView(),
+        ));
     }
 }

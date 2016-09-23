@@ -48,16 +48,16 @@ footer {
 
 
 /* new article */
-refusedArticle, .refusedArticle a {
+.refusedArticle, .refusedArticle a {
 	color: red;
 }
-submitArticle, .submitArticle a {
+.submitArticle, .submitArticle a {
 	color: blue;
 }
-progressArticle, .progressArticle a {
+.progressArticle, .progressArticle a {
 	color: black;
 }
-publishedArticle, .publishedArticle a {
+.publishedArticle, .publishedArticle a {
 	color: green;
 }
 

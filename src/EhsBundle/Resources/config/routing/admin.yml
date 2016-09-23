@@ -22,3 +22,13 @@ admin_listeArticles:
     path:     /listeArticles
     defaults: { _controller: "EhsBundle:Admin:ListeArticles" }
     methods:  GET
+
+admin_comment_edit:
+    path:     /{id}/editComment
+    defaults: { _controller: "EhsBundle:Admin:editComment" }
+    methods:  [GET, POST]
+
+admin_users_search:
+    path:     /searchUsers
+    defaults: { _controller: "EhsBundle:Admin:searchUsers" }
+    methods:  [GET, POST]

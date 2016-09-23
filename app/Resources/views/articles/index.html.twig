@@ -15,6 +15,9 @@
             </div>
             <p>
                 <a class="btn btn-default" href="#" role="button">Voir</a>
+                {% if is_granted('ROLE_MODERATEUR') %}
+                <a class="btn btn-default" href="#" role="button">Modifier</a>
+                {% endif %}
             </p>
         </div>
 
@@ -38,11 +41,10 @@
                     </div>
                     <p>
                         auteur: {{ article.author.nom }} {{ article.author.prenom }}
-                    </p>
-                    <p>
                         <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                        {% if is_granted('ROLE_MODERATEUR') %}
                         <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
-                        
+                        {% endif %}
                     </p>
                 </div>
             {% endfor %}

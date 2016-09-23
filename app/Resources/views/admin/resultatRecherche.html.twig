@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des membres{% endblock %}
+{% block title %}Recherche{% endblock %}
 
 {% block body %}
     
     <div>
-        <h1>Liste des membres</h1> 
+        <h1>Résultat de la recherche</h1> 
             <ul>
                 <li>
                     <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
                 </li>
                 <li>
-                    <a href="{{ path('admin_index') }}">Retourner a la liste</a>
+                    <a href="{{ path('admin_index') }}">Retourner au panneau d'administration</a>
                 </li>
             </ul> 
                 <table>

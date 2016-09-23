@@ -99,7 +99,7 @@ class UsersController extends Controller
      */
     public function editAction(Request $request, Users $user)
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+        if ($this->get('security.token_storage')->getToken()->getUser()->getId() == $user->getId()) {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('EhsBundle\Form\UsersEditType', $user);
         $editForm->handleRequest($request);
@@ -124,8 +124,7 @@ class UsersController extends Controller
         ));
 
         }else{
-
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'avez pas l\'autorisation pour accéder à cette page.');
 
             return $this->redirectToRoute('articles_index');
         }
