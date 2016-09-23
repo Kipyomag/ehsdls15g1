@@ -13,10 +13,17 @@
         {% if article.status == 'progress' %}
             {{ form_row(edit_form.save) }}
             {{ form_row(edit_form.send) }}
-        {% else %}
-            <input type="submit" value="Valider" />
+        {% elseif is_granted('ROLE_MODERATEUR') %}
+            {% if (article.status == 'submit' or article.status == 'refused') %}
+                {{ form_row(edit_form.publish) }}
+            {% endif %}
+            {% if article.status == 'submit' or article.status == 'published' %}
+                {{ form_row(edit_form.refuse) }} <!--unpublish article-->
+            {% endif %}
+            <input type="submit" value="Modifier" />
         {% endif %}
-    {{ form_end(edit_form) }}
+        {{ form_widget(edit_form._token) }}
+    {{ form_end(edit_form, {'render_rest': false}) }}
 
     <ul>
         <li>
