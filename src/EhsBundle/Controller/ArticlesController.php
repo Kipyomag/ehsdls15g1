@@ -83,34 +83,44 @@ class ArticlesController extends Controller
      */
     public function showAction(Request $request, Articles $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
-        
-        $comment = new Comment();
-        $commentForm = $this->createForm('EhsBundle\Form\CommentType', $comment);
-        $commentForm->handleRequest($request);
-        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-                throw $this->createAccessDeniedException();
+        if ($article->getStatus() === "published" || /* everybody can access published article */
+            $article->getAuthor() === $this->getUser() || /* author of the article can see not depending to the status */
+            ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') && $article->getStatus() !== "progress") /* moderator can access article except if it is in progress */
+            ) {
+            $deleteForm = $this->createDeleteForm($article);
+            
+            $comment = new Comment();
+            $commentForm = $this->createForm('EhsBundle\Form\CommentType', $comment);
+            $commentForm->handleRequest($request);
+            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+                    throw $this->createAccessDeniedException();
+                }
+                $user = $this->getUser();
+                
+                $comment->setAuthor($user);
+                
+                
+                $comment->setArticle($article);
+                $comment->setCreationDate(new \DateTime());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($comment);
+                $em->flush();
+
+                return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
+            
             }
-            $user = $this->getUser();
-            
-            $comment->setAuthor($user);
-            
-            
-            $comment->setArticle($article);
-            $comment->setCreationDate(new \DateTime());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
 
-            return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
+            return $this->render('articles/show.html.twig', array(
+                'article' => $article,
+                'comment_form' => $commentForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
+        } else {
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'êtes pas autorisé à accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
         }
-
-        return $this->render('articles/show.html.twig', array(
-            'article' => $article,
-            'comment_form' => $commentForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
@@ -119,37 +129,47 @@ class ArticlesController extends Controller
      */
     public function editAction(Request $request, Articles $article)
     {
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') || $article->getAuthor()->getId() === $this->getUser()->getId()) {
-            $deleteForm = $this->createDeleteForm($article);
-            $editForm = $this->createForm('EhsBundle\Form\ArticlesType', $article);
-            $editForm->handleRequest($request);
+        if (($article->getAuthor() === $this->getUser() && $article.getStatus() === 'progress') || /* author of the article can edit his article while it is in progress */
+            ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') && ($article->getStatus() !== "send" || $article->getStatus() !== "published" || $article->getStatus() !== "refused")) /* moderator can edit article except if it is in progress */
+            ) {
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') ||
+                ($article->getAuthor()->getId() === $this->getUser()->getId()) &&
+                $article->getStatus() === "progress") {
+                $deleteForm = $this->createDeleteForm($article);
+                $editForm = $this->createForm('EhsBundle\Form\ArticlesType', $article);
+                $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            // save this article to edit it later
-            if ($editForm->get('save')->isClicked()) {
-                $article->setStatus("progress"); //go to entity to see available values 
+                // save this article to edit it later
+                if ($editForm->get('save')->isClicked()) {
+                    $article->setStatus("progress"); //go to entity to see available values 
+                }
+                //send this article to admins (can't edit it now)
+                else if ($editForm->get('send')->isClicked()) {
+                    $article->setStatus("submit");
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+
+                return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
             }
-            //send this article to admins (can't edit it now)
-            else if ($editForm->get('send')->isClicked()) {
-                $article->setStatus("submit");
+
+                return $this->render('articles/edit.html.twig', array(
+                    'article' => $article,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                ));
+
+            }else{
+
+                $this->get('session')->getFlashBag()->set('danger', 'Vous n\'êtes pas autorisé à accéder à cette page.');
+
+                return $this->redirectToRoute('articles_index');
             }
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
-            $em->flush();
-
-            return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
-        }
-
-            return $this->render('articles/edit.html.twig', array(
-                'article' => $article,
-                'edit_form' => $editForm->createView(),
-                'delete_form' => $deleteForm->createView(),
-            ));
-
-        }else{
-
+        } else {
             $this->get('session')->getFlashBag()->set('danger', 'Vous n\'êtes pas autorisé à accéder à cette page.');
 
             return $this->redirectToRoute('articles_index');
