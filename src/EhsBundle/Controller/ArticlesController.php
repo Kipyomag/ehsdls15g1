@@ -119,7 +119,7 @@ class ArticlesController extends Controller
      */
     public function editAction(Request $request, Articles $article)
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR')) {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') || $article->getAuthor()->getId() === $this->getUser()->getId()) {
             $deleteForm = $this->createDeleteForm($article);
             $editForm = $this->createForm('EhsBundle\Form\ArticlesType', $article);
             $editForm->handleRequest($request);
