@@ -1,39 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Article</h1>
-    <div>
-        <ul>
-            <li>
-                <a href="{{ path('articles_index') }}">Retour vers la liste</a>
-            </li>
-            <li>
-                <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
-            </li>
-            <li>
-                {{ form_start(delete_form) }}
-                    <input type="submit" value="Supprimer">
-                {{ form_end(delete_form) }}
-            </li>
-        </ul>
+{% block title %}Article{% endblock %}
 
+{% block body %}
+
+<div class="col-sm-12">
+    <ul>
+        <li>
+            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
+        </li>
+        <li>
+            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+    <h1>{{ article.titre }}</h1>
+    <div>
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Id</th>
-                    <td>{{ article.id }}</td>
+                    <td>{{ article.chapeau }}</td>
                 </tr>
                 <tr>
-                    <th>Titre</th>
-                    <td>{{ article.titre }}</td>
-                </tr>
-                <tr>
-                    <th>Contenu</th>
                     <td>{{ article.contenu }}</td>
                 </tr>
                 <tr>
-                    <th>Chapeau</th>
-                    <td>{{ article.chapeau }}</td>
+                    <td>by {{ article.author.nom }} {{ article.author.prenom }}</td>
                 </tr>
             </tbody>
         </table>
@@ -42,9 +40,9 @@
         <table class="table">
         {% for comment in article.comments %}
                 <tr>
-                    <th>{{ comment.creationDate|date("m/d/Y") }}</th>
+                    <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
                     <td>{{ comment.content }}</td>
-                    <td>{{ comment.author.username }}</td>
+                    <th>{{ comment.creationDate|date("m/d/Y") }}</th>
                 </tr>
         {% endfor %}
         </table>
@@ -55,4 +53,5 @@
         {{ form_end(comment_form) }}
 
     </div>
+</div>
 {% endblock %}

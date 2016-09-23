@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findAll();
+        $articles = $em->getRepository('EhsBundle:Articles')->findByStatus('published');
 
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
@@ -36,19 +36,34 @@ class ArticlesController extends Controller
      */
     public function newAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $em = $this->getDoctrine()->getManager();
+        $myArticles =  $em->getRepository('EhsBundle:Articles')->findArticlesFromUser($this->getUser()->getId());
+        
+
         $article = new Articles();
         $form = $this->createForm('EhsBundle\Form\ArticlesType', $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-                throw $this->createAccessDeniedException();
-            }
-            $user = $this->getUser();
             
+
+            $user = $this->getUser();
             $article->setAuthor($user);
+
+            // save this article to edit it later
+            if ($form->get('save')->isClicked()) {
+                $article->setStatus("progress"); //go to entity to see available values 
+            }
+            //send this article to admins (can't edit it now)
+            else if ($form->get('send')->isClicked()) {
+                $article->setStatus("submit");
+            }
+
     
-            $em = $this->getDoctrine()->getManager();
+            
             $em->persist($article);
             $em->flush();
 
@@ -58,6 +73,7 @@ class ArticlesController extends Controller
         return $this->render('articles/new.html.twig', array(
             'article' => $article,
             'form' => $form->createView(),
+            'myArticles' => $myArticles
         ));
     }
 
@@ -108,11 +124,21 @@ class ArticlesController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            // save this article to edit it later
+            if ($editForm->get('save')->isClicked()) {
+                $article->setStatus("progress"); //go to entity to see available values 
+            }
+            //send this article to admins (can't edit it now)
+            else if ($editForm->get('send')->isClicked()) {
+                $article->setStatus("submit");
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('articles_edit', array('id' => $article->getId()));
+            return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
         }
 
         return $this->render('articles/edit.html.twig', array(

@@ -1,10 +1,14 @@
-var header = document.querySelector("#siteWrapper header");
 
-function scrolled(){
-	var windowHeight = document.body.clientHeight,
-		currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
-	
-	header.className = (currentScroll >= windowHeight - header.offsetHeight) ? "fixed" : "";
-}
-
-addEventListener("scroll", scrolled, false);
+$(function() {
+    $(document).scroll(function(){
+        var scrollTop = $(document).scrollTop();
+        if(scrollTop > 150){
+            $("#topNavbar").addClass("little");
+            $("#topNavbar").removeClass("default");
+        }
+        else {
+            $("#topNavbar").addClass("default");
+            $("#topNavbar").removeClass("little");
+        }
+    });
+});

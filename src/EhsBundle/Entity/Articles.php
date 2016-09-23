@@ -53,6 +53,14 @@ class Articles
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
      */
     private $comments;
+
+    /**
+     * current status of the article: published, refused, progress, submit
+     * @var string
+     * 
+     * @ORM\Column(name="status", type="string")
+     */
+    private $status;
     
     public function __construct() {
         $this->comments = new ArrayCollection();
@@ -156,6 +164,12 @@ class Articles
         $this->comments = $comments;
     }
 
+    public function getStatus() {
+        return $this->status;
+    }
 
-}
-
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+        
+    }

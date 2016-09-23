@@ -10,4 +10,28 @@ namespace EhsBundle\Repository;
  */
 class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findArticlesFromUser($id) {
+		return $this
+			->createQueryBuilder('a')
+			->where('a.author = :author')
+			->orderBy('a.status', 'ASC')
+            ->setParameter('author', $id)
+			->getQuery()
+			->getResult()
+			;
+	}
+
+	/**
+	 * all articles without in progress ones
+	 */
+	public function findPublicArticles() {
+		return $this
+			->createQueryBuilder('a')
+			->where('a.status != :status')
+			->orderBy('a.status', 'ASC')
+            ->setParameter('status', 'progress')
+			->getQuery()
+			->getResult()
+			;
+	}
 }

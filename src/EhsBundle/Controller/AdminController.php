@@ -123,7 +123,7 @@ class AdminController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $articles = $em->getRepository('EhsBundle:Articles')->findAll();
+            $articles = $em->getRepository('EhsBundle:Articles')->findPublicArticles();
 
             return $this->render('admin/listeArticles.html.twig', array(
                 'articles' => $articles,

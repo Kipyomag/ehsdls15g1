@@ -11,45 +11,45 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-        <nav id="topNavbar" class="navbar navbar-fixed-top">
+        <nav id="topNavbar" class="default navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="" href="{{ path('ehs_homepage') }}"><img src="{{ asset('public/images/logo.png') }}" width="80px" height"30px"></a>
+                    <a class="" href="{{ path('ehs_homepage') }}"><img src="{{ asset('public/images/wip_ehs3.svg') }}"></a>
                 </div>
-                    <div id="navbar">
-                        <ul class="nav navbar-nav">
-                            {% if app.user %}
+                <div id="navbar">
+                    <ul class="nav navbar-nav">
+                        {% if app.user %}
 
-                                {#{% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="{{ path('users_new') }}">Inscription</a></li>
-                                {% endif %}#}
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="{{ path('admin_index') }}">Administration</a></li>
-                                {% endif %}        
-                                <li><a href="{{ path('users_show', { 'id': app.user.id }) }}">Profil</a></li>
-                                <li><a href="{{ path('articles_index') }}">Articles</a></li>
-                                <li><a href="#">L'association</a></li>
-                                <li><a href="#">Nos actions</a></li>
-                                <li><a href="#">Agir & soutenirs</a></li>
-                                <li><a href="#">Presse</a></li>
-                                <li><a href="#">Médias</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="{{ path('users_logout') }}">Déconnection</a></li>
-                            {% else %}
+                            {#{% if is_granted('ROLE_ADMIN') %}
                                 <li><a href="{{ path('users_new') }}">Inscription</a></li>
-                                <li><a href="{{ path('users_login') }}">Connexion</a></li>
-                                <li><a href="{{ path('articles_index') }}">Articles</a></li>
-                                <li><a href="#">L'association</a></li>
-                                <li><a href="#">Nos actions</a></li>
-                                <li><a href="#">Agir & soutenirs</a></li>
-                                <li><a href="#">Presse</a></li>
-                                <li><a href="#">Médias</a></li>
-                                <li><a href="#">Contact</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
+                            {% endif %}#}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('admin_index') }}">Administration</a></li>
+                            {% endif %}        
+                            <li><a href="{{ path('users_show', { 'id': app.user.id }) }}">Profil</a></li>
+                            <li><a href="{{ path('articles_index') }}">Articles</a></li>
+                            <li><a href="#">L'association</a></li>
+                            <li><a href="#">Nos actions</a></li>
+                            <li><a href="#">Agir & soutenirs</a></li>
+                            <li><a href="#">Presse</a></li>
+                            <li><a href="#">Médias</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ path('users_logout') }}">Déconnection</a></li>
+                        {% else %}
+                            <li><a href="{{ path('users_new') }}">Inscription</a></li>
+                            <li><a href="{{ path('users_login') }}">Connexion</a></li>
+                            <li><a href="{{ path('articles_index') }}">Articles</a></li>
+                            <li><a href="#">L'association</a></li>
+                            <li><a href="#">Nos actions</a></li>
+                            <li><a href="#">Agir & soutenirs</a></li>
+                            <li><a href="#">Presse</a></li>
+                            <li><a href="#">Médias</a></li>
+                            <li><a href="#">Contact</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
         <body>
             {% for flashMessage in app.session.flashbag.get('success') %}
                 <div class="alert alert-success">
@@ -63,33 +63,17 @@
                 </div>
             {% endfor %}
 
-        {% if app.user %}
-        <p align="center"><strong>{{ app.user.prenom }} {{ app.user.nom }} - {{ app.user.email }}</strong></p>
-        {% endif %}
+            {% if app.user %}
+            <p align="center"><strong>{{ app.user.prenom }} {{ app.user.nom }} - {{ app.user.email }}</strong></p>
+            {% endif %}
             <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-9">
-                                {% block body %}{% endblock %}
-                            </div>
+                <div class="row">
+
+
+                        {% block body %}{% endblock %}
+
                         
-                            <div class="col-xs-6 col-sm-3" id="sidebar">
-                                <div>
-                                    CALENDRIER
-                                </div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item active">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                    <a href="#" class="list-group-item">Link</a>
-                                </div>
-                            </div>
-                            </div>
+                </div>
             </div>
         </body>
         <footer>
@@ -102,3 +86,6 @@
         <script src="//code.jquery.com/jquery.min.js"></script>
         <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
         {% endblock %}
+        <script src="{{ asset('public/js/index.js') }}"></script>
+
+</html>
