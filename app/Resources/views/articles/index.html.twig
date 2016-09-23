@@ -11,7 +11,9 @@
             
             <p>
                 <a class="btn btn-default" href="#" role="button">Voir</a>
+                {% if is_granted('ROLE_MODERATEUR') %}
                 <a class="btn btn-default" href="#" role="button">Modifier</a>
+                {% endif %}
             </p>
             <ul>
             <li>
@@ -30,7 +32,9 @@
                     <p>{{ article.chapeau }}</p>
                     <p>
                         <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                        {% if is_granted('ROLE_MODERATEUR') %}
                         <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                        {% endif %}
                     </p>
                     <p>
                         auteur: {{ article.author.username }}

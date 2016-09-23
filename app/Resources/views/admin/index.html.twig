@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panneau d'administrateur{% endblock %}
+{% block title %}Panneau d'administration{% endblock %}
 
 {% block body %}
       
@@ -8,8 +8,19 @@
     <!-- MAIN ARTICLE -->
     <div>
         <div>
-            <h1>Administration</h1>
+            <h1 align="center">Administration</h1>
                 <ul>
+                    <form action="{{ path('admin_users_search') }}" method="post">
+                        <table align="center">
+                            <tr align="center"><td><label for="search">Rechercher un utilisateur:</label></td></tr>
+                            <tr align="center"><td><input type="search" class="form-control" id="search" name="search" /></td></tr>
+
+                            <input type="hidden" name="_target_path" value="ehs_homepage" />
+
+                            <tr align="center"><td><button type="submit" class="btn btn-primary">Rechercher</button></tr></td>
+                        </table>
+                    </form>
+
                     <li>
                         <a href="{{ path('admin_users_new') }}">ajouter un utilisateur</a>
                     </li>

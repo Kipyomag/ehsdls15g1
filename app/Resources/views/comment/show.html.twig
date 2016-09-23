@@ -25,7 +25,7 @@
             <a href="{{ path('comment_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Edit</a>
+            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

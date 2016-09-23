@@ -45,6 +45,13 @@
                     <th>{{ comment.creationDate|date("m/d/Y") }}</th>
                     <td>{{ comment.content }}</td>
                     <td>{{ comment.author.username }}</td>
+                    <td>
+                        <ul>    
+                            <li>
+                                <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edition</a>
+                            </li>
+                        </ul>
+                    </td>
                 </tr>
         {% endfor %}
         </table>

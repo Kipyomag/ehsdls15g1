@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d7328518400e848f64c76226dffbfa1c",
-    "content-hash": "76eecb4849bc949e89eb41d64cab45f4",
+    "hash": "221784eec1127cfb6fc20baceb064db0",
+    "content-hash": "0dd0360953b0a9f443504d177f8ad1b9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1976,6 +1976,18 @@
         },
         {
             "name": "symfony/symfony",
+<<<<<<< HEAD
+            "version": "v2.8.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "84e8eb7690eea267526c3d40050b4c54f1878b7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/84e8eb7690eea267526c3d40050b4c54f1878b7a",
+                "reference": "84e8eb7690eea267526c3d40050b4c54f1878b7a",
+=======
             "version": "v2.8.11",
             "source": {
                 "type": "git",
@@ -1986,6 +1998,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/symfony/zipball/f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
                 "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
+>>>>>>> 57f4b9e04f87bdd65a47bb78abd6a03cf121d171
                 "shasum": ""
             },
             "require": {
@@ -2106,6 +2119,22 @@
             "keywords": [
                 "framework"
             ],
+<<<<<<< HEAD
+            "time": "2016-09-02 20:40:06"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.24.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+=======
             "time": "2016-09-07 02:04:25"
         },
         {
@@ -2120,6 +2149,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
                 "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
+>>>>>>> 57f4b9e04f87bdd65a47bb78abd6a03cf121d171
                 "shasum": ""
             },
             "require": {
@@ -2167,7 +2197,11 @@
             "keywords": [
                 "templating"
             ],
+<<<<<<< HEAD
+            "time": "2016-09-01 17:50:53"
+=======
             "time": "2016-09-21 23:05:12"
+>>>>>>> 57f4b9e04f87bdd65a47bb78abd6a03cf121d171
         }
     ],
     "packages-dev": [
@@ -2225,7 +2259,11 @@
         },
         {
             "name": "symfony/phpunit-bridge",
+<<<<<<< HEAD
+            "version": "v2.8.10",
+=======
             "version": "v2.8.11",
+>>>>>>> 57f4b9e04f87bdd65a47bb78abd6a03cf121d171
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",

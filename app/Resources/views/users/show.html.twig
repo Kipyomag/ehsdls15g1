@@ -51,15 +51,9 @@
                         </tr>
                     </table>
                 <ul>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <li>
-                        <a href="{{ path('admin_users_edit', { 'id': user.id }) }}">Edition</a>
-                    </li>
-                    {% else %}
                     <li>
                         <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>
                     </li>
-                    {% endif %}
                 </ul>
 
     
