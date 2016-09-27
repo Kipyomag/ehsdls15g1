@@ -14,19 +14,16 @@
                     <a href="{{ path('admin_index') }}">Retourner a la liste</a>
                 </li>
             </ul> 
-                <table>
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Email</th>
                             <th>Nom</th>
                             <th>Prénom</th>
-                            <th>Genre</th>
+                            <th>Email</th>
                             <th>Téléphone</th>
                             <th>Adresse</th>
                             <th>Ville</th>
                             <th>Région</th>
-                            <th>Pays</th>
                             <th>Rôle</th>
                             <th>Actions</th>
                         </tr>
@@ -34,16 +31,13 @@
                     <tbody>
                         {% for user in users %}
                             <tr>
-                                <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                                <td>{{ user.email }}</td>
                                 <td>{{ user.nom }}</td>
                                 <td>{{ user.prenom }}</td>
-                                <td>{{ user.genre }}</td>
+                                <td>{{ user.email }}</td>
                                 <td>{{ user.telephone }}</td>
                                 <td>{{ user.adresse }}</td>
                                 <td>{{ user.ville }}</td>
                                 <td>{{ user.region }}</td>
-                                <td>{{ user.pays }}</td>
                                 <td>{{ user.role }}</td>
                                 <td>
                                     <ul>
