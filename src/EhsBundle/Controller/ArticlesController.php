@@ -129,7 +129,7 @@ class ArticlesController extends Controller
      */
     public function editAction(Request $request, Articles $article)
     {
-        if (($article->getAuthor() === $this->getUser() && $article.getStatus() === 'progress') || /* author of the article can edit his article while it is in progress */
+        if (($article->getAuthor() === $this->getUser() && $article->getStatus() === 'progress') || /* author of the article can edit his article while it is in progress */
             ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') && ($article->getStatus() !== "send" || $article->getStatus() !== "published" || $article->getStatus() !== "refused")) /* moderator can edit article except if it is in progress */
             ) {
             if ($this->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR') ||
@@ -148,6 +148,14 @@ class ArticlesController extends Controller
                 //send this article to admins (can't edit it now)
                 else if ($editForm->get('send')->isClicked()) {
                     $article->setStatus("submit");
+                }
+                //publish this article
+                else if ($editForm->get('publish')->isClicked()) {
+                    $article->setStatus("published");
+                }
+                //refuse this article
+                else if ($editForm->get('refuse')->isClicked()) {
+                    $article->setStatus("refused");
                 }
 
                 $em = $this->getDoctrine()->getManager();

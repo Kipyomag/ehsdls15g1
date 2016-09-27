@@ -20,10 +20,14 @@
     </ul>
 
     <h1>Création d'articles</h1>
-
     {{ form_start(form) }}
-        {{ form_widget(form, { 'attr': {'class': 'todo'} }) }}
-    {{ form_end(form) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.chapeau) }}
+        {{ form_row(form.contenu) }}
+        {{ form_row(form.save) }}
+        {{ form_row(form.send) }}
+        {{ form_widget(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
 
     <ul>
         <li>
