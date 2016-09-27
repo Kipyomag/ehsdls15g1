@@ -25,9 +25,10 @@
     <body>
 
 {#HEADER#}
+<section class="banner" role="banner">
         <header id="header">
             <div class="header-content clearfix">
-                <a class="logo" href="{{ path('ehs_homepage') }}"><img src="{{ asset('public/images/wip_ehs6.png') }}" alt="Logo Ethique Handicap et Société"></a>
+                <a class="logo" href="{{ path('/') }}"><img src="{{ asset('public/images/wip_ehs6.png') }}" alt="Logo Ethique Handicap et Société"></a>
                 <nav class="navigation" role="navigation">
                     <ul class="primary-nav">
                         {% if app.user %}
