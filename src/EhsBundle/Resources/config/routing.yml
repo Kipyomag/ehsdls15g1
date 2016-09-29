@@ -21,3 +21,7 @@ ehs_comment:
 ehs_admin:
     resource: "@EhsBundle/Resources/config/routing/admin.yml"
     prefix:   /admin
+
+ehs_presentation:
+    resource: "@EhsBundle/Resources/config/routing/presentation.yml"
+    prefix:   /presentation

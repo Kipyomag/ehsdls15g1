@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findByStatus('published');
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'));
 
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
@@ -61,7 +61,7 @@ class ArticlesController extends Controller
             else if ($form->get('send')->isClicked()) {
                 $article->setStatus("submit");
             }
-            
+
             $article->setDate(new \DateTime());
 
     

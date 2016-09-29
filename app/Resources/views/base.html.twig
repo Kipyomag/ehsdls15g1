@@ -28,7 +28,7 @@
                             {% endif %}        
                             <li><a href="{{ path('users_show_profil', { 'id': app.user.id }) }}">Profil</a></li>
                             <li><a href="{{ path('articles_index') }}">Articles</a></li>
-                            <li><a href="#">L'association</a></li>
+                            <li><a href="{{ path('presentation_index') }}">L'association</a></li>
                             <li><a href="#">Nos actions</a></li>
                             <li><a href="#">Agir & soutenirs</a></li>
                             <li><a href="#">Presse</a></li>
@@ -39,7 +39,7 @@
                             <li><a href="{{ path('users_new') }}">Inscription</a></li>
                             <li><a href="{{ path('users_login') }}">Connexion</a></li>
                             <li><a href="{{ path('articles_index') }}">Articles</a></li>
-                            <li><a href="#">L'association</a></li>
+                            <li><a href="{{ path('presentation_index') }}">L'association</a></li>
                             <li><a href="#">Nos actions</a></li>
                             <li><a href="#">Agir & soutenirs</a></li>
                             <li><a href="#">Presse</a></li>
