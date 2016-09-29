@@ -22,3 +22,14 @@ articles_delete:
     path:     /{id}/delete
     defaults: { _controller: "EhsBundle:Articles:delete" }
     methods:  DELETE
+
+#articles_page:
+#    path:     /page/{nbr}
+#    defaults: { _controller: "EhsBundle:Articles:page" }
+#    methods:  [GET, POST]
+
+
+#articles_tag:
+#    path:     /page/{nbr}/{tag}
+#    defaults: { _controller: "EhsBundle:Articles:tag" }
+#    methods:  [GET, POST]

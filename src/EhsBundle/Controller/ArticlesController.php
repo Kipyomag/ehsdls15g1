@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'));
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),6);
 
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
@@ -212,6 +212,32 @@ class ArticlesController extends Controller
         }
     }
 
+
+    /**
+     * Displays a page of articles
+     *
+     */
+    /*public function pageAction(Request $request, $nbr)
+    {
+        
+    }*/
+
+
+
+    /**
+     * Displays a page of articles sort by tag
+     *
+     */
+    /*public function tagAction(Request $request, $nbr, Tag $tag)
+    {
+        
+    }*/
+
+
+
+
+
+
     /**
      * Creates a form to delete a Articles entity.
      *
@@ -227,4 +253,7 @@ class ArticlesController extends Controller
             ->getForm()
         ;
     }
+
+
+
 }
