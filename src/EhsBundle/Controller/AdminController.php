@@ -43,9 +43,9 @@ class AdminController extends Controller
 
             $search = $request->request->get('search');          
             /* A terminer */
-            $users = $em->getRepository('EhsBundle:Users')->findBy(array('nom' => $search));
-
-            return $this->render('admin/.html.twig', array(
+            $users = $em->getRepository('EhsBundle:Users')->findUsers($search);
+            
+            return $this->render('admin/resultatRecherche.html.twig', array(
                 'users' => $users,
             ));
 
@@ -63,34 +63,34 @@ class AdminController extends Controller
      */
     public function newAction(Request $request)
     {
-        //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $user = new Users();
-            $form = $this->createForm('EhsBundle\Form\UsersType', $user);
-            $form->handleRequest($request);
+    //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+        $user = new Users();
+        $form = $this->createForm('EhsBundle\Form\UsersType', $user);
+        $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                $encoder = $this->container->get('security.password_encoder');
-                $encoded = $encoder->encodePassword($user, $user->getPassword());
-                $user->setPassword($encoded);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
-                return $this->redirectToRoute('users_show', array('id' => $user->getId()));
-            }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encoded);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
+            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
+        }
 
-            return $this->render('admin/new.html.twig', array(
-                'user' => $user,
-                'form' => $form->createView(),
-            ));
-        /*} else {
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+        return $this->render('admin/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
+    /*} else {
+        $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
 
-            return $this->redirectToRoute('articles_index');
-        }*/
+        return $this->redirectToRoute('articles_index');
+    }*/
     }
 
-        /**
+    /**
      * Displays a form to edit an existing Users entity.
      *
      */
@@ -105,9 +105,9 @@ class AdminController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->set('success', 'Vos changements on bien été mis à jour.');
+            $this->get('session')->getFlashBag()->set('success', 'Le profil a bien été mis à jour.');
 
-            return $this->redirectToRoute('admin_users_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('admin_listeMembres');
         }
 
         return $this->render('admin/edit.html.twig', array(

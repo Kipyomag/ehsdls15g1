@@ -6,36 +6,28 @@
       
     
     <!-- MAIN ARTICLE -->
-    <div>
-        <div>
-            <h1 align="center">Administration</h1>
-                <ul>
-                    <form action="{{ path('admin_users_search') }}" method="post">
-                        <table align="center">
-                            <tr align="center"><td><label for="search">Rechercher un utilisateur:</label></td></tr>
-                            <tr align="center"><td><input type="search" class="form-control" id="search" name="search" /></td></tr>
-
-                            <input type="hidden" name="_target_path" value="ehs_homepage" />
-
-                            <tr align="center"><td><button type="submit" class="btn btn-primary">Rechercher</button></tr></td>
-                        </table>
-                    </form>
-
-                    <li>
-                        <a href="{{ path('admin_users_new') }}">ajouter un utilisateur</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ path('admin_listeArticles') }}">Liste des articles</a>
-                    </li>
-                    <li>
-                        <a href="#">Consulter les archives</a>
-                    </li>
-                </ul>
+        <div class="jumbotron">
+            <h1>Administration</h1>
+            <div class="col-lg-6">
+                <form action="{{ path('admin_users_search') }}" method="post">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Go!</button>
+                        </span>
+                        <input type="search" class="form-control" id="search" name="search" placeholder="Chercher un utilisateur">
+                    </div><!-- /input-group -->
+                </form>
+            </div><!-- /.col-lg-6 -->
+        </div>
+                
+        <div class="jumbotron">         
+            <div class="list-group">
+                <a class="list-group-item" href="{{ path('admin_users_new') }}">Ajouter un utilisateur</a>
+                <a class="list-group-item" href="{{ path('articles_new') }}">Proposer un article</a>
+                <a class="list-group-item" href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
+                <a class="list-group-item" href="{{ path('admin_listeArticles') }}">Liste des articles</a>
+                <a class="list-group-item" href="#">Consulter les archives</a>
+            </div>
         </div>
     </div>
     
