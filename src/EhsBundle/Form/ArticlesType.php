@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ArticlesType extends AbstractType
 {
@@ -19,6 +20,10 @@ class ArticlesType extends AbstractType
             ->add('titre')
             ->add('chapeau')
             ->add('contenu')
+            ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
+            ->add('send', SubmitType::class, array('label' => 'Envoyer'))
+            ->add('publish', SubmitType::class, array('label' => 'Publier'))
+            ->add('refuse', SubmitType::class, array('label' => 'Refuser'))
             
         ;
     }

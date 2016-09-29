@@ -3,6 +3,8 @@
 
 
 {% block body %}
+<div class="col-sm-12">
+
     <h1>Users list</h1>
 
     <table>
@@ -19,7 +21,7 @@
                 <th>Ville</th>
                 <th>Region</th>
                 <th>Pays</th>
-                <th>Statut</th>
+                <th>Rôle</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,7 +39,7 @@
                 <td>{{ user.ville }}</td>
                 <td>{{ user.region }}</td>
                 <td>{{ user.pays }}</td>
-                <td>{{ user.statut }}</td>
+                <td>{{ user.role }}</td>
                 <td>
                     <ul>
                         <li>
@@ -58,4 +60,6 @@
             <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
         </li>
     </ul>
+
+</div>
 {% endblock %}

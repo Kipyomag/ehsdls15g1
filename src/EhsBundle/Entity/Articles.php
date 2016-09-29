@@ -44,6 +44,13 @@ class Articles
     private $chapeau;
     
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="articles")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -53,6 +60,14 @@ class Articles
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
      */
     private $comments;
+
+    /**
+     * current status of the article: published, refused, progress, submit
+     * @var string
+     * 
+     * @ORM\Column(name="status", type="string")
+     */
+    private $status;
     
     public function __construct() {
         $this->comments = new ArrayCollection();
@@ -156,6 +171,20 @@ class Articles
         $this->comments = $comments;
     }
 
+    public function getStatus() {
+        return $this->status;
+    }
 
-}
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+        
+    public function getDate() {
+        return $this->date;
+    }
 
+    public function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+        
+    }

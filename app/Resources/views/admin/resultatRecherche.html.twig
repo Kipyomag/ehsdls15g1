@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des membres{% endblock %}
+{% block title %}Recherche{% endblock %}
 
 {% block body %}
     
     <div>
-        <h1>Liste des membres</h1> 
+        <h1>Résultat de la recherche</h1> 
             <ul>
                 <li>
                     <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
                 </li>
                 <li>
-                    <a href="{{ path('admin_index') }}">Retourner a la liste</a>
+                    <a href="{{ path('admin_index') }}">Retourner au panneau d'administration</a>
                 </li>
             </ul> 
                 <table class="table table-striped">
@@ -20,10 +20,12 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Email</th>
+                            <th>Genre</th>
                             <th>Téléphone</th>
                             <th>Adresse</th>
                             <th>Ville</th>
                             <th>Région</th>
+                            <th>Pays</th>
                             <th>Rôle</th>
                             <th>Actions</th>
                         </tr>
@@ -34,10 +36,12 @@
                                 <td>{{ user.nom }}</td>
                                 <td>{{ user.prenom }}</td>
                                 <td>{{ user.email }}</td>
+                                <td>{{ user.genre }}</td>
                                 <td>{{ user.telephone }}</td>
                                 <td>{{ user.adresse }}</td>
                                 <td>{{ user.ville }}</td>
                                 <td>{{ user.region }}</td>
+                                <td>{{ user.pays }}</td>
                                 <td>{{ user.role }}</td>
                                 <td>
                                     <ul>

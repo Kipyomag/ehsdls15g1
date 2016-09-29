@@ -11,11 +11,6 @@
                 <tr><td>{{ form_widget(emailField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
             {% endfor %}
 
-            {% for passwordField in edit_form.password %}
-                <tr><td>{{ form_label(passwordField) }}</td></tr>
-                <tr><td>{{ form_widget(passwordField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
-            {% endfor %}
-
                 <tr><td>{{ form_label(edit_form.telephone, "Téléphone") }}</td></tr>
                 <tr><td>{{ form_widget(edit_form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
@@ -39,7 +34,7 @@
         {{ form_end(edit_form) }}
 
         {{ form_start(delete_form) }}
-                <tr align="center"><td><input type="submit" class="btn btn-primary" value="Supprimer mon compte" /></td></tr>
+                <tr align="center"><td><input type="submit" class="btn btn-primary" value="Supprimer le compte" /></td></tr>
         {{ form_end(delete_form) }}
             </table>
         

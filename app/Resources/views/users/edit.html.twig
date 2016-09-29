@@ -3,6 +3,7 @@
 {% block title %}Edition du profil{% endblock %}
 
 {% block body %}
+<div class="col-sm-12">
     <h1 align="center">Edition du profil</h1>
         {{ form_start(edit_form) }}
             <table align="center">
@@ -38,5 +39,5 @@
                 <tr align="center"><td><input type="submit" class="btn btn-primary" value="Supprimer mon compte" /></td></tr>
         {{ form_end(delete_form) }}
             </table>
-        
+</div>
 {% endblock %}

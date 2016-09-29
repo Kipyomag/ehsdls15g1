@@ -94,12 +94,33 @@ class UsersController extends Controller
     }
 
     /**
+     * Finds and displays a User profil.
+     *
+     */
+    public function showProfilAction(Users $user)
+    {
+        if ($this->get('security.token_storage')->getToken()->getUser()->getId() == $user->getId()) {
+        $deleteForm = $this->createDeleteForm($user);
+
+        return $this->render('users/showProfil.html.twig', array(
+            'user' => $user,
+            'delete_form' => $deleteForm->createView(),
+        ));
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'avez pas l\'autorisation pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
+    }
+
+    /**
      * Displays a form to edit an existing Users entity.
      *
      */
     public function editAction(Request $request, Users $user)
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+        if ($this->get('security.token_storage')->getToken()->getUser()->getId() == $user->getId()) {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('EhsBundle\Form\UsersEditType', $user);
         $editForm->handleRequest($request);
@@ -112,7 +133,7 @@ class UsersController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->set('success', 'Vos changements on bien été mis à jour.');
+            $this->get('session')->getFlashBag()->set('success', 'Le profil a bien été mis à jour.');
 
             return $this->redirectToRoute('users_edit', array('id' => $user->getId()));
         }
@@ -124,8 +145,7 @@ class UsersController extends Controller
         ));
 
         }else{
-
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être connecté pour accéder à cette page.');
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'avez pas l\'autorisation pour accéder à cette page.');
 
             return $this->redirectToRoute('articles_index');
         }
@@ -146,7 +166,7 @@ class UsersController extends Controller
             $em->flush();
         }
         $this->get('session')->getFlashBag()->set('success', 'Utilisateur supprimé.');
-        return $this->redirectToRoute('users_index');
+        return $this->redirectToRoute('admin_listeMembres');
     }
 
     /**
@@ -206,9 +226,7 @@ class UsersController extends Controller
         $user->setPassword($encoded);
         $em->persist($user);
         $em->flush();
-        // On envoie le mot de passe par mail
-        /*mail($user->getEmail(), "Votre nouveau mot de passe", "Bonjour,\n\nVoici votre nouveau mot de passe: $password");
-        */
+        
         $mail = $user->getEmail();
         $message = \Swift_Message::newInstance()
         ->setSubject('Votre nouveau mot de passe')

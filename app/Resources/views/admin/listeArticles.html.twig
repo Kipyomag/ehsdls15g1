@@ -5,7 +5,7 @@
 {% block body %}
     
     <div>
-        <h1>Liste des membres</h1> 
+        <h1>Liste des articles</h1> 
             <ul>
                 <li>
                     <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
@@ -25,9 +25,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
                         {% for article in articles %}
-                            <tr>
                                 <td><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                                {% if article.status == 'published' %}
+                                    <td class='publishedArticle'>Publié</td>
+                                {% elseif article.status == 'refused' %}
+                                    <td class='refusedArticle'>Refusé</td>
+                                {% elseif article.status == 'submit' %}
+                                    <td class='submitArticle'>En Attente</td>
+                                {% else %}
+                                    <td>Unknown</td>
+                                {% endif %}
+                                <td>{{ article.date|date("d/m/Y") }}</td>
                                 <td>{{ article.titre }}</td>
                                 <td>{{ article.chapeau }}</td>
                                 <td>auteur</td>

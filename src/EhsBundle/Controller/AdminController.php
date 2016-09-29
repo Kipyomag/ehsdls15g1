@@ -31,40 +31,66 @@ class AdminController extends Controller
         }
     }
 
-        /**
+    /**
+     * Chercher un utilisateur.
+     *
+     */
+    public function searchUsersAction(Request $request)
+    {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $search = $request->request->get('search');          
+            /* A terminer */
+            $users = $em->getRepository('EhsBundle:Users')->findUsers($search);
+            
+            return $this->render('admin/resultatRecherche.html.twig', array(
+                'users' => $users,
+            ));
+
+        }else{
+
+            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
+    }
+
+    /**
      * Creates a new Users entity.
      *
      */
     public function newAction(Request $request)
     {
-        //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $user = new Users();
-            $form = $this->createForm('EhsBundle\Form\UsersType', $user);
-            $form->handleRequest($request);
+    //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+        $user = new Users();
+        $form = $this->createForm('EhsBundle\Form\UsersType', $user);
+        $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                $encoder = $this->container->get('security.password_encoder');
-                $encoded = $encoder->encodePassword($user, $user->getPassword());
-                $user->setPassword($encoded);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
-                return $this->redirectToRoute('users_show', array('id' => $user->getId()));
-            }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encoded);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
+            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
+        }
 
-            return $this->render('admin/new.html.twig', array(
-                'user' => $user,
-                'form' => $form->createView(),
-            ));
-        /*} else {
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+        return $this->render('admin/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
+    /*} else {
+        $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
 
-            return $this->redirectToRoute('articles_index');
-        }*/
+        return $this->redirectToRoute('articles_index');
+    }*/
     }
 
-        /**
+    /**
      * Displays a form to edit an existing Users entity.
      *
      */
@@ -75,16 +101,13 @@ class AdminController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $encoder = $this->container->get('security.password_encoder');
-            $encoded = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->set('success', 'Vos changements on bien été mis à jour.');
+            $this->get('session')->getFlashBag()->set('success', 'Le profil a bien été mis à jour.');
 
-            return $this->redirectToRoute('admin_users_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('admin_listeMembres');
         }
 
         return $this->render('admin/edit.html.twig', array(
@@ -123,7 +146,7 @@ class AdminController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $articles = $em->getRepository('EhsBundle:Articles')->findAll();
+            $articles = $em->getRepository('EhsBundle:Articles')->findPublicArticles();
 
             return $this->render('admin/listeArticles.html.twig', array(
                 'articles' => $articles,
@@ -225,5 +248,28 @@ class AdminController extends Controller
 
         $this->get('session')->getFlashBag()->set('success', 'Votre nouveau mot de passe vous a été envoyé sur l\'adresse e-mail que vous avez renseigné lors de votre inscription.');
         return $this->redirectToRoute('users_login');
+    }
+
+    /**
+     * Displays a form to edit an existing Comment entity.
+     *
+     */
+    public function editCommentAction(Request $request, Comment $comment)
+    {
+        $editForm = $this->createForm('EhsBundle\Form\CommentType', $comment);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_comment_edit', array('id' => $comment->getId()));
+        }
+
+        return $this->render('admin/editComment.html.twig', array(
+            'comment' => $comment,
+            'edit_form' => $editForm->createView(),
+        ));
     }
 }

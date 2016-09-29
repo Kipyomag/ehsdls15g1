@@ -1,16 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Création d'articles</h1>
+{% block title %}Création article{% endblock %}
 
+{% block body %}
+<div class="col-sm-12">
+    <h1>Mes articles</h1>
+    <ul>
+    {% for article in myArticles %}
+        {% if article.status == 'progress' %}
+            <li class='progressArticle' ><a href="{{ path('articles_edit', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+        {% elseif article.status == 'submit' %}
+            <li class='submitArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+        {% elseif article.status == 'published' %}
+            <li class='publishedArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+        {% else %}
+            <li class='refusedArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+
+    <h1>Création d'articles</h1>
     {{ form_start(form) }}
-        {{ form_widget(form, { 'attr': {'class': 'todo'} }) }}
-        <input type="submit" value="Creation" />
-    {{ form_end(form) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.chapeau) }}
+        {{ form_row(form.contenu) }}
+        {{ form_row(form.save) }}
+        {{ form_row(form.send) }}
+        {{ form_widget(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
 
     <ul>
         <li>
             <a href="{{ path('articles_index') }}">Retour vers la liste</a>
         </li>
     </ul>
+</div>
 {% endblock %}
