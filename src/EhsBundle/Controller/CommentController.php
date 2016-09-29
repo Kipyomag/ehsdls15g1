@@ -99,6 +99,7 @@ class CommentController extends Controller
      */
     public function deleteAction(Request $request, Comment $comment)
     {
+        
         $form = $this->createDeleteForm($comment);
         $form->handleRequest($request);
 

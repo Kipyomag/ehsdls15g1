@@ -61,6 +61,8 @@ class ArticlesController extends Controller
             else if ($form->get('send')->isClicked()) {
                 $article->setStatus("submit");
             }
+            
+            $article->setDate(new \DateTime());
 
     
             
@@ -152,6 +154,7 @@ class ArticlesController extends Controller
                 //publish this article
                 else if ($editForm->get('publish')->isClicked()) {
                     $article->setStatus("published");
+                    $article->setDate(new \DateTime());
                 }
                 //refuse this article
                 else if ($editForm->get('refuse')->isClicked()) {
