@@ -71,9 +71,7 @@ footer {
 	/* style of the navbar when you are top */
 }
 .default img {
-	height: 150px;
-	position: fixed;
-	left: 0;
+	height: 50px;
 }
 .little {
 	/* style of the navbar when you scroll */
