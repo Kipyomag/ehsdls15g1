@@ -18,7 +18,7 @@ class ContactType extends AbstractType
             ->add('nom','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
             ->add('prenom','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
             ->add('telephone','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
-            ->add('email','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
+            ->add('email','email',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
             ->add('message','textarea',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
             ->add('captcha', CaptchaType::class, array('reload'=>true, 'as_url'=> true, 'invalid_message'=>'Code incorrect!','attr'   =>  array('class'   => 'form-control')))
             
