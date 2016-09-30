@@ -33,7 +33,7 @@
                             <li><a href="#">Agir & soutenirs</a></li>
                             <li><a href="#">Presse</a></li>
                             <li><a href="#">Médias</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ path('contact_index') }}">Contact</a></li>
                             <li><a href="{{ path('users_logout') }}">Déconnection</a></li>
                         {% else %}
                             <li><a href="{{ path('users_new') }}">Inscription</a></li>
