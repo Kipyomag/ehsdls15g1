@@ -1,4 +1,20 @@
+/*fonts*/
+@font-face {
+	font-family: "Baloo Bhaina";
+	src: url('../fonts/Baloo_Bhaina/BalooBhaina-Regular.ttf');
+}
+/*
+font-family: 'Baloo Bhaina', cursive;
+
+font-family: 'Open Sans', sans-serif;
+
+font-family: 'Raleway', sans-serif;
+*/
+
+
+
 /*general*/
+
 body {
   padding-top: 80px;
   margin: auto;
@@ -98,5 +114,14 @@ footer {
 	
 }*/
 
+.logoehs {
+
+	display: block;
+	text-indent: -9999px;
+	width: 100px;
+	height: 82px;
+	background: url('../images/wip_ehs7.svg');
+	background-size:100px 92px;
+}
 
 

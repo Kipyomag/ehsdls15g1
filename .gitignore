@@ -12,3 +12,21 @@
 /composer.phar
 /nbproject/private/
 /nbproject
+/logs
+/.data
+
+.env.dist
+.sass-cache/
+.travis.yml
+LICENSE
+README.md
+config.rb
+Would skip repository docker-symfony/
+elk/
+nginx/
+php7-fpm/
+sass/
+stylesheets/
+web/public/images/main_img.jpg
+web/public/sass/main.css
+web/public/sass/responsive.css
