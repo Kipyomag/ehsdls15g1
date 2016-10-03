@@ -33,10 +33,10 @@ articles_refused:
     defaults: { _controller: "EhsBundle:Articles:refused" }
     methods:  [GET, POST]
 
-#articles_page:
-#    path:     /page/{nbr}
-#    defaults: { _controller: "EhsBundle:Articles:page" }
-#    methods:  [GET, POST]
+articles_page:
+    path:     /page/{nbr}
+    defaults: { _controller: "EhsBundle:Articles:page" }
+    methods:  [GET, POST]
 
 
 #articles_tag:

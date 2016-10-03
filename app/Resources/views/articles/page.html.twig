@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+
+<div class="col-sm-12">
+
+    <!-- ALL ARTICLES OF THIS PAGE -->
+    <div id="articles" class="rowArticle">
+        {% for article in articles %}
+            <div class="article col-xs-4">
+                <div class='articleContent'>
+                    <h2>{{ article.titre }}</h2>
+                    <p class='chapeau'>{{ article.chapeau }}</p>
+                </div>
+                <p>
+                    {{ article.date|date("d/m/Y") }}
+                    auteur: {{ article.author.nom }} {{ article.author.prenom }}
+                    <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                    <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+        
+        {% if pageNbr != 1 %}
+            <a href="{{ path('articles_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
+        {% endif %}
+        <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+    </div>
+
+</div>
+{% endblock %}

@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'));
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),6);
 
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
@@ -270,10 +270,22 @@ class ArticlesController extends Controller
      * Displays a page of articles
      *
      */
-    /*public function pageAction(Request $request, $nbr)
+    public function pageAction(Request $request, $nbr)
     {
-        
-    }*/
+        $em = $this->getDoctrine()->getManager();
+
+        $nbrOfArticles = 3; //MODIFIABLE = Nombre d'article afficher par page
+        $firstArticle = ($nbr-1) * $nbrOfArticles; //ne pas toucher = offset = on commence a afficher a partir de l'article suivant
+
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),
+                $nbrOfArticles,
+                $firstArticle);
+
+        return $this->render('articles/page.html.twig', array(
+            'articles' => $articles,
+            'pageNbr' => $nbr,
+        ));
+    }
 
 
 
