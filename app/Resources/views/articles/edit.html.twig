@@ -14,12 +14,6 @@
             {{ form_row(edit_form.save) }}
             {{ form_row(edit_form.send) }}
         {% elseif is_granted('ROLE_MODERATEUR') %}
-            {% if (article.status == 'submit' or article.status == 'refused') %}
-                {{ form_row(edit_form.publish) }}
-            {% endif %}
-            {% if article.status == 'submit' or article.status == 'published' %}
-                {{ form_row(edit_form.refuse) }} <!--unpublish article-->
-            {% endif %}
             <input type="submit" value="Modifier" />
         {% endif %}
         {{ form_widget(edit_form._token) }}

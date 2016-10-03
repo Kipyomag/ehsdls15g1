@@ -40,6 +40,8 @@ security:
         - { path: ^/users/show, role: ROLE_ADMIN }
         - { path: ^/articles/new, role: ROLE_USER }
         - { path: ^/articles/[0-9]+/edit, role: ROLE_MODERATEUR }
+        - { path: ^/articles/[0-9]+/publish, role: ROLE_ADMIN }
+        - { path: ^/articles/[0-9]+/refused, role: ROLE_ADMIN }
         - { path: ^/comment/new, role: ROLE_USER }
         - { path: ^/comment/[0-9]+/edit, role: ROLE_MODERATEUR }
         - { path: ^/newsletter, role: ROLE_ADMIN }

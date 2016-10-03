@@ -23,6 +23,16 @@ articles_delete:
     defaults: { _controller: "EhsBundle:Articles:delete" }
     methods:  DELETE
 
+articles_publish:
+    path:     /{id}/publish
+    defaults: { _controller: "EhsBundle:Articles:publish" }
+    methods:  [GET, POST]
+
+articles_refused:
+    path:     /{id}/refused
+    defaults: { _controller: "EhsBundle:Articles:refused" }
+    methods:  [GET, POST]
+
 #articles_page:
 #    path:     /page/{nbr}
 #    defaults: { _controller: "EhsBundle:Articles:page" }

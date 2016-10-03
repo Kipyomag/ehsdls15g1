@@ -16,6 +16,14 @@
             {{ form_start(delete_form) }}
                 <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
+            {% if is_granted('ROLE_MODERATEUR') %}
+                {{ form_start(publish_form) }}
+                    <input type="submit" value="Publier">
+                {{ form_end(publish_form) }}
+                {{ form_start(refused_form) }}
+                    <input type="submit" value="Ne pas publier">
+                {{ form_end(refused_form) }}
+            {% endif %}
         </li>
     </ul>
 
