@@ -32,3 +32,4 @@ web/public/sass/main.css
 web/public/sass/responsive.css
 web/app/
 .idea/
+.data/
