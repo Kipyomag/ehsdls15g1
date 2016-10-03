@@ -47,7 +47,9 @@ h5 {
     background-color: #e52e2e;
     color: #fff; }
   .btn-large {
-    padding: 15px 40px; }
+    padding: 15px 40px;
+  margin: 15px;
+  }
 
 /* ==========================================================================
 	General Styles
@@ -75,7 +77,8 @@ ul li {
   list-style: none; }
 
 .section {
-  padding: 100px 0; }
+  padding: 100px 0;
+    }
 
 .no-padding {
   padding: 0; }
@@ -108,7 +111,7 @@ ul li {
  }
 
 #header.fixed {
-  background-color: #292c47; }
+  background-color: #ffffff; }
   #header.fixed .header-content {
     border-bottom: 0;
     padding: 25px 0; }
@@ -128,13 +131,13 @@ ul li {
   .navigation li {
     display: inline-block; }
   .navigation a {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(1, 86, 135, 0.75);
     font-size: 13px;
     font-weight: 700;
     margin-left: 40px;
     text-transform: uppercase; }
     .navigation a:hover, .navigation a.active {
-      color: #fff; }
+      color: #fcbd00; }
 
 .nav-toggle {
   display: none;
@@ -263,7 +266,8 @@ ul li {
 	$Banner
 ========================================================================== */
 .banner {
-    background: url(../images/banner.jpg) no-repeat center top;
+    /*background: url(../images/banner.jpg) no-repeat center top;*/
+    background-color: #ffffff;
     -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
@@ -271,24 +275,29 @@ ul li {
   min-height: 750px; }
 
 .banner-text {
-  padding-top: 25%; }
-  .banner-text h1 {
-    color: #fff;
+  padding-top: 18%; }
+  .banner-text h3 {
+    color: #015687;
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
     text-transform: uppercase; }
   .banner-text p {
-    color: #fff;
+    color: #015687;
     font-size: 22px;
     font-weight: 300;
     line-height: 1.5;
     margin-bottom: 80px; }
 
+
 /* ==========================================================================
 	$Features
 ========================================================================== */
-.feature {
-  margin-bottom: 50px; }
+.features
+{
+  margin-bottom: 50px;
+    background-color: #0093d8;
+
+}
   .feature-content {
     padding: 0 15px;
     margin-top: 30px; }
@@ -826,3 +835,4 @@ ul li {
 
 .icon-dribbble:before {
   content: "\e063"; }
+

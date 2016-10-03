@@ -1,0 +1,106 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Actu{% endblock %}
+
+{% block body %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-tools"></span>
+                    <div class="feature-content">
+                        <h5>Actu1</h5>
+                        <p>Actu1.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-desktop"></span>
+                    <div class="feature-content">
+                        <h5>Responsive Ready</h5>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-lightbulb"></span>
+                    <div class="feature-content">
+                        <h5>Modern Design</h5>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-genius"></span>
+                    <div class="feature-content">
+                        <h5>Clean Code</h5>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-briefcase"></span>
+                    <div class="feature-content">
+                        <h5>Ready to Ship</h5>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-download"></span>
+                    <div class="feature-content">
+                        <h5>Download for Free</h5>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- features -->
+{% endblock %}
+
+
+
+<!-- MAIN ARTICLE -->
+<div>
+    <div id="mainArticle" class="jumbotron">
+        <div id="articleContent">
+            <h1>MAIN ARTICLE</h1>
+            <p>chapeau de l'article principal blablabal balbalbalb ablalblabl balblablabl abllablabll ablalbablalb alblablablb a lalb lab lal lbalb</p>
+        </div>
+        <p>
+            <a class="btn btn-default" href="#" role="button">Voir</a>
+            {% if is_granted('ROLE_MODERATEUR') %}
+                <a class="btn btn-default" href="#" role="button">Modifier</a>
+            {% endif %}
+        </p>
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <ul>
+            <li>
+                <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
+            </li>
+        </ul>
+    {% endif %}
+
+
+
+    <!-- ALL ARTICLES -->
+    <div id="articles" class="rowArticle">
+        {% for article in articles %}
+            <div class="article col-xs-6 col-lg-4">
+                <div class='articleContent'>
+                    <h2>{{ article.titre }}</h2>
+                    <p class='chapeau'>{{ article.chapeau }}</p>
+                </div>
+                <p>auteur: {{ article.author.nom }} {{ article.author.prenom }}
+                    <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                        <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+</div>
+
+{% include 'rightsidebar.html.twig' %}
+{% endblock %}

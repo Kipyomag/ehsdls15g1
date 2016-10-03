@@ -67,3 +67,16 @@ swiftmailer:
     password:  ehsdl15g1
     spool: { type: memory }
     auth_mode:  login
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        ['WebsiteBundle']
+    ruby: "%ruby.bin%"
+    filters:
+        cssrewrite: ~
+        sass:
+            bin: "%sass.bin%"
+        compass:
+            bin: "%compass.bin%"
