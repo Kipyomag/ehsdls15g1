@@ -30,3 +30,5 @@ stylesheets/
 web/public/images/main_img.jpg
 web/public/sass/main.css
 web/public/sass/responsive.css
+web/app/
+.idea/
