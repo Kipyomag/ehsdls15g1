@@ -31,6 +31,9 @@
                     <td>{{ article.contenu }}</td>
                 </tr>
                 <tr>
+                    <td>{{ article.date|date("d/m/Y") }}</td>
+                </tr>
+                <tr>
                     <td>by {{ article.author.nom }} {{ article.author.prenom }}</td>
                 </tr>
             </tbody>
@@ -42,7 +45,7 @@
                 <tr>
                     <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
                     <td>{{ comment.content }}</td>
-                    <th>{{ comment.creationDate|date("m/d/Y") }}</th>
+                    <th>{{ comment.creationDate|date("d/m/Y") }}</th>
                 </tr>
         {% endfor %}
         </table>

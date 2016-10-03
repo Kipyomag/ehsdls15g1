@@ -39,10 +39,13 @@ security:
         # - { path: ^/users/new, role: ROLE_ADMIN }
         - { path: ^/users/show, role: ROLE_ADMIN }
         - { path: ^/articles/new, role: ROLE_USER }
-        - { path: ^/articles/edit, role: ROLE_MODERATEUR }
+        - { path: ^/articles/[0-9]+/edit, role: ROLE_MODERATEUR }
         - { path: ^/comment/new, role: ROLE_USER }
-        - { path: ^/comment/edit, role: ROLE_MODERATEUR }
+        - { path: ^/comment/[0-9]+/edit, role: ROLE_MODERATEUR }
         - { path: ^/newsletter, role: ROLE_ADMIN }
+        - { path: ^/presentation/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/agenda/new, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
 

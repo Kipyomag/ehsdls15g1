@@ -23,10 +23,11 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findByStatus('published');
-
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),6);
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
+            'agendas' => $agendas,
         ));
     }
 
@@ -61,6 +62,8 @@ class ArticlesController extends Controller
             else if ($form->get('send')->isClicked()) {
                 $article->setStatus("submit");
             }
+
+            $article->setDate(new \DateTime());
 
     
             
@@ -152,6 +155,7 @@ class ArticlesController extends Controller
                 //publish this article
                 else if ($editForm->get('publish')->isClicked()) {
                     $article->setStatus("published");
+                    $article->setDate(new \DateTime());
                 }
                 //refuse this article
                 else if ($editForm->get('refuse')->isClicked()) {
@@ -209,6 +213,32 @@ class ArticlesController extends Controller
         }
     }
 
+
+    /**
+     * Displays a page of articles
+     *
+     */
+    /*public function pageAction(Request $request, $nbr)
+    {
+        
+    }*/
+
+
+
+    /**
+     * Displays a page of articles sort by tag
+     *
+     */
+    /*public function tagAction(Request $request, $nbr, Tag $tag)
+    {
+        
+    }*/
+
+
+
+
+
+
     /**
      * Creates a form to delete a Articles entity.
      *
@@ -224,4 +254,7 @@ class ArticlesController extends Controller
             ->getForm()
         ;
     }
+
+
+
 }

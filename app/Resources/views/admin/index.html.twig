@@ -6,6 +6,7 @@
       
     
     <!-- MAIN ARTICLE -->
+    <div class="col-xs-12 col-sm-9">
         <div class="jumbotron">
             <h1>Administration</h1>
             <div class="col-lg-6">
@@ -22,11 +23,13 @@
                 
         <div class="jumbotron">         
             <div class="list-group">
-                <a class="list-group-item" href="{{ path('admin_users_new') }}">Ajouter un utilisateur</a>
-                <a class="list-group-item" href="{{ path('articles_new') }}">Proposer un article</a>
-                <a class="list-group-item" href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
-                <a class="list-group-item" href="{{ path('admin_listeArticles') }}">Liste des articles</a>
-                <a class="list-group-item" href="#">Consulter les archives</a>
+                <p align="center">
+                    <a class="list-group-item" href="{{ path('admin_users_new') }}">Ajouter un utilisateur</a>
+                    <a class="list-group-item" href="{{ path('articles_new') }}">Proposer un article</a>
+                    <a class="list-group-item" href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
+                    <a class="list-group-item" href="{{ path('admin_listeArticles') }}">Liste des articles</a>
+                    <a class="list-group-item" href="#">Consulter les archives</a>
+                </p>
             </div>
         </div>
     </div>
@@ -34,5 +37,5 @@
     
         
     
-
+{% include 'rightsidebar.html.twig' %}
 {% endblock %}

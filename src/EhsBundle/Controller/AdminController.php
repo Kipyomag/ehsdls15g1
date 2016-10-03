@@ -4,7 +4,7 @@ namespace EhsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use EhsBundle\Entity\Agenda;
 use EhsBundle\Entity\Users;
 use EhsBundle\Form\UsersType;
 
@@ -21,8 +21,11 @@ class AdminController extends Controller
     public function indexAction()
     {
         if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-
-            return $this->render('admin/index.html.twig');
+            $em = $this->getDoctrine()->getManager();
+            $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
+            return $this->render('admin/index.html.twig', array(
+            'agendas' => $agendas,
+        ));
         }else{
 
             $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
@@ -44,7 +47,7 @@ class AdminController extends Controller
             $search = $request->request->get('search');          
             /* A terminer */
             $users = $em->getRepository('EhsBundle:Users')->findUsers($search);
-            
+            //var_dump($users);die();
             return $this->render('admin/resultatRecherche.html.twig', array(
                 'users' => $users,
             ));
