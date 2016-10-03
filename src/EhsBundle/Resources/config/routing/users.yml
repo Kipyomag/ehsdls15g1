@@ -8,6 +8,11 @@ users_show:
     defaults: { _controller: "EhsBundle:Users:show" }
     methods:  GET
 
+users_show_profil:
+    path:     /{id}/showProfil
+    defaults: { _controller: "EhsBundle:Users:showProfil" }
+    methods:  GET
+
 users_new:
     path:     /new
     defaults: { _controller: "EhsBundle:Users:new" }

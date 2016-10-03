@@ -40,6 +40,7 @@
                         <p class='chapeau'>{{ article.chapeau }}</p>
                     </div>
                     <p>
+                        {{ article.date|date("d/m/Y") }}
                         auteur: {{ article.author.nom }} {{ article.author.prenom }}
                         <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                         {% if is_granted('ROLE_MODERATEUR') %}
@@ -49,6 +50,7 @@
                 </div>
             {% endfor %}
         </div>
+        <a href="{{ path('articles_page', { 'nbr': 1 }) }}">Voir tous les articles</a>
     </div>
     
     

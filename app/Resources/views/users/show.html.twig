@@ -8,10 +8,6 @@
         <h1>Profil</h1>
                 <table align="center">
                         <tr>
-                            <th>Id</th>
-                            <td>{{ user.id }}</td>
-                        </tr>
-                        <tr>
                             <th>Email</th>
                             <td>{{ user.email }}</td>
                         </tr>
@@ -28,35 +24,18 @@
                             <td>{{ user.genre }}</td>
                         </tr>
                         <tr>
-                            <th>Telephone</th>
-                            <td>{{ user.telephone }}</td>
-                        </tr>
-                        <tr>
-                            <th>Adresse</th>
-                            <td>{{ user.adresse }}</td>
-                        </tr>
-                        <tr>
                             <th>Ville</th>
                             <td>{{ user.ville }}</td>
                         </tr>
                         <tr>
-                            <th>Region</th>
+                            <th>Région</th>
                             <td>{{ user.region }}</td>
                         </tr>
                         <tr>
                             <th>Pays</th>
                             <td>{{ user.pays }}</td>
                         </tr>
-                        <tr>
-                            <th>Role</th>
-                            <td>{{ user.role }}</td>
-                        </tr>
                     </table>
-                <ul>
-                    <li>
-                        <a href="{{ path('users_edit', { 'id': user.id }) }}">Edition</a>
-                    </li>
-                </ul>
 
 </div>
 {% endblock %}

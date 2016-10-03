@@ -1,0 +1,19 @@
+presentation_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:Presentation:index" }
+    methods:  GET
+
+presentation_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:Presentation:new" }
+    methods:  [GET, POST]
+
+presentation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EhsBundle:Presentation:edit" }
+    methods:  [GET, POST]
+
+presentation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EhsBundle:Presentation:delete" }
+    methods:  DELETE

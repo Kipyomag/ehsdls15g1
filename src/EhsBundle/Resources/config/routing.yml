@@ -21,3 +21,18 @@ ehs_comment:
 ehs_admin:
     resource: "@EhsBundle/Resources/config/routing/admin.yml"
     prefix:   /admin
+
+ehs_contact:
+    resource: "@EhsBundle/Resources/config/routing/contact.yml"
+    prefix:   /contact
+
+gregwar_captcha_routing:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+
+ehs_presentation:
+    resource: "@EhsBundle/Resources/config/routing/presentation.yml"
+    prefix:   /presentation
+
+ehs_agenda:
+    resource: "@EhsBundle/Resources/config/routing/agenda.yml"
+    prefix:   /agenda
