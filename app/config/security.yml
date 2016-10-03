@@ -47,6 +47,8 @@ security:
         - { path: ^/newsletter, role: ROLE_ADMIN }
         - { path: ^/presentation/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/presentation/new, role: ROLE_ADMIN }
+        - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/agenda/new, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
 

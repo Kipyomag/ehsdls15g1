@@ -25,8 +25,11 @@ class ArticlesController extends Controller
 
         $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),6);
 
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
+
         return $this->render('articles/index.html.twig', array(
             'articles' => $articles,
+            'agendas' => $agendas,
         ));
     }
 
