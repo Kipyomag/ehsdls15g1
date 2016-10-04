@@ -161,7 +161,7 @@ class UsersAgenda
     {
         return $this->mail;
     }
-
+    
     function getEvent() {
         return $this->event;
     }

@@ -11,7 +11,7 @@ agenda_apercu:
 agenda_show:
     path:     /{id}/show
     defaults: { _controller: "EhsBundle:Agenda:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 agenda_new:
     path:     /new

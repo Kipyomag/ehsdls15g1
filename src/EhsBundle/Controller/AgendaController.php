@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EhsBundle\Entity\Agenda;
 use EhsBundle\Form\AgendaType;
-
+use EhsBundle\Entity\UsersAgenda;
 /**
  * Agenda controller.
  *
@@ -68,11 +68,25 @@ class AgendaController extends Controller
      * Finds and displays a Agenda entity.
      *
      */
-    public function showAction(Agenda $agenda)
+    public function showAction(Agenda $agenda, Request $request)
     {
         $deleteForm = $this->createDeleteForm($agenda);
+        $usersAgenda = new UsersAgenda();
+        $form = $this->createForm('EhsBundle\Form\UsersAgendaType', $usersAgenda);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $usersAgenda->setEvent($agenda);
+            $em->persist($usersAgenda);
+            $em->flush();
+            $this->get('session')->getFlashBag()->set('sucess', 'Votre inscription a bien été prise en compte.');
+            return $this->redirectToRoute('usersagenda_show', array('id' => $usersAgenda->getId()));
+        }
 
         return $this->render('agenda/show.html.twig', array(
+            'usersAgenda' => $usersAgenda,
+            'form' => $form->createView(),
             'agenda' => $agenda,
             'delete_form' => $deleteForm->createView(),
         ));

@@ -1,16 +1,31 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>UsersAgenda creation</h1>
+    <h2 align="center">S'inscrire à l'évènement</h2>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+   
+
+     {{ form_start(form) }}
+        <table align="center">
+            <tr><td>{{ form_label(form.nom, "Nom") }}</td></tr>
+            <tr><td>{{ form_widget(form.nom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(form.prenom, "Prénom") }}</td></tr>
+            <tr><td>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(form.telephone, "téléphone") }}</td></tr>
+            <tr><td>{{ form_widget(form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+    {% for mailField in form.mail %}
+            <tr><td>{{ form_label(mailField) }}</td></tr>
+            <tr><td>{{ form_widget(mailField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+    {% endfor %}
+
+
+            <tr><td>{{ form_widget(form.event, { 'attr': {'class': 'form-control','value':agenda.id }  }) }}</td></tr>
+
+            
+        
+            <tr align="center"><td><button type="submit" class="btn btn-primary">S'inscrire</button></td></tr>
+        </table>
+    
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('usersagenda_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}

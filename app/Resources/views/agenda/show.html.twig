@@ -4,20 +4,22 @@
 
 {% block body %}
 <div class="jumbotron">
-    <h1>Agenda</h1>
+    <h1 align="center">{{ agenda.title }}</h1>
 
-    <table>
+    <table align="center">
         <tbody>
             <tr>
-                <th>Date de début</th>
+                <th>Date de début</th>               
+            </tr>
+            <tr>
+                <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td> 
+            </tr>
+            <tr>
                 <th>Date de fin</th>
             </tr>
             <tr>
-                <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td>
                 <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
             </tr>
-    </table>
-    <table>
             <tr>
                 <th>Nom</th>
             </tr>
@@ -32,11 +34,9 @@
             </tr>
         </tbody>
     </table>
-        <ul>
-            <li>
+        <p align="center">
                 <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
-            </li>
-        </ul>
+        </p>        
             
         {% if is_granted('ROLE_MODERATEUR') %}
             <a class="btn btn-warning" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a>
@@ -44,8 +44,8 @@
                 <input class="btn btn-danger" type="submit" value="Supprimer l'évènement">
             {{ form_end(delete_form) }}
         {% endif %}
-        <h2>S'inscrire à l'évènement</h2>
 
-        <a href="{{ path('usersagenda_new') }}">S'inscrire à l'évènement</a>
+        {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
+
 </div>
 {% endblock %}
