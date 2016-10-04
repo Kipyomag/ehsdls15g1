@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>UsersAgenda list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Mail</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usersAgenda in usersAgendas %}
+            <tr>
+                <td><a href="{{ path('usersagenda_show', { 'id': usersAgenda.id }) }}">{{ usersAgenda.id }}</a></td>
+                <td>{{ usersAgenda.nom }}</td>
+                <td>{{ usersAgenda.prenom }}</td>
+                <td>{{ usersAgenda.telephone }}</td>
+                <td>{{ usersAgenda.mail }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('usersagenda_show', { 'id': usersAgenda.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('usersagenda_edit', { 'id': usersAgenda.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('usersagenda_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
