@@ -49,6 +49,11 @@ class Agenda
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="UsersAgenda", mappedBy="event")
+     */
+    private $events;
+
 
     /**
      * Get id
@@ -154,6 +159,14 @@ class Agenda
     public function getDescription()
     {
         return $this->description;
+    }
+
+    function getEvents() {
+        return $this->events;
+    }
+
+    function setEvents($events) {
+        $this->events = $events;
     }
 }
 

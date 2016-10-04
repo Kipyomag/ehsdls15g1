@@ -36,3 +36,7 @@ ehs_presentation:
 ehs_agenda:
     resource: "@EhsBundle/Resources/config/routing/agenda.yml"
     prefix:   /agenda
+
+ehs_usersagenda:
+    resource: "@EhsBundle/Resources/config/routing/usersagenda.yml"
+    prefix:   /usersagenda

@@ -1,7 +1,7 @@
 agenda_index:
     path:     /
     defaults: { _controller: "EhsBundle:Agenda:index" }
-    methods:  GET
+    methods:  [GET, POST]
 
 agenda_apercu:
     path:     /apercu
