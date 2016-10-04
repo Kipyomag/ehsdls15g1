@@ -1,59 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles{% endblock %}
 
-{% block body %}
-  
-<div class="col-xs-12 col-sm-9">
-    
-    <!-- MAIN ARTICLE -->
-    <div>
-        <div id="mainArticle" class="jumbotron">
-            <div id="articleContent">
-                <h1>MAIN ARTICLE</h1>
-                <p>chapeau de l'article principal blablabal balbalbalb ablalblabl balblablabl abllablabll ablalbablalb alblablablb a lalb lab lal lbalb</p>
-            </div>
-            <p>
-                <a class="btn btn-default" href="#" role="button">Voir</a>
-                {% if is_granted('ROLE_MODERATEUR') %}
-                <a class="btn btn-default" href="#" role="button">Modifier</a>
-                {% endif %}
-            </p>
-        </div>
+    {% block title %}Actu{% endblock %}
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
-                </li>
-            </ul>
-        {% endif %}
-        
-        
-        
-        <!-- ALL ARTICLES -->
-        <div id="articles" class="rowArticle">
+    {% block body %}
+
+        <div class="container">
+            <div class="row">
             {% for article in articles %}
-                <div class="article col-xs-6 col-lg-4">
-                    <div class='articleContent'>
-                        <h2>{{ article.titre }}</h2>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    <span class="icon icon-tools"></span>
+                    <div class="feature-content">
+                        <h5>{{ article.titre }}</h5>
                         <p class='chapeau'>{{ article.chapeau }}</p>
                     </div>
-                    <p>
-                        {{ article.date|date("d/m/Y") }}
-                        auteur: {{ article.author.nom }} {{ article.author.prenom }}
+                    <div>
+                    <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+
                         <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
-                        {% if is_granted('ROLE_MODERATEUR') %}
-                        <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
-                        {% endif %}
-                    </p>
+                            {% if is_granted('ROLE_MODERATEUR') %}
+                                <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                            {% endif %}
+
+                    </div>
                 </div>
             {% endfor %}
+
+            </div>
         </div>
-    </div>
+
+        <a href="{{ path('articles_page', { 'nbr': 1 }) }}">Voir tous les articles</a>
+
+
     
-    
-</div>
-    
-{% include 'rightsidebar.html.twig' %}
+
 {% endblock %}
+
+

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un évènement{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1>Ajouter un évènement</h1>
+    {{ form_start(form) }}
+        <table>
+            <tr>
+                <td>{{ form_label(form.startingDate, "Début de l'évènement") }}</td>
+                <td>{{ form_label(form.endingDate, "Fin de l'évènement") }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_widget(form.startingDate, { 'attr': {'class': 'input-group date'}  }) }}</td>
+                <td>{{ form_widget(form.endingDate, { 'attr': {'class': 'input-group date'}  }) }}</td>
+            </tr>
+        </table>
+
+        <table>
+            <tr><td>{{ form_label(form.title, "Nom de l'évènement") }}</td></tr>
+            <tr><td>{{ form_widget(form.title, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(form.description, "Description") }}</td></tr>
+            <tr><td>{{ form_widget(form.description,{ 'attr': {'cols': '120'} }) }}</td></tr>
+
+            <tr><td><button type="submit" class="btn btn-success">Ajouter</button></td></tr>
+        </table>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

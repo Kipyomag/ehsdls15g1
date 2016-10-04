@@ -67,3 +67,4 @@ swiftmailer:
     password:  ehsdl15g1
     spool: { type: memory }
     auth_mode:  login
+

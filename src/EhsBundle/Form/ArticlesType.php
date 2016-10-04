@@ -22,8 +22,6 @@ class ArticlesType extends AbstractType
             ->add('contenu')
             ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
             ->add('send', SubmitType::class, array('label' => 'Envoyer'))
-            ->add('publish', SubmitType::class, array('label' => 'Publier'))
-            ->add('refuse', SubmitType::class, array('label' => 'Refuser'))
             
         ;
     }

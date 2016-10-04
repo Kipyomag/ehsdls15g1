@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un évènement{% endblock %}
+
+{% block body %}
+     <div class="jumbotron">
+        <h1>Evènements à venir</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                    {% endif %}
+                        <th>Startingdate</th>
+                        <th>Endingdate</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for agenda in agendas %}
+                    <tr>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <td><a type="button" class="btn btn-warning btn-xs" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a></td>
+                        {% endif %}
+                        <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ agenda.title }}</td>
+                        <td>{{ agenda.description }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{ path('agenda_show', { 'id': agenda.id }) }}">Voir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul>
+                    <li>
+                        <a href="{{ path('agenda_new') }}">Ajouter un évènement</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+{% endblock %}

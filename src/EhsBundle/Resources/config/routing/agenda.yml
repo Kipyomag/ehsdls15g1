@@ -1,0 +1,29 @@
+agenda_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:Agenda:index" }
+    methods:  GET
+
+agenda_apercu:
+    path:     /apercu
+    defaults: { _controller: "EhsBundle:Agenda:apercu" }
+    methods:  GET
+
+agenda_show:
+    path:     /{id}/show
+    defaults: { _controller: "EhsBundle:Agenda:show" }
+    methods:  GET
+
+agenda_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:Agenda:new" }
+    methods:  [GET, POST]
+
+agenda_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EhsBundle:Agenda:edit" }
+    methods:  [GET, POST]
+
+agenda_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EhsBundle:Agenda:delete" }
+    methods:  DELETE

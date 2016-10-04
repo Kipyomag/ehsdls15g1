@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evènement{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1>Agenda</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+            </tr>
+            <tr>
+                <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td>
+                <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
+            </tr>
+    </table>
+    <table>
+            <tr>
+                <th>Nom</th>
+            </tr>
+            <tr>
+                <td>{{ agenda.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>{{ agenda.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+        <ul>
+            <li>
+                <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
+            </li>
+        </ul>
+            
+        {% if is_granted('ROLE_MODERATEUR') %}
+            <a class="btn btn-warning" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer l'évènement">
+            {{ form_end(delete_form) }}
+        {% endif %}
+</div>
+{% endblock %}

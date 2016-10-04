@@ -4,6 +4,12 @@ remplacer le chargement des styles par des assets?
 faire partie admin (en cours)
 design des pages d'erreur
 
+Agenda:
+
+Ameliorer rendu formulaire type date (avec js?)
+trouver un moyen pour afficher la sidebar sur la base html pour être présent sur toutes les pages
+afficher les 5 prochains evenements dans la sidebar 
+afficher uniquement les evenements a venir dans la liste des evenements et faire une partie archives
 
 Users:
 View pour envoi de mail lors de passwordLost ou inscription
