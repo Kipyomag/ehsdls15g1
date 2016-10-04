@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce2bc9a3096af2f3441dfe317203735b",
-    "content-hash": "8d4400e7cda894940e748e385d6be82f",
+    "hash": "2ce631b65f45897007b5d11f0f968393",
+    "content-hash": "1b361a82fe958fcf1661a20008080081",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -817,6 +817,55 @@
             "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
             "homepage": "https://github.com/drewm/mailchimp-api",
             "time": "2016-07-01 15:53:33"
+        },
+        {
+            "name": "ekyna/install-bundle",
+            "version": "v0.1",
+            "target-dir": "Ekyna/Bundle/InstallBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ekyna/InstallBundle.git",
+                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ekyna/InstallBundle/zipball/dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
+                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ekyna\\Bundle\\InstallBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Etienne Dauvergne",
+                    "homepage": "http://ekyna.com"
+                }
+            ],
+            "description": "Runs bundles installers",
+            "homepage": "https://github.com/ekyna/InstallBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "installer"
+            ],
+            "time": "2015-05-15 12:28:57"
         },
         {
             "name": "gregwar/captcha",
@@ -2212,16 +2261,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.25.0",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
+                "reference": "81c2b5fd36581370c7731387f05dcdb577050513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/81c2b5fd36581370c7731387f05dcdb577050513",
+                "reference": "81c2b5fd36581370c7731387f05dcdb577050513",
                 "shasum": ""
             },
             "require": {
@@ -2234,7 +2283,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.25-dev"
+                    "dev-master": "1.26-dev"
                 }
             },
             "autoload": {
@@ -2269,7 +2318,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-09-21 23:05:12"
+            "time": "2016-10-02 16:19:13"
         }
     ],
     "packages-dev": [
