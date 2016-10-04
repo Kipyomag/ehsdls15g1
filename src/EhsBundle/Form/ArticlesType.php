@@ -19,7 +19,7 @@ class ArticlesType extends AbstractType
         $builder
             ->add('titre')
             ->add('chapeau')
-            ->add('contenu')
+            ->add('contenu',null,array('attr' => array('class' => 'ckeditor')))
             ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
             ->add('send', SubmitType::class, array('label' => 'Envoyer'))
             

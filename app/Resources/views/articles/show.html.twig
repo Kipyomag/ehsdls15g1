@@ -6,12 +6,8 @@
 
 <div class="col-sm-12">
     <ul>
-        <li>
-            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
-        </li>
+        <li><a href="{{ path('articles_index') }}">Retour vers la liste</a></li>
+        <li><a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a></li>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Supprimer">
@@ -36,7 +32,7 @@
                     <td>{{ article.chapeau }}</td>
                 </tr>
                 <tr>
-                    <td>{{ article.contenu }}</td>
+                    <td>{{ article.contenu | raw }}</td>
                 </tr>
                 <tr>
                     <td>{{ article.date|date("d/m/Y") }}</td>
@@ -52,7 +48,7 @@
         {% for comment in article.comments %}
                 <tr>
                     <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
-                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.content | raw }}</td>
                     <th>{{ comment.creationDate|date("d/m/Y") }}</th>
                 </tr>
         {% endfor %}
