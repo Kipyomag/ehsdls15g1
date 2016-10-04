@@ -10,5 +10,7 @@ $(function() {
             $("#topNavbar").addClass("default");
             $("#topNavbar").removeClass("little");
         }
+
     });
+
 });

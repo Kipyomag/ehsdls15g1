@@ -55,6 +55,8 @@ $(document).ready(function() {
 	  return false;
 	});
 
+
+
 	// Mobile Navigation
 	$('.nav-toggle').on('click', function() {
 		$(this).toggleClass('close-nav');

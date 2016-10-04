@@ -1,4 +1,4 @@
-/web/bundles/
+
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -33,3 +33,4 @@ web/public/sass/responsive.css
 web/app/
 .idea/
 .data/
+
