@@ -57,7 +57,8 @@ class Articles
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article", cascade={"remove"})
+     * @ORM\OrderBy({"creationDate" = "DESC"})
      */
     private $comments;
 

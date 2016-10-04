@@ -6,6 +6,7 @@
     ],
     "hash": "049108b5f951bb4e2d3745c68fc89794",
     "content-hash": "a486c8c495683007c28aff9061daf17b",
+
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -817,6 +818,55 @@
             "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
             "homepage": "https://github.com/drewm/mailchimp-api",
             "time": "2016-07-01 15:53:33"
+        },
+        {
+            "name": "ekyna/install-bundle",
+            "version": "v0.1",
+            "target-dir": "Ekyna/Bundle/InstallBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ekyna/InstallBundle.git",
+                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ekyna/InstallBundle/zipball/dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
+                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ekyna\\Bundle\\InstallBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Etienne Dauvergne",
+                    "homepage": "http://ekyna.com"
+                }
+            ],
+            "description": "Runs bundles installers",
+            "homepage": "https://github.com/ekyna/InstallBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "installer"
+            ],
+            "time": "2015-05-15 12:28:57"
         },
         {
             "name": "gregwar/captcha",
