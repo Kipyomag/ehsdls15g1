@@ -13,16 +13,22 @@
             <a href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
             {% if is_granted('ROLE_MODERATEUR') %}
-                {{ form_start(publish_form) }}
-                    <input type="submit" value="Publier">
-                {{ form_end(publish_form) }}
-                {{ form_start(refused_form) }}
-                    <input type="submit" value="Ne pas publier">
-                {{ form_end(refused_form) }}
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+                {% if article.status == 'submit' %}
+                    {{ form_start(publish_form) }}
+                        <input type="submit" value="Publier">
+                    {{ form_end(publish_form) }}
+                    {{ form_start(refused_form) }}
+                        <input type="submit" value="Ne pas publier">
+                    {{ form_end(refused_form) }}
+                {% else %}
+                    {{ form_start(refused_form) }}
+                        <input type="submit" value="Ne plus publier">
+                    {{ form_end(refused_form) }}
+                {% endif %}
             {% endif %}
         </li>
     </ul>
@@ -48,20 +54,23 @@
         </table>
                 
         <h1>Commentaires</h1>
+        {{ form_start(comment_form) }}
+            {{ form_widget(comment_form) }}
+            <input type="submit" value="Envoyer" />
+        {{ form_end(comment_form) }}
         <table class="table">
         {% for comment in article.comments %}
                 <tr>
                     <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
                     <td>{{ comment.content }}</td>
-                    <th>{{ comment.creationDate|date("d/m/Y") }}</th>
+                    <td>{{ comment.creationDate|date("d/m/Y") }}</td>
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                        <td><a href="{{ path('comment_delete', { 'id': comment.id }) }}">X</a></td>
+                    {% endif %}
                 </tr>
         {% endfor %}
         </table>
         
-        {{ form_start(comment_form) }}
-            {{ form_widget(comment_form) }}
-            <input type="submit" value="Creation" />
-        {{ form_end(comment_form) }}
 
     </div>
 </div>
