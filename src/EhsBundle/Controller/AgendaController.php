@@ -107,7 +107,7 @@ class AgendaController extends Controller
             $em->persist($agenda);
             $em->flush();
 
-            return $this->redirectToRoute('agenda_index');
+            return $this->redirectToRoute('agenda_show', array('id' => $agenda->getId()));
         }
 
         return $this->render('agenda/edit.html.twig', array(

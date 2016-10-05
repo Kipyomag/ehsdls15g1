@@ -50,6 +50,11 @@ security:
         - { path: ^/presentation/new, role: ROLE_ADMIN }
         - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/agenda/new, role: ROLE_ADMIN }
+        - { path: ^/archive/new, role: ROLE_ADMIN }
+        - { path: ^/archive/index, role: ROLE_USER }
+        - { path: ^/archive/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/archive/[0-9]+/show, role: ROLE_USER }
+        - { path: ^/archive/[0-9]+/delete, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
 

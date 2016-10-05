@@ -13,8 +13,8 @@
                     {% endif %}
                         <th>Date de début</th>
                         <th>Date de fin</th>
+                        <th>Ville</th>
                         <th>Titre</th>
-                        <th>Description</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,8 +26,8 @@
                         {% endif %}
                         <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i:s') }}{% endif %}</td>
                         <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <td>{{ agenda.city }}</td>
                         <td>{{ agenda.title }}</td>
-                        <td>{{ agenda.description }}</td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{ path('agenda_show', { 'id': agenda.id }) }}">Voir</a>
                         </td>

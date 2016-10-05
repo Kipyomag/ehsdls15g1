@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="{{ asset('public/css/magnific-popup.css') }}" type="text/css" media="all" />
     </head>
 
+
 <body id="home">
     <!-- Preloader -->{#
     <div id="preloader">
@@ -69,6 +70,7 @@
                         <li class="menuItem"><a href="#">Agir & soutenirs</a></li>
                         <li class="menuItem"><a href="#">Presse</a></li>
                         <li class="menuItem"><a href="#">Médias</a></li>
+                        <li class="menuItem"><a href="{{ path('archive_index') }}">Archives</a></li>
                         <li class="menuItem"><a href="{{ path('contact_index') }}">Contact</a></li>
                         <li class="menuItem"><a href="{{ path('users_logout') }}">Déconnexion</a></li>
                     {% else %}

@@ -21,6 +21,18 @@
                 <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
             </tr>
             <tr>
+                <th>Adresse</th>
+            </tr>
+            <tr>
+                <td>{{ agenda.address }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+            </tr>
+            <tr>
+                <td>{{ agenda.city }}</td>
+            </tr>
+            <tr>
                 <th>Nom</th>
             </tr>
             <tr>
@@ -32,20 +44,29 @@
             <tr>
                 <td>{{ agenda.description }}</td>
             </tr>
+            <tr>
+                <th>Inscription possible</th>
+            </tr>
+            <tr>
+                <td>{% if agenda.login < 1 %}Oui{% elseif agenda.login > 0 %}Non{% endif %}</td>
+            </tr>
         </tbody>
     </table>
         <p align="center">
                 <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
-        </p>        
-            
+        </p>
+        <p align="center">    
         {% if is_granted('ROLE_MODERATEUR') %}
             <a class="btn btn-warning" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a>
+        </p>
             {{ form_start(delete_form) }}
+            <p align="center">
                 <input class="btn btn-danger" type="submit" value="Supprimer l'évènement">
+            </p>
             {{ form_end(delete_form) }}
         {% endif %}
-
+        {% if agenda.login < 1 %}
         {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
-
+        {% endif %}
 </div>
 {% endblock %}
