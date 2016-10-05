@@ -14,6 +14,7 @@ class ContactType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('nom','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))
             ->add('prenom','text',array('required'=>true,'attr'   =>  array('class'   => 'form-control')))

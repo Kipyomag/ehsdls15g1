@@ -17,7 +17,7 @@ class CommentType extends AbstractType
     {
         /* todo replace author by author logged */
         $builder
-            ->add('content',null,array('attr' => array('class' => 'ckeditor')))
+            ->add('content')
         ;
     }
     
