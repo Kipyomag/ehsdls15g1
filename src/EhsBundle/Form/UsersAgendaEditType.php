@@ -8,8 +8,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class UsersAgendaType extends AbstractType
+class UsersAgendaEditType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,14 +22,10 @@ class UsersAgendaType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('telephone')
-            ->add('mail', RepeatedType::class, array(
-                'type' => EmailType::class,
-                'invalid_message' => 'Les e-mails doivent correspondre.',
-                'first_name'      => 'E-mail',
-                'second_name'     => 'Confirmez_votre_e-mail',
+            ->add('payment', ChoiceType::class, array(
+            'choices' => array(0 => 'Non', 1 => 'Oui'),
             ))
-            ->add('event','hidden')
-            ->add('payment','hidden')
+            
         ;
     }
     

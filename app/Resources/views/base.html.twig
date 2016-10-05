@@ -32,6 +32,8 @@
 
             <!-- Magnific Popup core CSS file -->
         <link rel="stylesheet" href="{{ asset('public/css/magnific-popup.css') }}" type="text/css" media="all" />
+
+
     </head>
         {% endblock %}
 
@@ -79,7 +81,7 @@
                         <li class="menuItem"><a href="{{ path('users_logout') }}">Déconnexion</a></li>
                     {% else %}
 
-                        <li class="scroll active"><a href="{{ path('articles_index') }}">Accueil</a></li>
+                        <li class="menuItem"><a href="{{ path('articles_index') }}">Accueil</a></li>
                         <li class="menuItem"><a href="{{ path('presentation_index') }}">L'association</a></li>
                         <li class="menuItem"><a href="#">Nos actions</a></li>
                         <li class="menuItem"><a href="#">Agir & soutenirs</a></li>
@@ -88,34 +90,21 @@
                         <li class="menuItem"><a href="{{ path('contact_new') }}">Contact</a></li>
                         <li class="menuItem"><a href="{{ path('users_new') }}">Inscription</a></li>
                         <li class="menuItem"><a href="{{ path('users_login') }}">Connexion</a></li>
-
                     {% endif %}
-
                 </ul>
             </div>
-
         </div>
     </nav>
 
-    <!-- Use it -->
-    {#<div id ="useit" class="content-section-a">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-sm-12">#}
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
                     {% block body %}
                     {% endblock %}
-
-             {#   </div>
-
-
-                </div>
-            </div>#}
-        <!-- /.container -->
-    {#</div>#}
-
+            </div>
+        </div>
+    </div>
 
     <!-- footer -->
     <footer class="footer">
@@ -125,6 +114,8 @@
                     <div class="footer-col col-md-4">
                         <h5>Location</h5>
                         <p>Nantes</p>
+                        <h5>Notre Siège</h5>
+                        <p>6 avenue de la Devinière <br>44000 Nantes</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h5>Share with Love</h5>
@@ -137,7 +128,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h5>About EHS</h5>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Agissons ensemble.</p>
                     </div>
                 </div>
             </div>
@@ -167,14 +158,14 @@
             <!--[if lt IE 9]>
             <script src="{{ asset('public/js/html5shiv.js') }}"></script>
             <![endif]-->
-            <!-- JavaScript -->
-            <script src="{{ asset ('public/js/jquery-1.10.2.js') }}"></script>
-            <script src="{{ asset ('public/js/bootstrap.js') }}"></script>
-            <script src="{{ asset ('public/js/owl.carousel.js') }}"></script>
-            <script src="{{ asset ('public/js/script.js') }}"></script>
 
             <!-- StikyMenu -->
             <script src="{{ asset ('public/js/stickUp.min.js') }}"></script>
+            <script src="{{ asset('public/js/jquery-1.10.2.js') }}"></script>
+            <script src="{{ asset('public/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
+            <script src="{{ asset('public/js/script.js') }}"></script>
+            <!-- StikyMenu -->
             <script type="text/javascript">
                 jQuery(function($) {
                     $(document).ready( function() {
@@ -192,8 +183,6 @@
             <script src="{{ asset ('public/js/uiMorphingButton_inflow.js') }}"></script>
             <!-- Magnific Popup core JS file -->
             <script src="{{ asset ('public/js/jquery.magnific-popup.js') }}"></script>
-
-
         {% endblock %}
 
 

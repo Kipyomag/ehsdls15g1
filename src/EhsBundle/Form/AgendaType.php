@@ -29,8 +29,9 @@ class AgendaType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('login', ChoiceType::class, array(
-            'choices' => array(0 => 'Oui', 1 => 'Non'),
+            'choices' => array(0 => 'Non', 1 => 'Oui'),
             ))
+            ->add('loginNumber', 'integer', array('required'=>false))
         ;
     }
     

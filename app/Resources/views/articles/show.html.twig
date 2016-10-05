@@ -48,12 +48,14 @@
                 </tr>
             </tbody>
         </table>
-                
-        <h1>Commentaires</h1>
+
+        <a href="#" id="toggler">Laisser un commentaire</a>.
+        <div id="toggle">
         {{ form_start(comment_form) }}
             {{ form_widget(comment_form) }}
             <input type="submit" value="Envoyer" />
         {{ form_end(comment_form) }}
+        </div>
         <table class="table">
         {% for comment in article.comments %}
                 <tr>

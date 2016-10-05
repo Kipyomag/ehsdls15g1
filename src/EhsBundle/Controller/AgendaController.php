@@ -71,6 +71,12 @@ class AgendaController extends Controller
     public function showAction(Agenda $agenda, Request $request)
     {
         $deleteForm = $this->createDeleteForm($agenda);
+        $em = $this->getDoctrine()->getManager();
+        $participants = $em->getRepository('EhsBundle:UsersAgenda')->findBy(
+                                                                        array('payment' => 1,
+                                                                            'event' => $agenda->getId())
+                                                                        );
+        
         $usersAgenda = new UsersAgenda();
         $form = $this->createForm('EhsBundle\Form\UsersAgendaType', $usersAgenda);
         $form->handleRequest($request);
@@ -78,9 +84,10 @@ class AgendaController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usersAgenda->setEvent($agenda);
+            $usersAgenda->setPayment(false);
             $em->persist($usersAgenda);
             $em->flush();
-            $this->get('session')->getFlashBag()->set('sucess', 'Votre inscription a bien été prise en compte.');
+            $this->get('session')->getFlashBag()->set('success', 'Votre inscription a bien été prise en compte.');
             return $this->redirectToRoute('usersagenda_show', array('id' => $usersAgenda->getId()));
         }
 
@@ -89,6 +96,7 @@ class AgendaController extends Controller
             'form' => $form->createView(),
             'agenda' => $agenda,
             'delete_form' => $deleteForm->createView(),
+            'participants' => $participants,
         ));
     }
 
