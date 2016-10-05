@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AgendaType extends AbstractType
 {
@@ -23,8 +24,13 @@ class AgendaType extends AbstractType
             ->add('endingDate', DateTimeType::class, array(
                 'years' => range(date('Y'), date('Y')+5)
             ))
+            ->add('address')
+            ->add('city')
             ->add('title')
             ->add('description')
+            ->add('login', ChoiceType::class, array(
+            'choices' => array(0 => 'Oui', 1 => 'Non'),
+            ))
         ;
     }
     
