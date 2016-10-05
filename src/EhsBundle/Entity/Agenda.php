@@ -3,6 +3,7 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Agenda
@@ -38,14 +39,19 @@ class Agenda
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=100)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre ville ne peut pas contenir de nombre"
+     * )
      */
     private $city;
 
@@ -67,6 +73,13 @@ class Agenda
      * @ORM\Column(name="login", type="boolean", options={"default":false})
      */
     private $login;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="loginNumber", type="integer", nullable=true)
+     */
+    private $loginNumber;
 
     /**
      * @ORM\OneToMany(targetEntity="UsersAgenda", mappedBy="event")
@@ -202,6 +215,27 @@ class Agenda
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set loginNumber
+     * @return Agenda
+     */
+    public function setLoginNumber($loginNumber)
+    {
+        $this->loginNumber = $loginNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get loginNumber
+     *
+     * @return string
+     */
+    public function getLoginNumber()
+    {
+        return $this->loginNumber;
     }
 
     /**

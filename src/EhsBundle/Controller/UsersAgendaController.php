@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EhsBundle\Entity\UsersAgenda;
 use EhsBundle\Form\UsersAgendaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * UsersAgenda controller.
@@ -75,6 +76,11 @@ class UsersAgendaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($usersAgenda);
         $editForm = $this->createForm('EhsBundle\Form\UsersAgendaType', $usersAgenda);
+        $editForm->remove('payment');
+        $editForm->add('payment', ChoiceType::class, array(
+            'choices' => array(0 => 'Non', 1 => 'Oui'),
+            ));
+        $editForm->remove('mail');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

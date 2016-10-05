@@ -3,6 +3,7 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UsersAgenda
@@ -24,14 +25,24 @@ class UsersAgenda
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=100)
+          * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=100)
+          * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prénom ne peut pas contenir de nombre"
+     * )
      */
     private $prenom;
 
@@ -46,8 +57,17 @@ class UsersAgenda
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $mail;
+
+    /**
+     * @ORM\Column(name="payment", type="boolean", options={"default":false})
+     */
+    private $payment;
 
     /**
      * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="events")
@@ -162,6 +182,14 @@ class UsersAgenda
         return $this->mail;
     }
     
+    function getPayment() {
+        return $this->payment;
+    }
+
+    function setPayment($payment) {
+        $this->payment = $payment;
+    }
+
     function getEvent() {
         return $this->event;
     }

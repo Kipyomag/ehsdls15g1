@@ -48,7 +48,13 @@
                 <th>Inscription possible</th>
             </tr>
             <tr>
-                <td>{% if agenda.login < 1 %}Oui{% elseif agenda.login > 0 %}Non{% endif %}</td>
+                <td>{% if agenda.login < 1 %}Non{% elseif agenda.login > 0 %}Oui{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nombre de place</th>
+            </tr>
+            <tr>
+                <td>{% if agenda.login < 1 %}N/A{% else %}{{ agenda.loginNumber }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
@@ -65,8 +71,12 @@
             </p>
             {{ form_end(delete_form) }}
         {% endif %}
-        {% if agenda.login < 1 %}
-        {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
+        {% if agenda.login > 0 %}
+            {% if participants|length > agenda.loginNumber %}
+                {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
+            {% else %}
+                <h2 align="center">Le nombre d'inscription maximum a été atteint !</h2>
+            {% endif %}
         {% endif %}
 </div>
 {% endblock %}

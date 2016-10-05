@@ -25,6 +25,15 @@
                 <th>Mail</th>
                 <td>{{ usersAgenda.mail }}</td>
             </tr>
+            <tr>
+                <th>Paiement effectué</th>
+                <td>{% if usersAgenda.payment < 1 %}Non{% elseif usersAgenda.payment > 0 %}Oui{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Evènement</th>
+                <td>{{ usersAgenda.event.title }}</td>
+            </tr>
+            
         </tbody>
     </table>
 

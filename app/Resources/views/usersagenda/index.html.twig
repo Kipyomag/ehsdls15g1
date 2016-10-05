@@ -3,7 +3,7 @@
 {% block body %}
     <h1>UsersAgenda list</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -11,6 +11,7 @@
                 <th>Prenom</th>
                 <th>Telephone</th>
                 <th>Mail</th>
+                <th>Evènement</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{ usersAgenda.prenom }}</td>
                 <td>{{ usersAgenda.telephone }}</td>
                 <td>{{ usersAgenda.mail }}</td>
+                <td>{{ usersAgenda.event.title }}</td>
                 <td>
                     <ul>
                         <li>
