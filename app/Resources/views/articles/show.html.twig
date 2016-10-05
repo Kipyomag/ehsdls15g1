@@ -58,16 +58,15 @@
         {% for comment in article.comments %}
                 <tr>
                     <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
-<<<<<<< HEAD
+
                     <td>{{ comment.content | raw }}</td>
                     <th>{{ comment.creationDate|date("d/m/Y") }}</th>
-=======
-                    <td>{{ comment.content }}</td>
-                    <td>{{ comment.creationDate|date("d/m/Y") }}</td>
+
+
                     {% if is_granted('ROLE_MODERATEUR') %}
                         <td><a href="{{ path('comment_delete', { 'id': comment.id }) }}">X</a></td>
                     {% endif %}
->>>>>>> 93e41038992833843e6196dd5dd890a370e47e98
+
                 </tr>
         {% endfor %}
         </table>
