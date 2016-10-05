@@ -48,9 +48,9 @@
                 </tr>
             </tbody>
         </table>
-                
-        <h1>Commentaires</h1>
-        {{ form_start(comment_form) }}
+
+        <button type="button" class="btn btn-primary">Laisser un commentaire</button>
+           {{ form_start(comment_form) }}
             {{ form_widget(comment_form) }}
             <input type="submit" value="Envoyer" />
         {{ form_end(comment_form) }}

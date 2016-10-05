@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Contact creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" class="btn btn-primary" value="Envoyer" />
-    {{ form_end(form) }}
-
-
+<div id="contact" class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-left wrap_title">
+                <h2>Contactez-Nous</h2>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-primary" value="Envoyer" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
