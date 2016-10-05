@@ -49,11 +49,13 @@
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-primary">Laisser un commentaire</button>
-           {{ form_start(comment_form) }}
+        <a href="#" id="toggler">Laisser un commentaire</a>.
+        <div id="toggle">
+        {{ form_start(comment_form) }}
             {{ form_widget(comment_form) }}
             <input type="submit" value="Envoyer" />
         {{ form_end(comment_form) }}
+        </div>
         <table class="table">
         {% for comment in article.comments %}
                 <tr>
