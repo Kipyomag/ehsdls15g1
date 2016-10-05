@@ -36,10 +36,10 @@
 
 
 <body id="home">
-    <!-- Preloader -->{#
+    <!-- Preloader -->
     <div id="preloader">
         <div id="status"></div>
-    </div>#}
+    </div>
 
     <!-- NavBar-->
     <nav class="navbar-default" role="navigation">
@@ -163,7 +163,29 @@
             <!--[if lt IE 9]>
             <script src="{{ asset('public/js/html5shiv.js') }}"></script>
             <![endif]-->
-
+            <script src="{{ asset('public/js/jquery-1.10.2.js') }}"></script>
+            <script src="{{ asset('public/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
+            <script src="{{ asset('public/js/script.js') }}"></script>
+            <!-- StikyMenu -->
+            <script src="{{ asset('public/js/stickUp.min.js') }}"></script>
+            <script type="text/javascript">
+                jQuery(function($) {
+                    $(document).ready( function() {
+                        $('.navbar-default').stickUp();
+                    });
+                });
+            </script>
+            <!-- Smoothscroll -->
+            <script type="text/javascript" src="{{ asset('public/js/jquery.corner.js') }}"></script>
+            <script src="{{ asset('public/js/wow.min.js') }}"></script>
+            <script>
+                new WOW().init();
+            </script>
+            <script src="{{ asset('public/js/classie.js') }}"></script>
+            <script src="{{ asset('public/js/uiMorphingButton_inflow.js') }}"></script>
+            <!-- Magnific Popup core JS file -->
+            <script src="{{ asset('public/js/jquery.magnific-popup.js') }}"></script>
         {% endblock %}
 
 
