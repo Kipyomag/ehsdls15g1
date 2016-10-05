@@ -1,0 +1,24 @@
+archive_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:Archive:index" }
+    methods:  GET
+
+archive_show:
+    path:     /{id}/show
+    defaults: { _controller: "EhsBundle:Archive:show" }
+    methods:  GET
+
+archive_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:Archive:new" }
+    methods:  [GET, POST]
+
+archive_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EhsBundle:Archive:edit" }
+    methods:  [GET, POST]
+
+archive_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EhsBundle:Archive:delete" }
+    methods:  DELETE
