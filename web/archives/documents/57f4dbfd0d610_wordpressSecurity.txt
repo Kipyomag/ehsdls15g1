@@ -1,0 +1,35 @@
+changer utilisateur bdd (pas root)
+mettre un mdp a la base
+changer les prefixes des tables (pas wp_) (changer dans wpconfig et dans la bdd)
+*
+mettre régulièrement à jour wordpress et les plugins
+faire des sauvegardes régulières du dossier FTP et exporter le contenu de la bdd mais éviter les plugins de save auto
+sécuriser son .htaccess
+gérer les droits utlisateurs
+
+const
+	disallow file edit = true //empeche les utilisateurs de modifier les fichiers
+	disalliw file mods = true //desactive l'installation de plugin
+	automatic_updater_disabled = true //desactive la mise a jour auto de plugins wordpress
+	wp_auto_update_core = true //desactive la mise a jour auto de plugins wordpress
+	wp debug = false
+	
+plugin
+	akismet //natif mais a activer
+	WordFence //anti intrusion
+	Contact Form DB //mes les contacts en bdd => toujours sauvegarder les mails en bdd pour pas les perdres
+
+local
+benjamin	az
+
+
+
+
+
+============== AUTRE ======================
+plugin
+	Yoast SEO // optimise le référencement
+	ContactForm7 //gere les formulaires de contact
+	Contact Form DB //mes les contacts en bdd
+	wp super cache // optimise la perf (penser à vider le cache en cas de modifs)
+	user role editor // si on veut creer des profils persos

@@ -22,7 +22,7 @@ class ArchiveController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $archives = $em->getRepository('EhsBundle:Archive')->findAll();
+        $archives = $em->getRepository('EhsBundle:Archive')->findBy(array(),array('date'=>'DESC'));
 
         return $this->render('archive/index.html.twig', array(
             'archives' => $archives,
