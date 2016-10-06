@@ -41,6 +41,7 @@ class ArchiveController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $archive->setDate(new \DateTime());
             $em->persist($archive);
             $em->flush();
 
