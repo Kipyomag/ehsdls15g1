@@ -1,0 +1,4 @@
+imagecollection_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:ImageCollection:new" }
+    methods:  [GET, POST]

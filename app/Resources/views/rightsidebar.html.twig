@@ -2,7 +2,7 @@
     <div class="sidebar-nav-fixed affix">
         <div class="list-group">
             <div class="list-group-item">
-                <p align="center">Evènements à venir</p align="center">
+                <p align="center">Evènements à venir</p>
             {% for agenda in agendas %}
                     <a class="list-group-item" href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.title }}<br/>{{ agenda.startingDate|date('d-m-Y') }}</a>                
             {% endfor %}
@@ -20,6 +20,7 @@
             {% if is_granted('ROLE_MODERATEUR') %}
                 <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
             {% endif %}
+        </div>
         </div>
     </div>
 </div>
