@@ -1,24 +1,20 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Adhésion {{ usersAgenda.nom }} {{ usersAgenda.prenom }}{% endblock %}
 {% block body %}
-    <h1>UsersAgenda</h1>
+    <h1>Adhésion de {{ usersAgenda.nom }} {{ usersAgenda.prenom }} - {{ usersAgenda.mail }}</h1>
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ usersAgenda.id }}</td>
-            </tr>
             <tr>
                 <th>Nom</th>
                 <td>{{ usersAgenda.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <td>{{ usersAgenda.prenom }}</td>
             </tr>
             <tr>
-                <th>Telephone</th>
+                <th>Téléphone</th>
                 <td>{{ usersAgenda.telephone }}</td>
             </tr>
             <tr>
@@ -39,10 +35,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('usersagenda_index') }}">Back to the list</a>
+            <a href="{{ path('usersagenda_index') }}">Liste des adhésions aux évènements</a>
         </li>
         <li>
-            <a href="{{ path('usersagenda_edit', { 'id': usersAgenda.id }) }}">Edit</a>
+            <a href="{{ path('usersagenda_edit', { 'id': usersAgenda.id }) }}">Editer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
