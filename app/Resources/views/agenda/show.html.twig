@@ -9,13 +9,13 @@
     <table align="center">
         <tbody>
             <tr>
-                <th>Date de début</th>               
+                <th>Début</th>               
             </tr>
             <tr>
                 <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td> 
             </tr>
             <tr>
-                <th>Date de fin</th>
+                <th>Fin</th>
             </tr>
             <tr>
                 <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
@@ -72,7 +72,7 @@
             {{ form_end(delete_form) }}
         {% endif %}
         {% if agenda.login > 0 %}
-            {% if participants|length > agenda.loginNumber %}
+            {% if participants|length < agenda.loginNumber %}
                 {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
             {% else %}
                 <h2 align="center">Le nombre d'inscription maximum a été atteint !</h2>

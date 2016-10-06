@@ -81,6 +81,7 @@ class UsersAgendaController extends Controller
             'choices' => array(0 => 'Non', 1 => 'Oui'),
             ));
         $editForm->remove('mail');
+        $editForm->remove('event');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
