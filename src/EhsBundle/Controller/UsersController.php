@@ -239,7 +239,10 @@ Pays:\n" . $user->getPays() . "\n"
                 'Emails/registration.html.twig',
                 array('name' => $name)
             ),*/
-            'Voici votre nouveau mot de passe: ' . $password
+            "Bonjour,\n
+Vous trouverez votre nouveau mot de passe ci-dessous.\n 
+Pour des raisons de sécurité, nous vous conseillons de modifier ce mot de passe sur votre profil. \n
+Votre mot de passe: " . $password
         )
         /*
          * If you also want to include a plaintext version of the message

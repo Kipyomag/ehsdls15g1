@@ -20,11 +20,6 @@
                         <tr><td>{{ form_label(form.prenom, "Prénom") }}</td></tr>
                         <tr><td>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
-                    {% for passwordField in form.password %}
-                            <tr><td>{{ form_label(passwordField) }}</td></tr>
-                            <tr><td>{{ form_widget(passwordField, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
-                    {% endfor %}
-
                         <tr><td>{{ form_label(form.genre, "Genre") }}</td></tr>
                         <tr><td>{{ form_widget(form.genre, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 

@@ -69,16 +69,41 @@ class AdminController extends Controller
     //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
         $user = new Users();
         $form = $this->createForm('EhsBundle\Form\UsersType', $user);
+        $form->remove('password');
         $form->handleRequest($request);
+        
+        function str_random($lenght){
+            $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
+            return substr(str_shuffle(str_repeat($alphabet, $lenght)), 0, $lenght);
+        }
+                            
+                            
+                            
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = str_random(10);
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
+
+            $mail = $user->getEmail();
+            $message = \Swift_Message::newInstance()
+            ->setSubject('EHS - Confirmation de votre inscription')
+            ->setFrom('send@example.com')
+            ->setTo($mail)
+            ->setBody(
+                "Bonjour et bienvenue sur Ethique, Handicap et Société !\n
+Votre demande d'inscription a été accepté. Vous trouverez votre mot de passe ci-dessous.\n 
+Pour des raisons de sécurité, nous vous conseillons de modifier ce mot de passe sur votre profil. \n
+Votre mot de passe: " . $password
+            );
+
+            $this->get('mailer')->send($message);
+
+            $this->get('session')->getFlashBag()->set('success', 'Membre inscrit avec succès !');
             return $this->redirectToRoute('users_show', array('id' => $user->getId()));
         }
 
