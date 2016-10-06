@@ -15,7 +15,7 @@ users_show_profil:
 
 users_new:
     path:     /new
-    defaults: { _controller: "EhsBundle:Users:new" }
+    defaults: { _controller: "EhsBundle:Users:askNew" }
     methods:  [GET, POST]
 
 users_edit:

@@ -44,11 +44,12 @@ class UsersType extends AbstractType
             ->add('pays')
             ->add('role', ChoiceType::class, array(
                 'choices' => array(
+                    'ROLE_ANONYMOUS' => 'Anonyme',
                     'ROLE_USER' => 'Utilisateur',
                     'ROLE_MODERATEUR' => 'Modérateur',
                     'ROLE_ADMIN' => 'Administrateur'),
                 'required'    => false,
-                'empty_data'  => 'ROLE_USER',
+                'empty_data'  => 'ROLE_ANONYMOUS',
                 )
             );
     }
