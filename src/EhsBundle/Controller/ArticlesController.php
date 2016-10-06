@@ -284,9 +284,13 @@ class ArticlesController extends Controller
                 $nbrOfArticles,
                 $firstArticle);
 
+        $nbrOfPages = $em->getRepository('EhsBundle:Articles')->countPublished();
+        $nbrOfPages /= $nbrOfArticles; //nbr of page displayable
+
         return $this->render('articles/page.html.twig', array(
             'articles' => $articles,
             'pageNbr' => $nbr,
+            'nbrOfPages' => $nbrOfPages,
         ));
     }
 

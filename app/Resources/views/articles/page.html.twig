@@ -28,7 +28,9 @@
         {% if pageNbr != 1 %}
             <a href="{{ path('articles_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
         {% endif %}
-        <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+        {% if pageNbr < nbrOfPages %}
+            <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+        {% endif %}
     </div>
 
 </div>

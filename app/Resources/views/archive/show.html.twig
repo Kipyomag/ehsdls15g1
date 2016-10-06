@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Archive{% endblock %}
+
 {% block body %}
     <h1>Archive</h1>
 
@@ -8,10 +10,6 @@
             <tr>
                 <th>Id</th>
                 <td>{{ archive.id }}</td>
-            </tr>
-            <tr>
-                <th>Documentname</th>
-                <td>{{ archive.documentName }}</td>
             </tr>
             <tr>
                 <th>Date</th>
@@ -24,11 +22,14 @@
             <tr>
                 <th>Text</th>
                 <td>{{ archive.text|raw }}</td>
-            </tr>document_path
+            </tr>
+            {% if archive.documentName != null %}
             <tr>
                 <th>Document</th>
+                <!--todo delete app.request.basePath before deploying-->
                 <td><a href="{{ app.request.basePath }}{{ vich_uploader_asset(archive, 'documentFile') }}" download>DOWNLOAD</a></td>
             </tr>
+            {% endif %}
         </tbody>
     </table>
 
