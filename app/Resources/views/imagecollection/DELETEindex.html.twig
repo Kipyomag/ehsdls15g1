@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ImageCollection list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Images</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imageCollection in imageCollections %}
+            <tr>
+                <td><a href="{{ path('imagecollection_show', { 'id': imageCollection.id }) }}">{{ imageCollection.id }}</a></td>
+                <td>{% if imageCollection.images %}{{ imageCollection.images|join(', ') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('imagecollection_show', { 'id': imageCollection.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('imagecollection_edit', { 'id': imageCollection.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('imagecollection_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+image_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:Image:index" }
+    methods:  GET
+
+image_show:
+    path:     /{id}/show
+    defaults: { _controller: "EhsBundle:Image:show" }
+    methods:  GET
+
+image_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EhsBundle:Image:delete" }
+    methods:  DELETE
