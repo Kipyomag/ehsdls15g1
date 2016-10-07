@@ -43,8 +43,15 @@ class ContactController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-
-            return $this->redirectToRoute('contact_show', array('id' => $contact->getId()));
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Contact')
+            ->setFrom($contact->getEmail())
+            ->setTo("cyrilcoelho67@gmail.com")
+            ->setBody(
+                "E-mail: ".$contact->getEmail()."\nNom: ".$contact->getNom()."\nPrenom: ".$contact->getPrenom()."\nTelephone: ".$contact->getTelephone()."\nMessage: ".$contact->getMessage()
+            );
+            $this->get('mailer')->send($message);
+            return $this->redirectToRoute('articles_index');
         }
 
         return $this->render('contact/new.html.twig', array(
@@ -119,14 +126,7 @@ class ContactController extends Controller
      */
     private function createDeleteForm(Contact $contact)
     {
-        $message = \Swift_Message::newInstance()
-        ->setSubject('Contact')
-        ->setFrom($contact->getEmail())
-        ->setTo("cyrilcoelho67@gmail.com")
-        ->setBody(
-            "E-mail: ".$contact->getEmail()."\nNom: ".$contact->getNom()."\nPrenom: ".$contact->getPrenom()."\nTelephone: ".$contact->getTelephone()."\nMessage: ".$contact->getMessage()
-        );
-        $this->get('mailer')->send($message);
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('contact_delete', array('id' => $contact->getId())))
             ->setMethod('DELETE')

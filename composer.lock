@@ -6,7 +6,6 @@
     ],
     "hash": "049108b5f951bb4e2d3745c68fc89794",
     "content-hash": "a486c8c495683007c28aff9061daf17b",
-
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -818,55 +817,6 @@
             "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
             "homepage": "https://github.com/drewm/mailchimp-api",
             "time": "2016-07-01 15:53:33"
-        },
-        {
-            "name": "ekyna/install-bundle",
-            "version": "v0.1",
-            "target-dir": "Ekyna/Bundle/InstallBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ekyna/InstallBundle.git",
-                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ekyna/InstallBundle/zipball/dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
-                "reference": "dd707e040ea5c74ca7aca9975e7c4069b5c129a1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "~2.3"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Ekyna\\Bundle\\InstallBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Etienne Dauvergne",
-                    "homepage": "http://ekyna.com"
-                }
-            ],
-            "description": "Runs bundles installers",
-            "homepage": "https://github.com/ekyna/InstallBundle",
-            "keywords": [
-                "Symfony2",
-                "bundle",
-                "installer"
-            ],
-            "time": "2015-05-15 12:28:57"
         },
         {
             "name": "gregwar/captcha",
@@ -2128,16 +2078,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.11",
+            "version": "v2.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d"
+                "reference": "6a5bc3257b60098c28fc1bbcacd52000dd2801d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
-                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6a5bc3257b60098c28fc1bbcacd52000dd2801d1",
+                "reference": "6a5bc3257b60098c28fc1bbcacd52000dd2801d1",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2103,7 @@
                 "symfony/polyfill-php70": "~1.0",
                 "symfony/polyfill-util": "~1.0",
                 "symfony/security-acl": "~2.7|~3.0.0",
-                "twig/twig": "~1.23|~2.0"
+                "twig/twig": "~1.26|~2.0"
             },
             "conflict": {
                 "phpdocumentor/reflection": "<1.0.7"
@@ -2214,7 +2164,8 @@
                 "egulias/email-validator": "~1.2,>=1.2.1",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
-                "phpdocumentor/reflection": "^1.0.7"
+                "phpdocumentor/reflection": "^1.0.7",
+                "symfony/phpunit-bridge": "~3.2"
             },
             "type": "library",
             "extra": {
@@ -2258,7 +2209,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-09-07 02:04:25"
+            "time": "2016-10-03 18:44:12"
         },
         {
             "name": "twig/twig",
@@ -2493,7 +2444,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.11",
+            "version": "v2.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
