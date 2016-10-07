@@ -2,17 +2,20 @@
 
 {% block body %}
 <div class="col-xs-12">
-    <h1>Presentation creation</h1>
+    <h1>Nouvelle présentation</h1>
+    <ul>
+        <li>
+            <a href="{{ path('presentation_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    <p>
+        Ici vous pouvez créer une présentation de l'association que sera disponible dans l'onglet "L'association".
+    </p>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('presentation_index') }}">Back to the list</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}

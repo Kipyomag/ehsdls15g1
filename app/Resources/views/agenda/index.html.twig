@@ -11,12 +11,12 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <th></th>
                     {% endif %}
+                        <th>Evenement</th>
                         <th>Début</th>
                         <th>Fin</th>
                         <th>Ville</th>
-                        <th>Titre</th>
                         <th>Inscription</th>
-                        <th>Nombre de place</th>
+                        <th>Nombre de places</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,10 +26,10 @@
                         {% if is_granted('ROLE_MODERATEUR') %}
                         <td><a type="button" class="btn btn-warning btn-xs" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a></td>
                         {% endif %}
-                        <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i:s') }}{% endif %}</td>
-                        <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i:s') }}{% endif %}</td>
-                        <td>{{ agenda.city }}</td>
                         <td>{{ agenda.title }}</td>
+                        <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td>
+                        <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
+                        <td>{{ agenda.city }}</td>
                         <td>{% if agenda.login < 1 %}Non{% elseif agenda.login > 0 %}Oui{% endif %}</td>
                         <td>{% if agenda.login < 1 %}N/A{% else %}{{ agenda.loginNumber }}{% endif %}</td>
                         <td>

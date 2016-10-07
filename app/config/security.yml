@@ -45,7 +45,6 @@ security:
         - { path: ^/comment/new, role: ROLE_USER }
         - { path: ^/comment/[0-9]+/edit, role: ROLE_MODERATEUR }
         - { path: ^/comment/[0-9]+/delete, role: ROLE_MODERATEUR }
-        - { path: ^/newsletter, role: ROLE_ADMIN }
         - { path: ^/presentation/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/presentation/new, role: ROLE_ADMIN }
         - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }

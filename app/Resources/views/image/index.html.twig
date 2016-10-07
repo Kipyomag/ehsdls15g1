@@ -35,10 +35,12 @@
 
 
 
+    {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
             <a href="{{ path('imagecollection_new') }}">Create a new entry</a>
         </li>
     </ul>
+    {% endif %}
     </div>
     {% endblock %}

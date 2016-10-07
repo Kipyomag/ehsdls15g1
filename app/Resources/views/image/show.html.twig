@@ -7,10 +7,6 @@
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ image.id }}</td>
-            </tr>
-            <tr>
                 <th>Fichier</th>
                 <td>{{ image.imageName }}</td>
             </tr>
@@ -29,13 +25,13 @@
         <li>
             <a href="{{ path('image_index') }}">Back to the list</a>
         </li>
+        {% if is_granted('ROLE_MODERATEUR') %}
         <li>
-            {% if is_granted('ROLE_MODERATEUR') %}
-                {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            {% endif %}
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
         </li>
+        {% endif %}
     </ul>
 </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 /* main article + articles + sidebar */
 #corps {
 	padding: 100px 5% 0 5%;
+	min-height: 80vh;
 }
 
 footer {
