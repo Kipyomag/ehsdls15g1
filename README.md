@@ -1,3 +1,10 @@
+﻿#Install du projet symfony
+1. `git clone https://github.com/Kipyomag/ehsdls15g1.git`
+2. `composer update`
+3. créer la base de donée `ehs` dans phpmyadmin
+4. `php app/console doctrine:schema:update --force`
+5. `php app/console doctrine:fixtures:load`
+ 
 ## A modifier
 #Quand le nom de domaine sera mis en place, il faudra modifier quelques petites choses
 

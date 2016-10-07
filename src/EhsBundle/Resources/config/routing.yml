@@ -56,4 +56,3 @@ ehs_image:
 ehs_imagecollection:
         resource: "@EhsBundle/Resources/config/routing/imagecollection.yml"
         prefix:   /imagecollection
-
