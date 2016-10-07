@@ -18,6 +18,9 @@ class AppKernel extends Kernel
             new EhsBundle\EhsBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+
 
         );
 

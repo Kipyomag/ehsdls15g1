@@ -19,13 +19,18 @@ class ArticlesType extends AbstractType
         $builder
             ->add('titre')
             ->add('chapeau')
-            ->add('contenu',null,array('attr' => array('class' => 'ckeditor')))
+            ->add('contenu','ckeditor', array(
+            'config' => array(
+                'filebrowserBrowseRoute' => 'elfinder',
+                'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                ),
+            ))
             ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
             ->add('send', SubmitType::class, array('label' => 'Envoyer'))
-            
+
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
