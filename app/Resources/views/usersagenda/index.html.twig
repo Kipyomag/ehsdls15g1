@@ -4,7 +4,18 @@
 
 {% block body %}
     <h1>Liste des adhésions aux évènements</h1>
-
+    <form action="{{ path('usersagenda_index') }}" method="post">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Go!</button>
+                        </span>
+                        <select name="agenda">
+                        {% for agenda in agendas %}
+                            <option value="{{ agenda.title }}">{{ agenda.title }}</option>
+                        {% endfor %}
+                        </select>
+                    </div><!-- /input-group -->
+                </form>
     <table class="table table-striped">
         <thead>
             <tr>
