@@ -62,8 +62,6 @@ class ArchiveController extends Controller
     {
         $deleteForm = $this->createDeleteForm($archive);
 
-        /*$helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-        $path = $helper->asset($archive, 'documentFile');*/
 
         return $this->render('archive/show.html.twig', array(
             'archive' => $archive,

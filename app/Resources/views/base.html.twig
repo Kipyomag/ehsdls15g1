@@ -33,7 +33,7 @@
             <ul class="nav navbar-nav">
                 <li class="menuItem"><a href="{{ path('articles_index') }}">Accueil</a></li>
                 <li class="menuItem"><a href="{{ path('presentation_index') }}">L'association</a></li>
-                <li class="menuItem"><a href="{{ path('image_index') }}">Multimédias</a></li>
+                <li class="menuItem"><a href="{{ path('image_index') }}">Galerie</a></li>
                 <li class="menuItem"><a href="{{ path('contact_new') }}">Contact</a></li>
                 {% if app.user %}
                     {% if is_granted('ROLE_ADMIN') %}
@@ -43,11 +43,11 @@
                 {% endif %}
 
                 {% if app.user %}
-                    <li class="menuItem"><a class="btn btn-default" href="{{ path('users_show_profil', { 'id': app.user.id }) }}">Profil</a></li>   
-                    <li class="menuItem"><a class="btn btn-default" href="{{ path('users_logout') }}">Déconnexion</a></li>
+                    <li class="menuItem"><a href="{{ path('users_show_profil', { 'id': app.user.id }) }}">Profil</a></li>   
+                    <li class="menuItem"><a href="{{ path('users_logout') }}">Déconnexion</a></li>
                 {% else %}
-                    <li class="menuItem"><a class="btn btn-default" href="{{ path('users_login') }}">Connexion</a></li>
-                    <li class="menuItem"><a class="btn btn-default" href="{{ path('users_new') }}">Inscription</a></li>
+                    <li class="menuItem"><a href="{{ path('users_login') }}">Connexion</a></li>
+                    <li class="menuItem"><a href="{{ path('users_new') }}">Inscription</a></li>
                 {% endif %}
             </ul>
 

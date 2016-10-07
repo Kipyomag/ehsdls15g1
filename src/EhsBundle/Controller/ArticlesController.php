@@ -277,7 +277,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $nbrOfArticles = 6; //MODIFIABLE = Nombre d'article afficher par page
+        $nbrOfArticles = 18; //MODIFIABLE = Nombre d'article afficher par page
         $firstArticle = ($nbr-1) * $nbrOfArticles; //ne pas toucher = offset = on commence a afficher a partir de l'article suivant
 
         $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),

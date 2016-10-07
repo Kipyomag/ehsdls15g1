@@ -22,7 +22,7 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $images = $em->getRepository('EhsBundle:Image')->findAll();
+        $images = $em->getRepository('EhsBundle:Image')->findBy(array(),array('date'=>'DESC'),12);
 
         return $this->render('image/index.html.twig', array(
             'images' => $images,
@@ -75,5 +75,32 @@ class ImageController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+
+    /**
+     * Displays a page of articles
+     *
+     */
+    public function pageAction(Request $request, $nbr)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $nbrOfImages = 18; //MODIFIABLE = Nombre d'images affichés par page
+        $firstImage = ($nbr-1) * $nbrOfImages;
+
+        $images = $em->getRepository('EhsBundle:Image')->findBy(array(),array('date'=>'DESC'),
+                $nbrOfImages,
+                $firstImage);
+
+        $nbrOfPages = $em->getRepository('EhsBundle:Image')->countAll();
+        $nbrOfPages /= $nbrOfImages;
+
+        return $this->render('image/page.html.twig', array(
+            'images' => $images,
+            'pageNbr' => $nbr,
+            'nbrOfPages' => $nbrOfPages,
+        ));
     }
 }

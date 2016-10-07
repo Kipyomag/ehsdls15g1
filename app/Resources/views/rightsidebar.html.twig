@@ -18,7 +18,7 @@
             <a href="#" class="list-group-item">Facebook</a>
             <a href="#" class="list-group-item">Twitter</a>
             {% if is_granted('ROLE_MODERATEUR') %}
-                <a href="{{ path('articles_index') }}" class="list-group-item">Proposer un article</a>
+                <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
             {% endif %}
         </div>
     </div>

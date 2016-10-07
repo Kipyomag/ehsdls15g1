@@ -12,3 +12,8 @@ image_delete:
     path:     /{id}/delete
     defaults: { _controller: "EhsBundle:Image:delete" }
     methods:  DELETE
+
+image_page:
+    path:     /page/{nbr}
+    defaults: { _controller: "EhsBundle:Image:page" }
+    methods:  [GET, POST]

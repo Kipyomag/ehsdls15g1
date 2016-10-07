@@ -9,19 +9,22 @@
     <!-- ALL ARTICLES OF THIS PAGE -->
     <div id="articles" class="rowArticle">
         {% for article in articles %}
-            <div class="article col-xs-12 col-md-4">
-                <div class='articleContent'>
-                    <h2>{{ article.titre }}</h2>
-                    <p class='chapeau'>{{ article.chapeau }}</p>
-                </div>
-                <p>
-                    {{ article.date|date("d/m/Y") }}
-                    auteur: {{ article.author.nom }} {{ article.author.prenom }}
-                    <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+            <div class="article col-xs-12 col-md-4 text-center">
+                <div class="article-inside">
+                    <div class="articleContent">
+                        <h2>{{ article.titre }}</h2>
+                        <p class='chapeau'>{{ article.chapeau }}</p>
+                    </div>
+                    <div class='author'>
+                        <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+                    </div>
+
+                    <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                     {% if is_granted('ROLE_MODERATEUR') %}
-                    <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                        <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                     {% endif %}
-                </p>
+
+                </div> <!-- end .article-inside -->
             </div>
         {% endfor %}
         

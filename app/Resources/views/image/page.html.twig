@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Images{% endblock %}
+
+{% block body %}
+
+<div class="col-xs-12">
+
+    <!-- ALL Images OF THIS PAGE -->
+    <div class="galerie">
+    {% for image in images %}
+        <a href="{{ path('image_show', { 'id': image.id }) }}"><img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="Photo de l'association"></a>
+    {% endfor %}
+    </div>
+        
+    {% if pageNbr != 1 %}
+        <a href="{{ path('image_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
+    {% endif %}
+    {% if pageNbr < nbrOfPages %}
+        <a href="{{ path('image_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+    {% endif %}
+    </div>
+
+</div>
+{% endblock %}
