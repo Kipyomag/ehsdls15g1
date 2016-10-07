@@ -12,17 +12,12 @@
             {% endif %}
             </div>
         </div>
-        <div class="list-group">
-            <div class="list-group-item">
-                FORMULAIRE NEWSLETTER
-            </div>
-        </div>
         <div id="sidebarActions" class="list-group">
             <a href="{{ path('newsletter_index') }}" class="list-group-item">Newsletter</a>
 
             <a href="#" class="list-group-item">Facebook</a>
             <a href="#" class="list-group-item">Twitter</a>
-            {% if is_granted('ROLE_MODERATEUR') %}
+            {% if is_granted('ROLE_USER') %}
                 <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
             {% endif %}
         </div>

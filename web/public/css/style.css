@@ -87,6 +87,10 @@ footer {
 	box-shadow: 0px 5px 5px grey;
 }
 
+#mainArticle-inside h1 {
+	color: purple;
+}
+
 #mainArticle-inside>.content {
 	min-height: 42vh;
 	max-height: 42vh;
@@ -151,4 +155,16 @@ footer {
 .galerie img {
 	max-width: 100%;
 	max-height: 40vh;
+}
+
+/* global */
+input[type="submit"]{
+	background-color: orange;
+	color: white;
+	border: none;
+	border: 1px solid orange;
+}
+input[type="submit"]:hover{
+	color: orange;
+	background-color: white;
 }
