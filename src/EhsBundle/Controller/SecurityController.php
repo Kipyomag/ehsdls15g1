@@ -11,9 +11,9 @@ class SecurityController extends Controller
 
     public function loginAction(Request $request)
     {
-    	if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+    	if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
 			
-			$this->get('session')->getFlashBag()->set('danger', 'Vous êtes déjà connecté.');
+			$this->get('session')->getFlashBag()->set('danger', 'Votre compte n\'a pas été encore validé.');
 
             return $this->redirectToRoute('articles_index');
 		} else {

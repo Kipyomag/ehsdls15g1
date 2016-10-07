@@ -37,39 +37,40 @@ class UsersController extends Controller
         }
     }
 
-    /**
-     * Creates a new Users entity.
-     *
-     */
-    public function newAction(Request $request)
+    public function askNewAction(Request $request)
     {
-        //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $user = new Users();
-            $form = $this->createForm('EhsBundle\Form\UsersType', $user);
-            $form->handleRequest($request);
+        $user = new Users();
+        $form = $this->createForm('EhsBundle\Form\UsersType', $user);
+        $form->handleRequest($request);
+        $form->remove('password');
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                $encoder = $this->container->get('security.password_encoder');
-                $encoded = $encoder->encodePassword($user, $user->getPassword());
-                $user->setPassword($encoded);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                $this->get('session')->getFlashBag()->set('success', 'Inscription réussie.');
-                $params = $request->request->all();
-            }
-            return $this->render('users/new.html.twig', array(
-                'user' => $user,
-                'form' => $form->createView(),
-            ));
-            
-        /*} else {
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mail = $user->getEmail();
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Demande d\'inscription')
+            ->setFrom($mail)
+            ->setTo('EHSDL15@gmail.com')
+            ->setBody(
+                "Bonjour,\n
+Vous avez reçu une nouvelle demande d'inscription \n
+Nom:\n" . $user->getNom() . "\n
+Prénom:\n" . $user->getPrenom() . "\n
+Mail:\n" . $user->getEmail() . "\n
+Genre:\n" . $user->getGenre() . "\n
+Adresse:\n" . $user->getAdresse() . "\n
+Ville:\n" . $user->getVille() . "\n
+Région:\n" . $user->getRegion() . "\n
+Pays:\n" . $user->getPays() . "\n"
+            );
+            $this->get('mailer')->send($message);
 
-            return $this->redirectToRoute('articles_index');
-        }*/
-
-        
+            $this->get('session')->getFlashBag()->set('success', 'Votre demande d\'inscription à été transmise à l\'administrateur, un mail vous sera envoyé lorsque votre inscription sera validé.');
+                
+        }
+        return $this->render('users/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+    ));
     }
 
     /**
@@ -238,7 +239,10 @@ class UsersController extends Controller
                 'Emails/registration.html.twig',
                 array('name' => $name)
             ),*/
-            'Voici votre nouveau mot de passe: ' . $password
+            "Bonjour,\n
+Vous trouverez votre nouveau mot de passe ci-dessous.\n 
+Pour des raisons de sécurité, nous vous conseillons de modifier ce mot de passe sur votre profil. \n
+Votre mot de passe: " . $password
         )
         /*
          * If you also want to include a plaintext version of the message

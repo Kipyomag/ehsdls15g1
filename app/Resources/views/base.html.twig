@@ -29,7 +29,6 @@
             </button>
             <a href="{{ path('articles_index') }}"><img src="{{ asset('public/img/wip_ehs6.png') }}" alt="logo association"></a>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="menuItem"><a href="{{ path('articles_index') }}">Accueil</a></li>
@@ -51,14 +50,33 @@
                     <li class="menuItem"><a class="btn btn-default" href="{{ path('users_new') }}">Inscription</a></li>
                 {% endif %}
             </ul>
+
         </div>
     </div>
 </nav>
 
 
-
 <body>
     <div id="corps" class ="container-fluid">
+
+        <!-- FLASHBAG -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    {% for flashMessage in app.session.flashbag.get('success') %}
+                        <div class="alert alert-success">
+                            <p align="center">{{ flashMessage }}</p>
+                        </div>
+                    {% endfor %}
+                    
+                    {% for flashMessage in app.session.flashbag.get('danger') %}
+                        <div class="alert alert-danger">
+                            <p align="center">{{ flashMessage }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         
         <!-- Content -->
             {% block body %}
