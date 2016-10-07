@@ -13,13 +13,12 @@
             </div>
         </div>
         <div id="sidebarActions" class="list-group">
-            <div class="list-group-item">
-                FORMULAIRE NEWSLETTER
-            </div>
+            <a href="{{ path('newsletter_index') }}" class="list-group-item">FORMULAIRE NEWSLETTER</a>
+
             <a href="#" class="list-group-item">FACEBOOK</a>
             <a href="#" class="list-group-item">TWITTER</a>
             {% if is_granted('ROLE_MODERATEUR') %}
-                <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
+                <a href="{{ path('articles_index') }}" class="list-group-item">Proposer un article</a>
             {% endif %}
         </div>
     </div>

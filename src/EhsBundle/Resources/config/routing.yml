@@ -37,6 +37,10 @@ ehs_agenda:
     resource: "@EhsBundle/Resources/config/routing/agenda.yml"
     prefix:   /agenda
 
+ehs_question:
+    resource: "@EhsBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
 ehs_usersagenda:
     resource: "@EhsBundle/Resources/config/routing/usersagenda.yml"
     prefix:   /usersagenda
@@ -52,3 +56,4 @@ ehs_image:
 ehs_imagecollection:
         resource: "@EhsBundle/Resources/config/routing/imagecollection.yml"
         prefix:   /imagecollection
+
