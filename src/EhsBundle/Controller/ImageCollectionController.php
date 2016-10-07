@@ -40,15 +40,18 @@ class ImageCollectionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($imageCollection->getError() === false) {
+                $em = $this->getDoctrine()->getManager();
+               
+                foreach ($imageCollection->getImages() as $image) {
+                    $em->persist($image);
+                    $em->flush();
+                }
 
-            $em = $this->getDoctrine()->getManager();
-           
-            foreach ($imageCollection->getImages() as $image) {
-                $em->persist($image);
-                $em->flush();
+                return $this->redirectToRoute('image_index');
+            } else {
+                $this->get('session')->getFlashBag()->set('danger', 'Erreur: seul des images peuvent être envoyées.');
             }
-
-            return $this->redirectToRoute('image_index');
         }
 
         return $this->render('imagecollection/new.html.twig', array(

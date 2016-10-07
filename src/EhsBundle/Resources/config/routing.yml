@@ -25,7 +25,6 @@ ehs_admin:
 ehs_contact:
     resource: "@EhsBundle/Resources/config/routing/contact.yml"
     prefix:   /contact
-    defaults: { _controller: EhsBundle:Contact:new}
 
 gregwar_captcha_routing:
     resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
@@ -37,6 +36,10 @@ ehs_presentation:
 ehs_agenda:
     resource: "@EhsBundle/Resources/config/routing/agenda.yml"
     prefix:   /agenda
+
+ehs_question:
+    resource: "@EhsBundle/Resources/config/routing/question.yml"
+    prefix:   /question
 
 ehs_usersagenda:
     resource: "@EhsBundle/Resources/config/routing/usersagenda.yml"
@@ -53,3 +56,4 @@ ehs_image:
 ehs_imagecollection:
         resource: "@EhsBundle/Resources/config/routing/imagecollection.yml"
         prefix:   /imagecollection
+

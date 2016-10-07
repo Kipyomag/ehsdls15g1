@@ -1,6 +1,6 @@
-<div class="col-sm-3" id="rightSidebar">
-    <div class="sidebar-nav-fixed affix">
-        <div class="list-group">
+<div class="col-xs-12 col-md-3" id="rightSidebar">
+
+        <div id="calendar" class="list-group">
             <div class="list-group-item">
                 <p align="center">Evènements à venir</p>
             {% for agenda in agendas %}
@@ -15,12 +15,15 @@
             <div class="list-group-item">
                 FORMULAIRE NEWSLETTER
             </div>
-            <a href="#" class="list-group-item">FACEBOOKLink</a>
-            <a href="#" class="list-group-item">TWITTERLink</a>
-            {% if is_granted('ROLE_MODERATEUR') %}
-                <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
-            {% endif %}
         </div>
+        <div id="sidebarActions" class="list-group">
+            <a href="{{ path('newsletter_index') }}" class="list-group-item">Newsletter</a>
+
+            <a href="#" class="list-group-item">Facebook</a>
+            <a href="#" class="list-group-item">Twitter</a>
+            {% if is_granted('ROLE_MODERATEUR') %}
+                <a href="{{ path('articles_index') }}" class="list-group-item">Proposer un article</a>
+            {% endif %}
         </div>
     </div>
 </div>

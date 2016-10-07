@@ -45,11 +45,11 @@ security:
         - { path: ^/comment/new, role: ROLE_USER }
         - { path: ^/comment/[0-9]+/edit, role: ROLE_MODERATEUR }
         - { path: ^/comment/[0-9]+/delete, role: ROLE_MODERATEUR }
-        - { path: ^/newsletter, role: ROLE_ADMIN }
         - { path: ^/presentation/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/presentation/new, role: ROLE_ADMIN }
         - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/agenda/new, role: ROLE_ADMIN }
+        - { path: ^/contact/[0-9]+/show, role: ROLE_ADMIN }
         - { path: ^/archive/new, role: ROLE_ADMIN }
         - { path: ^/archive/index, role: ROLE_USER }
         - { path: ^/archive/[0-9]+/edit, role: ROLE_ADMIN }
@@ -57,6 +57,7 @@ security:
         - { path: ^/archive/[0-9]+/delete, role: ROLE_ADMIN }
         - { path: ^/imagecollection/new, role: ROLE_ADMIN }
         - { path: ^/image/[0-9]+/delete, role: ROLE_ADMIN }
+
 
             # activate different ways to authenticate
 

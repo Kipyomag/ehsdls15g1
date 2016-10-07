@@ -3,54 +3,53 @@
 {% block title %}Liste des membres{% endblock %}
 
 {% block body %}
-    
-    <div>
-        <h1>Liste des membres</h1> 
-            <ul>
-                <li>
-                    <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
-                </li>
-                <li>
-                    <a href="{{ path('admin_index') }}">Retourner a la liste</a>
-                </li>
-            </ul> 
-            
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Téléphone</th>
-                            <th>Adresse</th>
-                            <th>Ville</th>
-                            <th>Région</th>
-                            <th>Rôle</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                            <tr>
-                                <td>{{ user.nom }}</td>
-                                <td>{{ user.prenom }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.telephone }}</td>
-                                <td>{{ user.adresse }}</td>
-                                <td>{{ user.ville }}</td>
-                                <td>{{ user.region }}</td>
-                                <td>{{ user.role }}</td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <a href="{{ path('admin_users_edit', { 'id': user.id }) }}">Edition</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-    </div>
+<div class="col-xs-12">
+    <h1>Liste des membres</h1> 
+    <ul>
+        <li>
+            <a href="{{ path('users_new') }}">Creer un nouvel utilisateur</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_index') }}">Retourner a la liste</a>
+        </li>
+    </ul> 
+        
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Région</th>
+                <th>Rôle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.adresse }}</td>
+                    <td>{{ user.ville }}</td>
+                    <td>{{ user.region }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('admin_users_edit', { 'id': user.id }) }}">Edition</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
     
 {% endblock %}

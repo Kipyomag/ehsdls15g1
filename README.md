@@ -1,3 +1,14 @@
+## A modifier
+#Quand le nom de domaine sera mis en place, il faudra modifier quelques petites choses
+
+1. Le code mailchimp dans `newsletter\index.html.twig`.
+2. L'adresse e-mail dans `Controller\ContactController.php` de `newAction`.
+
+
+
+A SUPPRIMER --->
+
+
 # Docker Symfony (PHP7-FPM - NGINX - MySQL - ELK - REDIS)
 
 [![Build Status](https://travis-ci.org/maxpou/docker-symfony.svg?branch=master)](https://travis-ci.org/maxpou/docker-symfony)
@@ -5,6 +16,7 @@
 ![](http://www.maxpou.fr/images/articles/symfony-docker/schema-v2.png)
 
 Docker-symfony gives you everything you need for developing Symfony application. This complete stack run with docker and [docker-compose (1.7 or higher)](https://docs.docker.com/compose/).
+
 
 ## Installation
 

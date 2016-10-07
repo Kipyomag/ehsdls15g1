@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>La page introuvable</h1>
+
+    <p>
+        La page demandée n'a pas pu être trouvée.<br/>
+        <a href="{{ path('articles_index') }}" class="btn btn-default">Retourner à la page d'accueil</a>
+    </p>
+{% endblock %}

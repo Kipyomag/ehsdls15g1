@@ -3,6 +3,7 @@
 {% block title %}Edition adhésion {{ usersAgenda.nom }} {{ usersAgenda.prenom }}{% endblock %}
 
 {% block body %}
+<div class="col-xs-12">
     <h1>Edition {{ usersAgenda.nom }} {{ usersAgenda.prenom }} - {{ usersAgenda.mail }}</h1>
     <p>Adhésion pour l'évènement :{{ usersAgenda.event.title }}</p>
 
@@ -35,4 +36,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+</div>
 {% endblock %}

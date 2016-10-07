@@ -1,21 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Presentation list</h1>
+<div class="col-xs-12">
+    <h1>L'association</h1>
 
     <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for presentation in presentations %}
             <tr>
-                <td>{{ presentation.id }}</td>
-                <td>{{ presentation.content }}</td>
+                <td>{{ presentation.content|raw }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <ul>
                         <li>
@@ -23,14 +17,19 @@
                         </li>
                     </ul>
                 </td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
+    {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
             <a href="{{ path('presentation_new') }}">Create a new entry</a>
         </li>
     </ul>
+    {% endif %}
+</div>
+
 {% endblock %}

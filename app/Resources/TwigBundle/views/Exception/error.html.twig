@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Erreur</h1>
+
+    <p>
+        Une erreur est survenue.<br/>
+        <a href="{{ path('articles_index') }}" class="btn btn-default">Retourner à la page d'accueil</a>
+    </p>
+{% endblock %}

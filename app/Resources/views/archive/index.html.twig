@@ -3,35 +3,32 @@
 {% block title %}Archives{% endblock %}
 
 {% block body %}
-    <h1>Archive list</h1>
+<div class="col-xs-12">
+    <h1>Archives</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Documentname</th>
+                <th>Archive</th>
                 <th>Date</th>
-                <th>Titre</th>
-                <th>Text</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for archive in archives %}
             <tr>
-                <td><a href="{{ path('archive_show', { 'id': archive.id }) }}">{{ archive.id }}</a></td>
-                <td>{{ archive.documentName }}</td>
-                <td>{% if archive.date %}{{ archive.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ archive.titre }}</td>
-                <td>{{ archive.text }}</td>
+                <td>{% if archive.date %}{{ archive.date|date('d-m-Y') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('archive_show', { 'id': archive.id }) }}">show</a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ path('archive_edit', { 'id': archive.id }) }}">edit</a>
                         </li>
+                        {%endif%}
                     </ul>
                 </td>
             </tr>
@@ -39,9 +36,12 @@
         </tbody>
     </table>
 
+    {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
             <a href="{{ path('archive_new') }}">Create a new entry</a>
         </li>
     </ul>
+    {%endif%}
+</div>
 {% endblock %}
