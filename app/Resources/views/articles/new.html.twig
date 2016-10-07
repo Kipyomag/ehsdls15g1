@@ -5,6 +5,8 @@
 {% block body %}
 <div class="col-xs-12">
     <h1>Mes articles</h1>
+        <a class="btn btn-default" href="{{ path('articles_index') }}">Retour aux articles</a>
+
     <ul>
     {% for article in myArticles %}
         {% if article.status == 'progress' %}
@@ -29,10 +31,5 @@
         {{ form_widget(form._token) }}
     {{ form_end(form, {'render_rest': false}) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('articles_index') }}">Retour vers la liste</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}

@@ -5,6 +5,9 @@
 {% block body %}
 <div class="col-xs-12">
     <h1>Archives</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-default" href="{{ path('archive_new') }}">Ajouter une archive</a>
+    {%endif%}
 
     <table>
         <thead>
@@ -22,11 +25,11 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('archive_show', { 'id': archive.id }) }}">show</a>
+                            <a href="{{ path('archive_show', { 'id': archive.id }) }}">Voir</a>
                         </li>
                         {% if is_granted('ROLE_ADMIN') %}
                         <li>
-                            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">edit</a>
+                            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">Editer</a>
                         </li>
                         {%endif%}
                     </ul>
@@ -36,12 +39,5 @@
         </tbody>
     </table>
 
-    {% if is_granted('ROLE_ADMIN') %}
-    <ul>
-        <li>
-            <a href="{{ path('archive_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-    {%endif%}
 </div>
 {% endblock %}

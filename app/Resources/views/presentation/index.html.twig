@@ -3,6 +3,9 @@
 {% block body %}
 <div class="col-xs-12">
     <h1>L'association</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-default" href="{{ path('presentation_new') }}">Ajouter une présentation</a>
+    {% endif %}
 
     <table>
         <tbody>
@@ -13,7 +16,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('presentation_edit', { 'id': presentation.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('presentation_edit', { 'id': presentation.id }) }}">Editer</a>
                         </li>
                     </ul>
                 </td>
@@ -23,13 +26,6 @@
         </tbody>
     </table>
 
-    {% if is_granted('ROLE_ADMIN') %}
-    <ul>
-        <li>
-            <a href="{{ path('presentation_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-    {% endif %}
 </div>
 
 {% endblock %}

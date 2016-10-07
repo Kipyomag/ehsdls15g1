@@ -28,8 +28,7 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 		return $this
 			->createQueryBuilder('a')
 			->where('a.status != :status')
-			->orderBy('a.status', 'ASC')
-			->addOrderBy('a.date', 'DESC')
+			->orderBy('a.date', 'DESC')
             ->setParameter('status', 'progress')
 			->getQuery()
 			->getResult()
