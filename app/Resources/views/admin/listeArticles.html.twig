@@ -5,20 +5,14 @@
 {% block body %}
 <div class="col-xs-12">
     <h1>Liste des articles</h1> 
-    <ul>
-        <li>
-            <a href="{{ path('articles_new') }}">Creer un nouvel article</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_index') }}">Retourner a la liste</a>
-        </li>
-    </ul> 
+            <a class="btn btn-default" href="{{ path('articles_new') }}">Creer un nouvel article</a>
+            <a class="btn btn-default" href="{{ path('admin_index') }}">Retourner a la liste</a>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Status</th>
+                <th>Date</th>
                 <th>Titre</th>
-                <th>Chapeau</th>
                 <th>Auteur</th>
                 <th>Actions</th>
             </tr>
@@ -26,26 +20,20 @@
         <tbody>
             <tr>
             {% for article in articles %}
-                    <td><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
                     {% if article.status == 'published' %}
-                        <td class='publishedArticle'>Publié</td>
+                        <td class='publishedArticle'><a href="{{ path('articles_show', { 'id': article.id }) }}">Publié</a></td>
                     {% elseif article.status == 'refused' %}
-                        <td class='refusedArticle'>Refusé</td>
+                        <td class='refusedArticle'><a href="{{ path('articles_show', { 'id': article.id }) }}">Refusé</a></td>
                     {% elseif article.status == 'submit' %}
-                        <td class='submitArticle'>En Attente</td>
+                        <td class='submitArticle'><a href="{{ path('articles_show', { 'id': article.id }) }}">En Attente</a></td>
                     {% else %}
                         <td>Unknown</td>
                     {% endif %}
                     <td>{{ article.date|date("d/m/Y") }}</td>
-                    <td>{{ article.titre }}</td>
-                    <td>{{ article.chapeau }}</td>
+                    <td><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></td>
                     <td>auteur</td>
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('articles_show', { 'id': article.id }) }}">Détails</a>
-                            </li>
-                        </ul>
+                        <a href="{{ path('articles_show', { 'id': article.id }) }}">Détails</a>
                     </td>
                 </tr>
         {% endfor %}

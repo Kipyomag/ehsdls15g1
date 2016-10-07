@@ -9,18 +9,19 @@
         <li><a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers la liste</a></li>
         
         {% if is_granted('ROLE_MODERATEUR') %}
-            <li><a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Edition</a></li>
+            <li><a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a></li>
             <li>
                 {{ form_start(delete_form) }}
                     <input type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
                 {% if article.status == 'submit' %}
-                    {{ form_start(publish_form) }}
-                        <input type="submit" value="Publier">
-                    {{ form_end(publish_form) }}
                     {{ form_start(refused_form) }}
                         <input type="submit" value="Ne pas publier">
                     {{ form_end(refused_form) }}
+                {% elseif article.status == 'progress' %}
+                    {{ form_start(publish_form) }}
+                        <input type="submit" value="Publier">
+                    {{ form_end(publish_form) }}
                 {% else %}
                     {{ form_start(refused_form) }}
                         <input type="submit" value="Ne plus publier">
@@ -50,7 +51,8 @@
             </tbody>
         </table>
 
-        <a href="#" id="toggler">Laisser un commentaire</a>.
+        {% if article.status == 'published' %}
+        <h1>Commentaires</h1>
         <div id="toggle">
         {{ form_start(comment_form) }}
             {{ form_widget(comment_form) }}
@@ -73,6 +75,7 @@
                 </tr>
         {% endfor %}
         </table>
+        {% endif %}
         
 
     </div>

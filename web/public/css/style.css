@@ -10,6 +10,7 @@ footer {
 	text-align: center;
 	background-color: orange;
 	margin-top: 60px;
+	color: white;
 }
 
 
@@ -53,6 +54,22 @@ footer {
 	bottom: 8%;
 }
 
+.progressArticle a {
+	color: black;
+}
+
+.submitArticle a {
+	color: blue;
+}
+
+.publishedArticle a {
+	color: green;
+}
+
+.refusedArticle a {
+	color: red;
+}
+
 
 
 /* main article */
@@ -67,6 +84,7 @@ footer {
 	width: 100%;
   	background-color: #ece6d7;
   	border-radius: 10px;
+	box-shadow: 0px 5px 5px grey;
 }
 
 #mainArticle-inside>.content {
@@ -94,6 +112,10 @@ footer {
 	height: 8vh;
 }
 
+.list-group {
+	box-shadow: 0px 5px 5px grey;
+}
+
 
 
 /*topmenu*/
@@ -108,17 +130,25 @@ footer {
 }
 
 #topNavbar a {background-color: orange;}
-#topNavbar a:link {color: white;}
-#topNavbar a:visited {color: white;}
-#topNavbar a:hover {
+#topNavbar li a:link {color: white;}
+#topNavbar li a:visited {color: white;}
+#topNavbar li a:hover {
 	color: orange;
 	background-color: white;
 }
-#topNavbar a:active {
+#topNavbar li a:active {
 	color: orange;
 	background-color: white;
 }
 
 .navbar-toggle .icon-bar {
   background-color: white;
+}
+
+
+
+/* Image galerie image_index */
+.galerie img {
+	max-width: 100%;
+	max-height: 40vh;
 }

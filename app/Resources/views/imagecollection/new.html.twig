@@ -2,11 +2,19 @@
 
 {% block body %}
 <div class="col-xs-12">
-    <h1>ImageCollection creation</h1>
-
+    <h1>Ajouter des images</h1>
+    Ici vous pouvez publier des photos qui seront disponibles à tous les visiteurs dans la section "Galerie".<br/><br/>
+    Pour publier plusieur images à la fois:
+    <ul>
+        <li>Cliquez sur Parcourir</li>
+        <li>Cliquez sur une première image à sélectionner</li>
+        <li>Tout en gardant la touche "Ctrl" enfoncée, cliquez sur d'autres images pour les sélectionner</li>
+        <li>Cliquez sur "Ouvrir"</li>
+        <li>Vous pouvez désormais cliquer sur "Publier" pour mettre vos photos en ligne</li>
+    </ul>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Publier" />
     {{ form_end(form) }}
 </div>
 {% endblock %}

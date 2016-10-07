@@ -5,16 +5,12 @@
 {% block body %}
 <div class="col-xs-12">
     <h1>Archive creation</h1>
+    <a class="btn btn-default" href="{{ path('archive_index') }}">Retour aux archives</a>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Envoyer" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('archive_index') }}">Back to the list</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}

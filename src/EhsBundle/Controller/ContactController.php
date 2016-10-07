@@ -18,7 +18,7 @@ class ContactController extends Controller
      * Lists all Contact entities.
      *
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -27,7 +27,7 @@ class ContactController extends Controller
         return $this->render('contact/index.html.twig', array(
             'contacts' => $contacts,
         ));
-    }
+    }*/
 
     /**
      * Creates a new Contact entity.
@@ -51,6 +51,7 @@ class ContactController extends Controller
                 "E-mail: ".$contact->getEmail()."\nNom: ".$contact->getNom()."\nPrenom: ".$contact->getPrenom()."\nTelephone: ".$contact->getTelephone()."\nMessage: ".$contact->getMessage()
             );
             $this->get('mailer')->send($message);
+            $this->get('session')->getFlashBag()->set('success', 'Votre message à bien été envoyé.');
             return $this->redirectToRoute('articles_index');
         }
 
@@ -114,7 +115,7 @@ class ContactController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('contact_index');
+        return $this->redirectToRoute('articles_index');
     }
 
     /**

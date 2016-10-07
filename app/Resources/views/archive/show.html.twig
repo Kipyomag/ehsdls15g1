@@ -9,19 +9,15 @@
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ archive.id }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
-                <td>{% if archive.date %}{{ archive.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if archive.date %}{{ archive.date|date('d-m-Y') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Titre</th>
                 <td>{{ archive.titre }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th>Archive</th>
                 <td>{{ archive.text|raw }}</td>
             </tr>
             {% if archive.documentName != null %}
@@ -36,14 +32,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('archive_index') }}">Back to the list</a>
+            <a href="{{ path('archive_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">Edit</a>
+            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">Editer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -10,4 +10,17 @@ namespace EhsBundle\Repository;
  */
 class ImageRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	/**
+	 * nbr of images displayable
+	 */
+	public function countAll()
+	{
+	    return $this
+			->createQueryBuilder('i')
+			->select('count(i.id)')
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
 }
