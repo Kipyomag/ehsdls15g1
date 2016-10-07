@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Permission refusée</h1>
+
+    <p>
+        Il semblerait que vous ne soyez pas autorisé à accéder à cette page.<br/>
+        <a href="{{ path('articles_index') }}" class="btn btn-default">Retourner à la page d'accueil</a>
+    </p>
+{% endblock %}

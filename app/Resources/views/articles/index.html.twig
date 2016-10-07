@@ -9,17 +9,22 @@
             <!--MAIN ARTICLE-->
             <div id="mainArticle">
                 <div id="mainArticle-inside" class="col-xs-12">
+                    {% if articles[0] is defined %}
                     <div class="content">
-                        <h1>MAIN ARTICLE</h1>
-                        <p>chapeau de l'article principal blablabal balbalbalb ablalblabl balblablabl abllablabll ablalbablalb alblablablb a lalb lab lal lbalb</p>
+                        <h1>{{ articles[0].titre }}</h1>
+                        <p>{{ articles[0].chapeau }}</p>
                     </div>
-                    <div class="author">Kiwi Vitamin</div>
-                    <a class="btn btn-default showButton" href="#" role="button">Voir</a>
+                    <div class="author">{{ articles[0].date|date("d/m/Y") }} auteur: {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</div>
+                    <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button">Voir</a>
+                    {% else %}
+
+                    {% endif %}
                 </div>
             </div>
             
             <div id="articles" class="col-xs-12">
                 {% for article in articles %}
+                {% if article.id != articles[0].id %}
                     <div class="article col-xs-12 col-md-4 text-center">
                         <div class="article-inside">
                             <div class="articleContent">
@@ -37,6 +42,7 @@
 
                         </div> <!-- end .article-inside -->
                     </div>
+                {% endif %}
                 {% endfor %}
 
             <a href="{{ path('articles_page', { 'nbr': 1 }) }}">Voir tous les articles</a>
