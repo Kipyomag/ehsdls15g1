@@ -19,14 +19,19 @@ class UsersAgendaController extends Controller
      * Lists all UsersAgenda entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $usersAgendas = $em->getRepository('EhsBundle:UsersAgenda')->findAll();
+        
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
+        
+        $event = $request->request->get('agenda');
+        
+        $usersAgendas = $em->getRepository('EhsBundle:UsersAgenda')->findUserFromAgenda($event);
 
         return $this->render('usersagenda/index.html.twig', array(
             'usersAgendas' => $usersAgendas,
+            'agendas' => $agendas,
         ));
     }
 

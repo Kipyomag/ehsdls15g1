@@ -10,4 +10,14 @@ namespace EhsBundle\Repository;
  */
 class UsersAgendaRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findUserFromAgenda($event) {
+		return $this
+			->createQueryBuilder('u')
+            ->innerJoin('u.event', 'e', 'with', 'e.title=:event')
+			->orderBy('u.nom', 'ASC')
+            ->setParameter('event', $event)
+			->getQuery()
+			->getResult()
+			;
+	}
 }

@@ -3,13 +3,17 @@
         <div id="calendar" class="list-group">
             <div class="list-group-item">
                 <p align="center">Evènements à venir</p>
-                {% for agenda in agendas %}
+            {% for agenda in agendas %}
                     <a class="list-group-item" href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.title }}<br/>{{ agenda.startingDate|date('d-m-Y') }}</a>                
-                {% endfor %}
+            {% endfor %}
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="list-group-item" href="{{ path('agenda_new') }}">+ Ajouter un évènement</a></br>
-                <a href="{{ path('agenda_index') }}" class="list-group-item">Voir tout les évènements</a>
+                <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
             {% endif %}
+        </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                FORMULAIRE NEWSLETTER
             </div>
         </div>
         <div id="sidebarActions" class="list-group">
