@@ -11,7 +11,7 @@ class SecurityController extends Controller
 
     public function loginAction(Request $request)
     {
-    	if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ANONYMOUS')) {
+    	if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
 			
 			$this->get('session')->getFlashBag()->set('danger', 'Votre compte n\'a pas été encore validé.');
 

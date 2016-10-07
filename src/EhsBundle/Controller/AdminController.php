@@ -76,9 +76,6 @@ class AdminController extends Controller
             $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
             return substr(str_shuffle(str_repeat($alphabet, $lenght)), 0, $lenght);
         }
-                            
-                            
-                            
 
         if ($form->isSubmitted() && $form->isValid()) {
             $password = str_random(10);
