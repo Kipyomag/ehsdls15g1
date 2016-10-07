@@ -84,6 +84,7 @@ footer {
 	width: 100%;
   	background-color: #ece6d7;
   	border-radius: 10px;
+	box-shadow: 0px 5px 5px grey;
 }
 
 #mainArticle-inside>.content {
@@ -109,6 +110,10 @@ footer {
 
 #sidebarActions .list-group-item {
 	height: 8vh;
+}
+
+.list-group {
+	box-shadow: 0px 5px 5px grey;
 }
 
 
