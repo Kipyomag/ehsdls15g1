@@ -3,6 +3,7 @@
 {% block title %}Archives{% endblock %}
 
 {% block body %}
+<div class="col-xs-12">
     <h1>Archive list</h1>
 
     <table>
@@ -12,7 +13,6 @@
                 <th>Documentname</th>
                 <th>Date</th>
                 <th>Titre</th>
-                <th>Text</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,7 +23,6 @@
                 <td>{{ archive.documentName }}</td>
                 <td>{% if archive.date %}{{ archive.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ archive.titre }}</td>
-                <td>{{ archive.text }}</td>
                 <td>
                     <ul>
                         <li>
@@ -44,4 +43,5 @@
             <a href="{{ path('archive_new') }}">Create a new entry</a>
         </li>
     </ul>
+</div>
 {% endblock %}

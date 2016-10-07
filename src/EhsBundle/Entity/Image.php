@@ -5,6 +5,7 @@ namespace EhsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -41,6 +42,9 @@ class Image
     /**
      * @var File
      *
+     * @Assert\Image(
+     *     maxSize = "1k"
+     * )
      * @Vich\UploadableField(mapping="archive_image", fileNameProperty="imageName")
      */
     private $imageFile;

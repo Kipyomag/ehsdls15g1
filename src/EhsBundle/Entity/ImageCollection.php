@@ -4,6 +4,7 @@ namespace EhsBundle\Entity;
 
 
 use EhsBundle\Entity\Image;
+use Symfony\Component\Security\Acl\Exception\Exception;
 
 /**
  * ImageCollection
@@ -21,6 +22,11 @@ class ImageCollection
      */
     private $images;
 
+
+    /**
+     * @var boolean
+     */
+    private $error = false;
 
 
     /**
@@ -43,10 +49,14 @@ class ImageCollection
     public function setImages($images)
     {
         foreach ($images as $imgFile) {
-            $image = new Image();
-            $image->setImageFile($imgFile);
+            if (preg_match("/^image\//", $imgFile->getMimeType())) {
+                $image = new Image();
+                $image->setImageFile($imgFile);
 
-            $this->images[] = $image;
+                $this->images[] = $image;
+            } else {
+                $this->setError(true);
+            }
         }
 
         return $this;
@@ -61,5 +71,14 @@ class ImageCollection
     {
         return $this->images;
     }
-}
+
+    public function getError() {
+        return $this->error;
+    }
+
+    public function setError($error) {
+        $this->error = $error;
+    }
+        
+    }
 

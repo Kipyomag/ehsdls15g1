@@ -1,38 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Image list</h1>
+<div class="col-xs-12">
+<h1>Image list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Imagename</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imagename</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for image in images %}
-            <tr>
-                <td><a href="{{ path('image_show', { 'id': image.id }) }}">{{ image.id }}</a></td>
-                <td>{% if image.date %}{{ image.date|date('d-m-Y H:i:s') }}{% endif %}</td>
-                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="Photo de l'association"></td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('image_show', { 'id': image.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+        <tr>
+            <td><a href="{{ path('image_show', { 'id': image.id }) }}">{{ image.id }}</a></td>
+            <td>{% if image.date %}{{ image.date|date('d-m-Y H:i:s') }}{% endif %}</td>
+            <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="Photo de l'association"></td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('image_show', { 'id': image.id }) }}">show</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
+
+
+
+
 
     <ul>
         <li>
             <a href="{{ path('imagecollection_new') }}">Create a new entry</a>
         </li>
     </ul>
-{% endblock %}
+    </div>
+    {% endblock %}
