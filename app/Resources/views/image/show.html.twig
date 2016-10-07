@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-xs-12">
+    <h1>Image</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image.id }}</td>
+            </tr>
+            <tr>
+                <th>Fichier</th>
+                <td>{{ image.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if image.date %}{{ image.date|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="Photo de l'association"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('image_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {% if is_granted('ROLE_MODERATEUR') %}
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            {% endif %}
+        </li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
 
-    {% block title %}Actu{% endblock %}
+    {% block title %}Actualités{% endblock %}
 
     {% block body %}
+        <div class="col-xs-12 col-md-9">
 
-        <div class="container">
-            <div class="row">
-            {% for article in articles %}
-                <div class="col-md-4 col-sm-6 feature text-center">
-                    <span class="icon icon-tools"></span>
-                    <div class="feature-content">
-                        <h5>{{ article.titre }}</h5>
-                        <p class='chapeau'>{{ article.chapeau }}</p>
+            <!--MAIN ARTICLE-->
+            <div id="mainArticle">
+                <div id="mainArticle-inside" class="col-xs-12">
+                    <div class="content">
+                        <h1>MAIN ARTICLE</h1>
+                        <p>chapeau de l'article principal blablabal balbalbalb ablalblabl balblablabl abllablabll ablalbablalb alblablablb a lalb lab lal lbalb</p>
                     </div>
-                    <div>
-                    <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+                    <div class="author">Kiwi Vitamin</div>
+                    <a class="btn btn-default showButton" href="#" role="button">Voir</a>
+                </div>
+            </div>
+            
+            <div id="articles" class="col-xs-12">
+                {% for article in articles %}
+                    <div class="article col-xs-12 col-md-4 text-center">
+                        <div class="article-inside">
+                            <div class="articleContent">
+                                <h2>{{ article.titre }}</h2>
+                                <p class='chapeau'>{{ article.chapeau }}</p>
+                            </div>
+                            <div class='author'>
+                                <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+                            </div>
 
-                        <a class="btn btn-default" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                            <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                             {% if is_granted('ROLE_MODERATEUR') %}
                                 <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                             {% endif %}
 
+                        </div> <!-- end .article-inside -->
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
 
-            </div>
+            <a href="{{ path('articles_page', { 'nbr': 1 }) }}">Voir tous les articles</a>
         </div>
-
-        <a href="{{ path('articles_page', { 'nbr': 1 }) }}">Voir tous les articles</a>
-
+</div>
 
     
 
+        {% include 'rightsidebar.html.twig' %}
 {% endblock %}
 
 

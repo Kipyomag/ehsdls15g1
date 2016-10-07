@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Archives{% endblock %}
+
+{% block body %}
+<div class="col-xs-12">
+    <h1>Archive list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Documentname</th>
+                <th>Date</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for archive in archives %}
+            <tr>
+                <td><a href="{{ path('archive_show', { 'id': archive.id }) }}">{{ archive.id }}</a></td>
+                <td>{{ archive.documentName }}</td>
+                <td>{% if archive.date %}{{ archive.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ archive.titre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('archive_show', { 'id': archive.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('archive_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

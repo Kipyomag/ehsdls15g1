@@ -17,6 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new EhsBundle\EhsBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

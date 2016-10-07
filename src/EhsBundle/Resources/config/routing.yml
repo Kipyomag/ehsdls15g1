@@ -40,3 +40,20 @@ ehs_agenda:
 ehs_question:
     resource: "@EhsBundle/Resources/config/routing/question.yml"
     prefix:   /question
+
+ehs_usersagenda:
+    resource: "@EhsBundle/Resources/config/routing/usersagenda.yml"
+    prefix:   /usersagenda
+
+ehs_archive:
+    resource: "@EhsBundle/Resources/config/routing/archive.yml"
+    prefix:   /archive
+
+ehs_image:
+    resource: "@EhsBundle/Resources/config/routing/image.yml"
+    prefix:   /image
+
+ehs_imagecollection:
+        resource: "@EhsBundle/Resources/config/routing/imagecollection.yml"
+        prefix:   /imagecollection
+

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Archive{% endblock %}
+
+{% block body %}
+<div class="col-xs-12">
+    <h1>Archive</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ archive.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if archive.date %}{{ archive.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ archive.titre }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ archive.text|raw }}</td>
+            </tr>
+            {% if archive.documentName != null %}
+            <tr>
+                <th>Document</th>
+                <!--todo delete app.request.basePath before deploying-->
+                <td><a href="{{ app.request.basePath }}{{ vich_uploader_asset(archive, 'documentFile') }}" download>DOWNLOAD</a></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('archive_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('archive_edit', { 'id': archive.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

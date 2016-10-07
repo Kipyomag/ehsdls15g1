@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adhésions évènements{% endblock %}
+
+{% block body %}
+<div class="col-xs-12">
+    <h1>Liste des adhésions aux évènements</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Mail</th>
+                <th>Paiement effectué</th>
+                <th>Evènement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usersAgenda in usersAgendas %}
+            <tr>
+                <td>
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                    <a class="btn btn-warning" href="{{ path('usersagenda_edit', { 'id': usersAgenda.id }) }}">Editer</a>
+                    {% endif %}
+                </td>
+                <td>{{ usersAgenda.nom }}</td>
+                <td>{{ usersAgenda.prenom }}</td>
+                <td>{{ usersAgenda.telephone }}</td>
+                <td>{{ usersAgenda.mail }}</td>
+                <td>{% if usersAgenda.payment < 1 %}Non{% else %}Oui{% endif %}</td>
+                <td>{{ usersAgenda.event.title }}</td>
+                <td>
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                    <a class="btn btn-primary" href="{{ path('usersagenda_show', { 'id': usersAgenda.id }) }}">Voir</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

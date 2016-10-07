@@ -4,12 +4,12 @@
 
 {% block body %}
 
-<div class="col-sm-12">
+<div class="col-xs-12">
 
     <!-- ALL ARTICLES OF THIS PAGE -->
     <div id="articles" class="rowArticle">
         {% for article in articles %}
-            <div class="article col-xs-4">
+            <div class="article col-xs-12 col-md-4">
                 <div class='articleContent'>
                     <h2>{{ article.titre }}</h2>
                     <p class='chapeau'>{{ article.chapeau }}</p>
@@ -28,7 +28,9 @@
         {% if pageNbr != 1 %}
             <a href="{{ path('articles_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
         {% endif %}
-        <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+        {% if pageNbr < nbrOfPages %}
+            <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+        {% endif %}
     </div>
 
 </div>

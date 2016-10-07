@@ -5,11 +5,8 @@ faire partie admin (en cours)
 design des pages d'erreur
 
 Agenda:
-
-Ameliorer rendu formulaire type date (avec js?)
 trouver un moyen pour afficher la sidebar sur la base html pour être présent sur toutes les pages
-afficher les 5 prochains evenements dans la sidebar 
-afficher uniquement les evenements a venir dans la liste des evenements et faire une partie archives
+afficher les 5 prochains evenements dans la sidebar
 
 Users:
 View pour envoi de mail lors de passwordLost ou inscription
@@ -32,3 +29,34 @@ d'inscription ou est ce que seul un administrateur peut enregistrer un nouveau m
 
 Est ce que les moderateurs peuvent supprimer un article?
 
+
+////////////////////////////////////////////////////////////////////////////////////
+Doc Users
+////////////////////////////////////////////////////////////////////////////////////
+Système d'inscription:
+Pour enregistrer un nouvel utilisateur, 
+l'utilisateur rempli le formulaire d'inscription qui sera envoyé à l'administrateur,
+et doit envoyer un chèque de 10€00 pour l'adhésion à l'association.
+
+Une fois le paiement reçu l'administrateur valide l'inscription de l'utilisateur en rentrant ses informations dans le panneau
+d'administration et dans la section "ajouter un utilisateur"
+
+Lors de la soumission du formulaire d'ajout d'utilisateur, un mot de passe est généré aléatoirement et est envoyé par mail à 
+l'utilisateur tout en lui confirmant son inscription
+
+Connexion:
+Une fois la confirmation d'inscription reçu, l'utilisateur peut se connecter au site.
+Il lui suffit d'entrer son adresse mail et son mot de passe précédement reçu par mail.
+
+Changer son mot de passe:
+Lorsqu'un utilisateur se connecte pour la première fois sur le site, il peut modifier son mot de passe en se rendant sur 
+son profil.
+
+Mot de passe perdu:
+Dans le cas ou un utilisateur ne se souvient pas de son mot de passe, il peut demander à en recevoir un nouveau en 
+cliquant sur "mot de passe oublié" sur la page de connexion. Un mot de passe sera donc généré aléatoirement et 
+envoyé par mail.
+
+Architectures des rôles utilisateurs:
+Rôle utilisateur: le rôle le plus bas, convient parfaitement pour un nouveau membre
+Rôle modérateur: ...

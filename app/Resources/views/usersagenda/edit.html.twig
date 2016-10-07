@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition adhésion {{ usersAgenda.nom }} {{ usersAgenda.prenom }}{% endblock %}
+
+{% block body %}
+<div class="col-xs-12">
+    <h1>Edition {{ usersAgenda.nom }} {{ usersAgenda.prenom }} - {{ usersAgenda.mail }}</h1>
+    <p>Adhésion pour l'évènement :{{ usersAgenda.event.title }}</p>
+
+    {{ form_start(edit_form) }}
+        <table align="center">
+            <tr><td>{{ form_label(edit_form.nom, "Nom") }}</td></tr>
+            <tr><td>{{ form_widget(edit_form.nom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(edit_form.prenom, "Prénom") }}</td></tr>
+            <tr><td>{{ form_widget(edit_form.prenom, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(edit_form.telephone, "Téléphone") }}</td></tr>
+            <tr><td>{{ form_widget(edit_form.telephone, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+            <tr><td>{{ form_label(edit_form.payment, "Paiement effectué") }}</td></tr>
+            <tr><td>{{ form_widget(edit_form.payment, { 'attr': {'class': 'form-control'} }) }}</td></tr>        
+        
+            <tr align="center"><td><button type="submit" class="btn btn-primary">Editer</button></td></tr>
+        </table>
+    
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('usersagenda_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

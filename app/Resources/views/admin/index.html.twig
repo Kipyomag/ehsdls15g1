@@ -6,7 +6,7 @@
       
     
     <!-- MAIN ARTICLE -->
-    <div class="col-xs-12 col-sm-9">
+    <div class="col-xs-12 col-md-9">
         <div class="jumbotron">
             <h1>Administration</h1>
             <div class="col-lg-6">
@@ -25,7 +25,10 @@
             <div class="list-group">
                 <p align="center">
                     <a class="list-group-item" href="{{ path('admin_users_new') }}">Ajouter un utilisateur</a>
+                    <a class="list-group-item" href="{{ path('agenda_new') }}">Ajouter un évènement</a>
+                    <a class="list-group-item" href="{{ path('agenda_index') }}">Liste des évènements</a>
                     <a class="list-group-item" href="{{ path('articles_new') }}">Proposer un article</a>
+                    <a class="list-group-item" href="{{ path('usersagenda_index') }}">Liste des adhésions aux évènements</a>
                     <a class="list-group-item" href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
                     <a class="list-group-item" href="{{ path('admin_listeArticles') }}">Liste des articles</a>
                     <a class="list-group-item" href="#">Consulter les archives</a>

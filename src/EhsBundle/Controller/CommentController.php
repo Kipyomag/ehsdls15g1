@@ -100,16 +100,21 @@ class CommentController extends Controller
     public function deleteAction(Request $request, Comment $comment)
     {
         
-        $form = $this->createDeleteForm($comment);
-        $form->handleRequest($request);
+        /*$form = $this->createDeleteForm($comment);
+        $form->handleRequest($request);*/
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($comment);
             $em->flush();
-        }
+        //}
 
-        return $this->redirectToRoute('comment_index');
+        $referer = $this->getRequest()->headers->get('referer');
+        if ($referer != null) {
+            return $this->redirect($referer);
+        } else {
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**

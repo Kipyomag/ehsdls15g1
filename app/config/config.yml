@@ -68,3 +68,22 @@ swiftmailer:
     spool: { type: memory }
     auth_mode:  login
 
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        archive_document:
+            uri_prefix:         /archives/documents
+            upload_destination: '%kernel.root_dir%/../web/archives/documents'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:    vich_uploader.namer_origname
+
+        archive_image:
+            uri_prefix:         /archives/images
+            upload_destination: '%kernel.root_dir%/../web/archives/images'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:    vich_uploader.namer_origname

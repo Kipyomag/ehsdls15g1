@@ -35,4 +35,19 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 			->getResult()
 			;
 	}
+
+	/**
+	 * nbr of articles displayable
+	 */
+	public function countPublished()
+	{
+	    return $this
+			->createQueryBuilder('a')
+			->select('count(a.id)')
+			->where('a.status = :status')
+            ->setParameter('status', 'published')
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
 }

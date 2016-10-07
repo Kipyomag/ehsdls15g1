@@ -1,12 +1,40 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <h1>Contact</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" class="btn btn-primary" value="Envoyer" />
-    {{ form_end(form) }}
+<div class="col-xs-12">
+<div id="contact" class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-left wrap_title">
+                <h2>Contactez-Nous</h2>
+            </div>
+            <form action="{{ path('contact_new') }}" method="post" {{ form_enctype(form) }}>
+                <div class="col-md-6">
+                    {{ form_widget(form) }}
+                    <br><input type="submit" class="btn btn-primary pull-right" value="Envoyer" />
+                </div>
+            </form>
+
+            <hr class="featurette-divider hidden-lg">
+            <div class="col-md-5 col-md-push-1 address">
+                <address>
+                    <h3>Notre Siège</h3>
+                        <p>6 avenue de la Devinière <br> 44000 Nantes</p>
+                </address>
 
 
+                <h3>Social</h3>
+                <li class="social">
+                    <a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
+                    <a href="#"><i class="fa  fa-twitter-square fa-size"> </i> </a>
+                    <a href="#"><i class="fa fa-google-plus-square fa-size"> </i></a>
+
+                </li>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
 {% endblock %}

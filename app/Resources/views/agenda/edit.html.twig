@@ -18,12 +18,26 @@
             </table>
 
             <table>
+                <tr><td>{{ form_label(edit_form.address, "Adresse") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.address, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.city, "Ville") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.city, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
+
                 <tr><td>{{ form_label(edit_form.title, "Nom de l'évènement") }}</td></tr>
                 <tr><td>{{ form_widget(edit_form.title, { 'attr': {'class': 'form-control'}  }) }}</td></tr>
 
                 <tr><td>{{ form_label(edit_form.description, "Détails sur l'évènement") }}</td></tr>
                 <tr><td>{{ form_widget(edit_form.description, { 'attr': {'cols': '120'}  }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.login, "Inscription possible") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.login,{ 'attr': {'cols': '120'} }) }}</td></tr>
+
+                <tr><td>{{ form_label(edit_form.loginNumber, "Nombre de place") }}</td></tr>
+                <tr><td>{{ form_widget(edit_form.loginNumber,{ 'attr': {'cols': '120'} }) }}</td></tr>
+
                 <tr><td><input type="hidden" name="_target_path" value="ehs_agenda" /></td></tr>
+
                 <tr><td><input type="submit" class="btn btn-success" value="Editer" /></td></tr>
         {{ form_end(edit_form) }}
             </table>

@@ -42,7 +42,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=100)
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
@@ -54,7 +54,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=100)
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
@@ -66,7 +66,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=100)
      */
     private $password;
 
@@ -80,21 +80,26 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=10)
      */
     private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="text")
+     * @ORM\Column(name="adresse", type="string", length=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre ville ne peut pas contenir de nombre"
+     * )
      */
     private $adresse;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=50)
+     * @ORM\Column(name="ville", type="string", length=100)
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
@@ -130,7 +135,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=20)
+     * @ORM\Column(name="role", type="string", length=50)
      */
     private $role;
     

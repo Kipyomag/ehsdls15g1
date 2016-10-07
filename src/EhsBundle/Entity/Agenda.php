@@ -3,6 +3,7 @@
 namespace EhsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Agenda
@@ -38,6 +39,25 @@ class Agenda
     /**
      * @var string
      *
+     * @ORM\Column(name="address", type="string", length=100)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre ville ne peut pas contenir de nombre"
+     * )
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -48,6 +68,23 @@ class Agenda
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @ORM\Column(name="login", type="boolean", options={"default":false})
+     */
+    private $login;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="loginNumber", type="integer", nullable=true)
+     */
+    private $loginNumber;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UsersAgenda", mappedBy="event")
+     */
+    private $events;
 
 
     /**
@@ -108,6 +145,54 @@ class Agenda
         return $this->endingDate;
     }
 
+        /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Agenda
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+        /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return Agenda
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
     /**
      * Set title
      *
@@ -133,6 +218,27 @@ class Agenda
     }
 
     /**
+     * Set loginNumber
+     * @return Agenda
+     */
+    public function setLoginNumber($loginNumber)
+    {
+        $this->loginNumber = $loginNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get loginNumber
+     *
+     * @return string
+     */
+    public function getLoginNumber()
+    {
+        return $this->loginNumber;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -154,6 +260,38 @@ class Agenda
     public function getDescription()
     {
         return $this->description;
+    }
+
+        /**
+     * Set login
+     *
+     * @param string $login
+     *
+     * @return Agenda
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    function getEvents() {
+        return $this->events;
+    }
+
+    function setEvents($events) {
+        $this->events = $events;
     }
 }
 

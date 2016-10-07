@@ -1,0 +1,24 @@
+usersagenda_index:
+    path:     /
+    defaults: { _controller: "EhsBundle:UsersAgenda:index" }
+    methods:  GET
+
+usersagenda_show:
+    path:     /{id}/show
+    defaults: { _controller: "EhsBundle:UsersAgenda:show" }
+    methods:  GET
+
+usersagenda_new:
+    path:     /new
+    defaults: { _controller: "EhsBundle:UsersAgenda:new" }
+    methods:  [GET, POST]
+
+usersagenda_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EhsBundle:UsersAgenda:edit" }
+    methods:  [GET, POST]
+
+usersagenda_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EhsBundle:UsersAgenda:delete" }
+    methods:  DELETE
