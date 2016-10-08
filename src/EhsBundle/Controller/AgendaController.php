@@ -22,7 +22,18 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $agendas = $em->getRepository('EhsBundle:Agenda')->findAll();
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findNewEvent();
+
+        return $this->render('agenda/index.html.twig', array(
+            'agendas' => $agendas,
+        ));
+    }
+
+    public function oldEventAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findOldEvent();
 
         return $this->render('agenda/index.html.twig', array(
             'agendas' => $agendas,

@@ -39,6 +39,11 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <ul>
+                <li>
+                    <a href="{{ path('agenda_old_event') }}">Voir les évènements passés</a>
+                </li>
+            </ul>
             {% if is_granted('ROLE_ADMIN') %}
                 <ul>
                     <li>
