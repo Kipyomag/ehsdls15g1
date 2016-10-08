@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evènements passés{% endblock %}
+
+{% block body %}
+     <div class="jumbotron">
+        <h1>Evènements passés</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                    {% endif %}
+                        <th>Evènement</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                        <th>Ville</th>
+                        <th>Inscription</th>
+                        <th>Nombre de places</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for agenda in agendas %}
+                    <tr>
+                        {% if is_granted('ROLE_MODERATEUR') %}
+                        <td><a type="button" class="btn btn-warning btn-xs" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a></td>
+                        {% endif %}
+                        <td>{{ agenda.title }}</td>
+                        <td>{% if agenda.startingDate %}{{ agenda.startingDate|date('d-m-Y H:i') }}{% endif %}</td>
+                        <td>{% if agenda.endingDate %}{{ agenda.endingDate|date('d-m-Y H:i') }}{% endif %}</td>
+                        <td>{{ agenda.city }}</td>
+                        <td>{% if agenda.login < 1 %}Non{% elseif agenda.login > 0 %}Oui{% endif %}</td>
+                        <td>{% if agenda.login < 1 %}N/A{% else %}{{ agenda.loginNumber }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{ path('agenda_show', { 'id': agenda.id }) }}">Voir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <ul>
+                <li>
+                    <a href="{{ path('agenda_index') }}">Voir les évènements à venir</a>
+                </li>
+            </ul>
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul>
+                    <li>
+                        <a href="{{ path('agenda_new') }}">Ajouter un évènement</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+{% endblock %}

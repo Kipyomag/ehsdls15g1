@@ -35,18 +35,7 @@ class AgendaController extends Controller
 
         $agendas = $em->getRepository('EhsBundle:Agenda')->findOldEvent();
 
-        return $this->render('agenda/index.html.twig', array(
-            'agendas' => $agendas,
-        ));
-    }
-
-    public function apercuAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $agendas = $em->getRepository('EhsBundle:Agenda')->findAll();
-
-        return $this->render('agenda/apercu.html.twig', array(
+        return $this->render('agenda/oldEvent.html.twig', array(
             'agendas' => $agendas,
         ));
     }

@@ -65,11 +65,14 @@
             </p>
             {{ form_end(delete_form) }}
         {% endif %}
+
         {% if agenda.login > 0 %}
-            {% if participants|length < agenda.loginNumber %}
-                {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
-            {% else %}
-                <h2 align="center">Le nombre d'inscription maximum a été atteint !</h2>
+            {% if agenda.startingDate|date('U') > 'now'|date('U') %}
+                {% if participants|length < agenda.loginNumber %}
+                    {% include 'usersagenda/new.html.twig' with {'agenda': agenda} %}
+                {% else %}
+                    <h2 align="center">Le nombre d'inscription maximum a été atteint !</h2>
+                {% endif %}
             {% endif %}
         {% endif %}
 </div>
