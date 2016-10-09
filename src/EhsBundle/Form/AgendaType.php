@@ -27,7 +27,12 @@ class AgendaType extends AbstractType
             ->add('address')
             ->add('city')
             ->add('title')
-            ->add('description')
+            ->add('description','ckeditor', array(
+            'config' => array(
+                'filebrowserBrowseRoute' => 'elfinder',
+                'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                )
+            ))
             ->add('login', ChoiceType::class, array(
             'choices' => array(0 => 'Non', 1 => 'Oui'),
             ))

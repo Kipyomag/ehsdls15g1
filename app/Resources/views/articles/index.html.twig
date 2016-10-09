@@ -14,7 +14,7 @@
                         <h1>{{ articles[0].titre }}</h1>
                         <p>{{ articles[0].chapeau }}</p>
                     </div>
-                    <div class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</div>
+                    <p class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</p>
                     <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button">Voir</a>
                     {% if is_granted('ROLE_MODERATEUR') %}
                         <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button">Modifier</a>

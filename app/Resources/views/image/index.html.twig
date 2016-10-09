@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="col-xs-12">
+<div id='galeriePage' class="col-xs-12">
 <h1>Galerie</h1>
     {% if is_granted('ROLE_ADMIN') %}
         <a class="btn btn-default" href="{{ path('imagecollection_new') }}">Ajouter des images à la galerie</a>

@@ -11,6 +11,8 @@ footer {
 	background-color: orange;
 	margin-top: 60px;
 	color: white;
+	font-family: 'Roboto', arial, sans-serif;
+	font-weight: 900;
 }
 
 
@@ -27,6 +29,10 @@ p {
 label {
 	color: purple;
 	font-family: 'Raleway', arial, sans-serif;
+}
+
+.author {
+	font-style: italic;
 }
 
 
@@ -145,7 +151,6 @@ label {
 	font-family: 'Raleway', arial, sans-serif;
 	text-align: right;
 	margin-top: 40px;
-	font-style: italic;
 }
 
 .fullArticle>.adminActions {
@@ -244,7 +249,6 @@ label {
 .comment>.author {
 	text-align: right;
 	margin-top: 20px;
-	font-style: italic;
 }
 .comment>.modoActions {
 	position: absolute;
@@ -280,7 +284,21 @@ label {
 	 text-align: center;
 }
 
+/* Archives */
+.archiveForm>h1 {
+	color: purple;
+	text-align: center;
+}
+.archiveForm input[type='text'] {
+	width: 100%;
+	border: 1px solid lightgrey;
+	padding: 10px;
+}
 
+ #archivePage>h1 {
+ 	color: purple;
+ 	text-align: center;
+ }
 
 /* main article */
 #mainArticle {
@@ -318,12 +336,12 @@ label {
 
 /* sidebar */
 #calendar {
-	height: 21em;
+	min-height: 21em;
 	background-color: lightgrey;
 	margin-bottom: 55px;
 }
 #calendar>.agenda {
-	height: 100%;
+	min-height: 21em;
 }
 
 .list-group {
@@ -371,5 +389,10 @@ label {
 .galerie img {
 	max-width: 100%;
 	max-height: 40vh;
+}
+
+#galeriePage>h1 {
+	color: purple;
+	text-align: center;
 }
 
