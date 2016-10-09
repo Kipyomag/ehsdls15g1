@@ -40,24 +40,15 @@ class AdminController extends Controller
      */
     public function searchUsersAction(Request $request)
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+        $em = $this->getDoctrine()->getManager();
 
-            $em = $this->getDoctrine()->getManager();
-
-            $search = $request->request->get('search');          
-            /* A terminer */
-            $users = $em->getRepository('EhsBundle:Users')->findUsers($search);
-            //var_dump($users);die();
-            return $this->render('admin/resultatRecherche.html.twig', array(
-                'users' => $users,
-            ));
-
-        }else{
-
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
-
-            return $this->redirectToRoute('articles_index');
-        }
+        $search = $request->request->get('search');          
+        /* A terminer */
+        $users = $em->getRepository('EhsBundle:Users')->findUsers($search);
+        //var_dump($users);die();
+        return $this->render('admin/resultatRecherche.html.twig', array(
+            'users' => $users,
+        ));
     }
 
     /**
@@ -66,7 +57,6 @@ class AdminController extends Controller
      */
     public function newAction(Request $request)
     {
-    //if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
         $user = new Users();
         $form = $this->createForm('EhsBundle\Form\UsersType', $user);
         $form->remove('password');
@@ -108,11 +98,6 @@ Votre mot de passe: " . $password
             'user' => $user,
             'form' => $form->createView(),
         ));
-    /*} else {
-        $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
-
-        return $this->redirectToRoute('articles_index');
-    }*/
     }
 
     /**
@@ -148,40 +133,25 @@ Votre mot de passe: " . $password
      */
     public function listeMembresAction()
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+        $em = $this->getDoctrine()->getManager();
 
-            $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('EhsBundle:Users')->findAll();
 
-            $users = $em->getRepository('EhsBundle:Users')->findAll();
-
-            return $this->render('admin/listeMembres.html.twig', array(
-                'users' => $users,
-            ));
-        }else{
-
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
-
-            return $this->redirectToRoute('articles_index');
-        }
+        return $this->render('admin/listeMembres.html.twig', array(
+            'users' => $users,
+        ));
     }
 
         public function listeArticlesAction()
     {
-        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
 
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-            $articles = $em->getRepository('EhsBundle:Articles')->findPublicArticles();
+        $articles = $em->getRepository('EhsBundle:Articles')->findPublicArticles();
 
-            return $this->render('admin/listeArticles.html.twig', array(
-                'articles' => $articles,
-            ));
-        }else{
-
-            $this->get('session')->getFlashBag()->set('danger', 'Vous devez être administrateur pour accéder à cette page.');
-
-            return $this->redirectToRoute('articles_index');
-        }
+        return $this->render('admin/listeArticles.html.twig', array(
+            'articles' => $articles,
+        ));
     }
 
     /**
@@ -218,7 +188,7 @@ Votre mot de passe: " . $password
 				)
 			);
     }
-
+    //Permettre le renvoi d'un nouveau mot de passe lorsqu'un utilisateur le perd
     public function resetNowAction(Request $request)
     {
         function str_random($lenght){

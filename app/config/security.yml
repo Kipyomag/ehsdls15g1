@@ -57,6 +57,8 @@ security:
         - { path: ^/archive/[0-9]+/delete, role: ROLE_ADMIN }
         - { path: ^/imagecollection/new, role: ROLE_ADMIN }
         - { path: ^/image/[0-9]+/delete, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        
 
 
             # activate different ways to authenticate
