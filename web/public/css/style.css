@@ -14,9 +14,44 @@ footer {
 }
 
 
+/* globals */
+h1, h2 {
+	font-family: 'Roboto', arial, sans-serif;
+	font-weight: 900;
+}
+
+p {
+	font-family: 'Raleway', arial, sans-serif;
+}
+
+label {
+	color: purple;
+	font-family: 'Raleway', arial, sans-serif;
+}
+
+
+/* all buttons */
+.btn, button, input[type='submit'] {
+	font-family: 'Roboto', arial, sans-serif;
+	font-weight: 900;
+	border: 1px solid purple;
+	padding: 5px;
+	background-color: purple;
+	color: white;
+	border-radius: 0;
+}
+
+.btn:hover, button:hover, input[type='submit']:hover {
+	background-color: white;
+	color: purple;
+	border-color: purple;
+}
 
 
 /* article */
+#articles {
+   padding-bottom: 60px;
+}
 .article {
    height: 25em;
    padding: 15px;
@@ -32,15 +67,14 @@ footer {
 }
 
 .articleContent {
-    max-height: 20em;
-    min-height: 10em;
+    max-height: 18em;
+    min-height: 18em;
     overflow: hidden;
 }
 
 .articleContent h2 {
     font-size: 1.5em;
     margin-top: 0;
-    color: orange;
 }
 
 .article-inside>.author {
@@ -52,39 +86,199 @@ footer {
 .article-inside>.showButton {
 	position: absolute;
 	right: 8%;
-	bottom: 8%;
+	bottom: 6%;
 }
 
 .article-inside>.editButton {
 	position: absolute;
-	right: 8%;
-	top: 8%;
+	right: 0;
+	top: 0;
 }
 
-.progressArticle a {
-	color: black;
+.progressArticle {
 }
 
-.submitArticle a {
-	color: blue;
+.submitArticle {
+	background-color: lightblue;
 }
 
-.publishedArticle a {
-	color: green;
+.publishedArticle {
+	background-color: lightgreen;
 }
 
-.refusedArticle a {
-	color: red;
+.refusedArticle {
+	background-color: #f8a290;
+}
+
+#myArticles h1 {
+	color: purple;
+	text-align: center;
 }
 
 .mainArticleContent h1, .articleContent h2 {
 	font-family: 'Roboto Slab', arial, serif;
+	color: orange;
 }
 
 .articleContent p, .mainArticleContent p {
 	font-family: 'Raleway', arial, sans-serif;
 }
 
+.seeAll {
+	position: absolute;
+	bottom: 0;
+	right: 25px;
+}
+
+.fullArticle {
+	position: relative;
+	padding: 20px;
+   background-color: lightgrey;
+	box-shadow: 0px 5px 5px grey;
+	padding-bottom: 60px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+    overflow: hidden;
+}
+
+.fullArticle>.author {
+	font-family: 'Raleway', arial, sans-serif;
+	text-align: right;
+	margin-top: 40px;
+	font-style: italic;
+}
+
+.fullArticle>.adminActions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: center;
+}
+.fullArticle>.adminActions * {
+	display: block;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.rowArticle {
+	position: relative;
+}
+
+.rowArticle .nextButton {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	right: 0;	
+}
+
+.rowArticle .prevButton {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.articleForm h1 {
+	color: purple;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.articleForm input[type='text'] {
+	width: 100%;
+	border: none;
+	box-shadow: 0px 5px 5px grey;
+	border: 1px solid lightgrey;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.articleForm button[type='submit'] {
+	margin-top: 20px;
+}
+
+.articleForm textarea {
+	width: 100%;
+	padding: 10px;
+	box-shadow: 0px 5px 5px grey;
+	margin-bottom: 10px;
+}
+
+#editArticlePage .deleteForm {
+	position: absolute;
+	top: 80px;
+	right: 50px;
+}
+
+/* presentations */
+.presentation {
+	position: relative;
+	padding: 20px;
+   background-color: lightgrey;
+	box-shadow: 0px 5px 5px grey;
+	margin-bottom: 30px;
+    overflow: hidden;
+}
+.presentation .editer {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#presentationPage>h1 {
+	color: purple;
+	text-align: center;
+}
+
+
+/* Comments */
+.comment {
+	font-family: 'Raleway', arial, sans-serif;
+	position: relative;
+	padding: 20px;
+   background-color: lightgrey;
+	box-shadow: 0px 5px 5px grey;
+	margin-bottom: 30px;
+    overflow: hidden;
+}
+.comment>.author {
+	text-align: right;
+	margin-top: 20px;
+	font-style: italic;
+}
+.comment>.modoActions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: center;
+}
+.comment>.modoActions * {
+	display: block;
+	width: 100px;
+	margin-bottom: 5px;
+}
+
+.commentForm {
+	margin-bottom: 30px;
+}
+
+.commentForm textarea {
+	display: block;
+	width: 100%;
+	min-height: 100px;
+	box-shadow: 0px 5px 5px grey;
+	margin-bottom: 8px;
+}
+
+.commentForm input[type='submit'] {
+	width: 100px;
+	height: 40px;
+}
+
+.comments h1 {
+	color: purple;
+	 text-align: center;
+}
 
 
 
@@ -92,14 +286,13 @@ footer {
 #mainArticle {
 	height: 21em;
 	margin-bottom: 40px;
-	padding: 0px 25px 0px 40px;
+	padding: 0px 25px 0px 25px;
 }
 
 #mainArticle-inside {
 	height: 100%;
 	width: 100%;
   	background-color: #ece6d7;
-  	border-radius: 10px;
 	box-shadow: 0px 5px 5px grey;
 }
 
@@ -111,14 +304,14 @@ footer {
 
 #mainArticle-inside>.showButton {
 	position: absolute;
-	right: 5%;
+	right: 2%;
 	bottom: 5%;
 }
 
 #mainArticle-inside>.editButton {
 	position: absolute;
-	right: 5%;
-	top: 5%;
+	right: 0;
+	top: 0;
 }
 
 
@@ -127,17 +320,20 @@ footer {
 #calendar {
 	height: 21em;
 	background-color: lightgrey;
-	margin-bottom: 65px;
+	margin-bottom: 55px;
 }
 #calendar>.agenda {
 	height: 100%;
 }
 
-#sidebarActions .list-group-item {
-}
-
 .list-group {
 	box-shadow: 0px 5px 5px grey;
+}
+
+#calendar h2 {
+	color: purple;
+	font-size: 20px;
+	margin-top: 0;
 }
 
 
@@ -176,3 +372,4 @@ footer {
 	max-width: 100%;
 	max-height: 40vh;
 }
+

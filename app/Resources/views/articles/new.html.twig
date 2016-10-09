@@ -4,32 +4,36 @@
 
 {% block body %}
 <div class="col-xs-12">
+<div id="myArticles">
     <h1>Mes articles</h1>
         <a class="btn btn-default" href="{{ path('articles_index') }}">Retour aux articles</a>
 
-    <ul>
+    <div class="list-group">
     {% for article in myArticles %}
         {% if article.status == 'progress' %}
-            <li class='progressArticle' ><a href="{{ path('articles_edit', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+            <a class='progressArticle list-group-item' href="{{ path('articles_edit', { 'id': article.id }) }}">[En cours] {{ article.titre }}</a>
         {% elseif article.status == 'submit' %}
-            <li class='submitArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+            <a class='submitArticle list-group-item' href="{{ path('articles_show', { 'id': article.id }) }}">[En attente de validation] {{ article.titre }}</a>
         {% elseif article.status == 'published' %}
-            <li class='publishedArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+            <a class='publishedArticle list-group-item' href="{{ path('articles_show', { 'id': article.id }) }}">[Publié] {{ article.titre }}</a>
         {% else %}
-            <li class='refusedArticle' ><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
+            <a class='refusedArticle list-group-item' href="{{ path('articles_show', { 'id': article.id }) }}">[Refusé] {{ article.titre }}</a>
         {% endif %}
     {% endfor %}
-    </ul>
+    </div>
+</div>
 
-    <h1>Création d'articles</h1>
+
+<div class="articleForm">
+    <h1>Créer un article</h1>
     {{ form_start(form) }}
-        {{ form_row(form.titre) }}
-        {{ form_row(form.chapeau) }}
-        {{ form_row(form.contenu) }}
+        {{ form_row(form.titre, {'label':'Titre:'}) }}
+        {{ form_row(form.chapeau, {'label':'Chapeau:'}) }}
+        {{ form_row(form.contenu, {'label':'Article:'}) }}
         {{ form_row(form.save) }}
         {{ form_row(form.send) }}
         {{ form_widget(form._token) }}
     {{ form_end(form, {'render_rest': false}) }}
-
+</div>
 </div>
 {% endblock %}

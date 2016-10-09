@@ -5,12 +5,13 @@
 {% block body %}
 
 <div class="col-xs-12">
-    <ul>
-        <li><a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers la liste</a></li>
+    <a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers les articles</a>
         
+
+    <div class='fullArticle'>
         {% if is_granted('ROLE_MODERATEUR') %}
-            <li><a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a></li>
-            <li>
+            <div class='adminActions'>
+                <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a>
                 {{ form_start(delete_form) }}
                     <input type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
@@ -30,57 +31,45 @@
                         <input type="submit" value="Ne plus publier">
                     {{ form_end(refused_form) }}
                 {% endif %}
-            </li>
+            </div>
         {% endif %}
-    </ul>
+
+        <h1>{{ article.titre }}</h1>
+        <p class='chapeau'>{{ article.chapeau }}</p>
+        <p class='content'>{{ article.contenu | raw }}</p>
+        <div class="author">{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</div>
+    </div>
+    <a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers les articles</a>
 
 
-    <h1>{{ article.titre }}</h1>
-    <div>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td>{{ article.chapeau }}</td>
-                </tr>
-                <tr>
-                    <td>{{ article.contenu | raw }}</td>
-                </tr>
-                <tr>
-                    <td>{{ article.date|date("d/m/Y") }}</td>
-                </tr>
-                <tr>
-                    <td>by {{ article.author.nom }} {{ article.author.prenom }}</td>
-                </tr>
-            </tbody>
-        </table>
-
-        {% if article.status == 'published' %}
+    {% if article.status == 'published' %}
+    <div class="comments">
         <h1>Commentaires</h1>
-        <div id="toggle">
+        <div class="commentForm">
         {{ form_start(comment_form) }}
-            {{ form_widget(comment_form) }}
+            {{ form_row(comment_form.content, {'label': 'Ecrire un commentaire:'}) }}
             <input type="submit" value="Envoyer" />
         {{ form_end(comment_form) }}
         </div>
-        <table class="table">
+
+
         {% for comment in article.comments %}
-                <tr>
-                    <td>{{ comment.author.nom }} {{ comment.author.prenom }}</td>
+        <div class="comment">
 
-                    <td>{{ comment.content | raw }}</td>
-                    <th>{{ comment.creationDate|date("d/m/Y") }}</th>
+            <p class='content'>{{ comment.content | raw }}</p>
+            <div class="author">
+                {{ comment.creationDate|date("d/m/Y") }} {{ comment.author.nom }} {{ comment.author.prenom }}
+            </div>
 
-
-                    {% if is_granted('ROLE_MODERATEUR') %}
-                        <td><a href="{{ path('comment_delete', { 'id': comment.id }) }}">X</a></td>
-                    {% endif %}
-
-                </tr>
+            {% if is_granted('ROLE_MODERATEUR') %}
+                <div class="modoActions" >
+                    <a class='btn btn-default' href="{{ path('comment_delete', { 'id': comment.id }) }}">Supprimer</a>
+                </div>
+            {% endif %}
+        </div>
         {% endfor %}
-        </table>
-        {% endif %}
-        
-
+    {% endif %}
     </div>
+        
 </div>
 {% endblock %}

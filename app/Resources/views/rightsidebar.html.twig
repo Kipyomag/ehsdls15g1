@@ -2,13 +2,13 @@
 
         <div id="calendar" class="list-group">
             <div class="list-group-item agenda">
-                <p align="center">Evènements à venir</p>
+                <h2 align="center">Evènements à venir</h2>
             {% for agenda in agendas %}
                     <a class="list-group-item" href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.title }}<br/>{{ agenda.startingDate|date('d-m-Y') }}</a>                
             {% endfor %}
+                <a class="list-group-item" href="{{ path('agenda_index') }}">Voir tous les évènements</a>
             {% if is_granted('ROLE_ADMIN') %}
-                <a class="list-group-item" href="{{ path('agenda_new') }}">+ Ajouter un évènement</a></br>
-                <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
+                <a class="list-group-item" href="{{ path('agenda_new') }}">+ Ajouter un évènement</a>
             {% endif %}
             </div>
         </div>
@@ -21,5 +21,4 @@
                 <a href="{{ path('articles_new') }}" class="list-group-item">Proposer un article</a>
             {% endif %}
         </div>
-    </div>
 </div>
