@@ -21,4 +21,26 @@ class AgendaRepository extends \Doctrine\ORM\EntityRepository
 			->getResult()
 			;
     }
+
+	public function findNewEvent(){
+        return $this
+			->createQueryBuilder('e')
+			->where('e.startingDate > :now')
+			->orderBy('e.startingDate', 'ASC')
+            ->setParameter('now', new \DateTime('now'))
+			->getQuery()
+			->getResult()
+			;
+    }
+
+	public function findOldEvent(){
+        return $this
+			->createQueryBuilder('e')
+			->where('e.startingDate < :now')
+			->orderBy('e.startingDate', 'ASC')
+            ->setParameter('now', new \DateTime('now'))
+			->getQuery()
+			->getResult()
+			;
+    }
 }

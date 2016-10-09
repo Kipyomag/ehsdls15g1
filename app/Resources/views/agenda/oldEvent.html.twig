@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des évènements{% endblock %}
+{% block title %}Evènements passés{% endblock %}
 
 {% block body %}
      <div class="jumbotron">
-        <h1>Evènements à venir</h1>
+        <h1>Evènements passés</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th></th>
                     {% endif %}
-                        <th>Evenement</th>
+                        <th>Evènement</th>
                         <th>Début</th>
                         <th>Fin</th>
                         <th>Ville</th>
@@ -41,7 +41,7 @@
             </table>
             <ul>
                 <li>
-                    <a href="{{ path('agenda_old_event') }}">Voir les évènements passés</a>
+                    <a href="{{ path('agenda_index') }}">Voir les évènements à venir</a>
                 </li>
             </ul>
             {% if is_granted('ROLE_ADMIN') %}
