@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),6);
+        $articles = $em->getRepository('EhsBundle:Articles')->findBy(array('status'=>'published'),array('date'=>'DESC'),7);
 
         $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
 

@@ -19,11 +19,12 @@ footer {
 /* article */
 .article {
    height: 25em;
-   padding: 25px;
+   padding: 15px;
    margin-bottom: 10px;
 }
 
 .article-inside {
+	padding-top: 10px;
    background-color: lightgrey;
 	box-shadow: 0px 5px 5px grey;
    width: 100%;
@@ -37,7 +38,7 @@ footer {
 }
 
 .articleContent h2 {
-    font-size: 2.5vh;
+    font-size: 1.5em;
     margin-top: 0;
     color: orange;
 }
@@ -52,6 +53,12 @@ footer {
 	position: absolute;
 	right: 8%;
 	bottom: 8%;
+}
+
+.article-inside>.editButton {
+	position: absolute;
+	right: 8%;
+	top: 8%;
 }
 
 .progressArticle a {
@@ -70,11 +77,20 @@ footer {
 	color: red;
 }
 
+.mainArticleContent h1, .articleContent h2 {
+	font-family: 'Roboto Slab', arial, serif;
+}
+
+.articleContent p, .mainArticleContent p {
+	font-family: 'Raleway', arial, sans-serif;
+}
+
+
 
 
 /* main article */
 #mainArticle {
-	height: 50vh;
+	height: 21em;
 	margin-bottom: 40px;
 	padding: 0px 25px 0px 40px;
 }
@@ -87,9 +103,9 @@ footer {
 	box-shadow: 0px 5px 5px grey;
 }
 
-#mainArticle-inside>.content {
-	min-height: 42vh;
-	max-height: 42vh;
+#mainArticle-inside>.mainArticleContent {
+	min-height: 18em;
+	max-height: 18em;
     overflow: hidden;
 }
 
@@ -99,17 +115,25 @@ footer {
 	bottom: 5%;
 }
 
+#mainArticle-inside>.editButton {
+	position: absolute;
+	right: 5%;
+	top: 5%;
+}
+
 
 
 /* sidebar */
 #calendar {
-	height: 50vh;
+	height: 21em;
 	background-color: lightgrey;
 	margin-bottom: 65px;
 }
+#calendar>.agenda {
+	height: 100%;
+}
 
 #sidebarActions .list-group-item {
-	height: 8vh;
 }
 
 .list-group {

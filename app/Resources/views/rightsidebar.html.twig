@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-md-3" id="rightSidebar">
 
         <div id="calendar" class="list-group">
-            <div class="list-group-item">
+            <div class="list-group-item agenda">
                 <p align="center">Evènements à venir</p>
             {% for agenda in agendas %}
                     <a class="list-group-item" href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.title }}<br/>{{ agenda.startingDate|date('d-m-Y') }}</a>                
@@ -10,11 +10,6 @@
                 <a class="list-group-item" href="{{ path('agenda_new') }}">+ Ajouter un évènement</a></br>
                 <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
             {% endif %}
-            </div>
-        </div>
-        <div class="list-group">
-            <div class="list-group-item">
-                FORMULAIRE NEWSLETTER
             </div>
         </div>
         <div id="sidebarActions" class="list-group">

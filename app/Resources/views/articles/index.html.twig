@@ -10,13 +10,15 @@
             <div id="mainArticle">
                 <div id="mainArticle-inside" class="col-xs-12">
                     {% if articles[0] is defined %}
-                    <div class="content">
+                    <div class="mainArticleContent">
                         <h1>{{ articles[0].titre }}</h1>
                         <p>{{ articles[0].chapeau }}</p>
                     </div>
-                    <div class="author">{{ articles[0].date|date("d/m/Y") }} auteur: {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</div>
+                    <div class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</div>
                     <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button">Voir</a>
-                    {% else %}
+                    {% if is_granted('ROLE_MODERATEUR') %}
+                        <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button">Modifier</a>
+                    {% endif %}
 
                     {% endif %}
                 </div>
@@ -32,12 +34,12 @@
                                 <p class='chapeau'>{{ article.chapeau }}</p>
                             </div>
                             <div class='author'>
-                                <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+                                <p>{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</p>
                             </div>
 
                             <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                             {% if is_granted('ROLE_MODERATEUR') %}
-                                <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                                <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                             {% endif %}
 
                         </div> <!-- end .article-inside -->
