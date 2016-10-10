@@ -20,6 +20,7 @@ footer {
 h1, h2 {
 	font-family: 'Roboto', arial, sans-serif;
 	font-weight: 900;
+	color: #825887;
 }
 
 p {
@@ -325,13 +326,18 @@ hr {
 
 
 /* sidebar */
+#rightSidebar{
+	background-color: #825887;
+}
 #calendar {
 	min-height: 21em;
-	background-color: lightgrey;
+	background-color: #FAEDC6;
 	margin-bottom: 55px;
+	margin-top: 10px;
 }
 #calendar>.agenda {
 	min-height: 21em;
+	background-color: #FAEDC6;
 }
 
 .list-group {
@@ -344,6 +350,14 @@ hr {
 	margin-top: 0;
 }
 
+.list-group-item{
+	background-color: #FAEDC6;
+	overflow: hidden;
+}
+
+body{
+	background-color: #FAEDC6;
+}
 
 
 /*topmenu*/
@@ -381,11 +395,3 @@ hr {
 	max-height: 40vh;
 }
 
-/* sidebar */
-#rightSidebar{
-	background-color: #93BD58;
-}
-#calendar .list-group-item{
-	margin-top: 5px;
-	overflow: hidden;
-}

@@ -7,8 +7,8 @@
     
     <!-- MAIN ARTICLE -->
     <div class="col-xs-12 col-md-9">
-        <div class="jumbotron">
-            <h1 class='pageTitle'>Administration</h1>
+        <div class="container">
+            <h1>Administration</h1>
             <div class="col-lg-6">
                 <form action="{{ path('admin_users_search') }}" method="post">
                     <div class="input-group">
@@ -23,7 +23,6 @@
                 
         
         <div class="col-sm-6">
-            <div class="jumbotron">
                 <p align="center">
                     <a class="list-group-item" href="{{ path('admin_listeMembres') }}">Liste des utilisateurs</a>
                     <a class="list-group-item" href="{{ path('admin_users_new') }}">Ajouter un utilisateur</a>
@@ -31,10 +30,8 @@
                     <a class="list-group-item" href="{{ path('agenda_new') }}">Ajouter un évènement</a>
                     <a class="list-group-item" href="{{ path('agenda_index') }}">Liste des évènements</a>
                 </p>
-            </div>
         </div>
         <div class="col-sm-6">
-            <div class="jumbotron">
                 <p align="center">
                     <a class="list-group-item" href="{{ path('articles_new') }}">Publier un article</a>
                     <a class="list-group-item" href="{{ path('admin_listeArticles') }}">Liste des articles</a>
@@ -42,7 +39,6 @@
                     <a class="list-group-item" href="{{ path('imagecollection_new') }}">Publier des photos dans la galerie</a>
                     <a class="list-group-item" href="#">Newsletter</a>
                 </p>
-            </div>
         </div>
     </div>
     
