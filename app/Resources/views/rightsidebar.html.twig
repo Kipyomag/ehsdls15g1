@@ -2,9 +2,12 @@
 
         <div id="calendar" class="list-group">
             <div class="list-group-item agenda">
-                <h2 align="center">Evènements à venir</h2>
+                <h2 align="center">A ne pas manquer !</h2>
             {% for agenda in agendas %}
-                    <a class="list-group-item" href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.title }}<br/>{{ agenda.startingDate|date('d-m-Y') }}</a>                
+                    <a class="list-group-item list-group-item-action" href="{{ path('agenda_show', { 'id': agenda.id }) }}">
+                        <h4 class="list-group-item-heading">{{ agenda.title }}</h4>
+                        <p class="list-group-item-text">{{ agenda.startingDate|date('d-m-Y') }}</p>
+                    </a>
             {% endfor %}
                 <a class="list-group-item" href="{{ path('agenda_index') }}">Voir tous les évènements</a>
             {% if is_granted('ROLE_ADMIN') %}
