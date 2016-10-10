@@ -35,28 +35,42 @@ Doc Users
 ////////////////////////////////////////////////////////////////////////////////////
 Système d'inscription:
 Pour enregistrer un nouvel utilisateur, 
-l'utilisateur rempli le formulaire d'inscription qui sera envoyé à l'administrateur,
+l'utilisateur rempli le formulaire d'inscription qui sera envoyé par mail à l'administrateur,
 et doit envoyer un chèque de 10€00 pour l'adhésion à l'association.
 
-Une fois le paiement reçu l'administrateur valide l'inscription de l'utilisateur en rentrant ses informations dans le panneau
-d'administration et dans la section "ajouter un utilisateur"
+Une fois le paiement reçu l'administrateur valide l'inscription de l'utilisateur en rentrant ses informations dans la 
+section "ajouter un utilisateur" du panneau d'administration.
 
 Lors de la soumission du formulaire d'ajout d'utilisateur, un mot de passe est généré aléatoirement et est envoyé par mail à 
-l'utilisateur tout en lui confirmant son inscription
+l'utilisateur tout en lui confirmant son inscription.
 
 Connexion:
 Une fois la confirmation d'inscription reçu, l'utilisateur peut se connecter au site.
-Il lui suffit d'entrer son adresse mail et son mot de passe précédement reçu par mail.
+Il lui suffit d'entrer son adresse mail et son mot de passe reçu précédement.
 
 Changer son mot de passe:
-Lorsqu'un utilisateur se connecte pour la première fois sur le site, il peut modifier son mot de passe en se rendant sur 
-son profil.
+Une fois connecté, l'utilisateur peut modifier son mot de passe en se rendant sur son profil.
 
 Mot de passe perdu:
-Dans le cas ou un utilisateur ne se souvient pas de son mot de passe, il peut demander à en recevoir un nouveau en 
+Dans le cas ou un utilisateur ne se souviendrait plus de son mot de passe, il peut demander à en recevoir un nouveau en 
 cliquant sur "mot de passe oublié" sur la page de connexion. Un mot de passe sera donc généré aléatoirement et 
 envoyé par mail.
 
 Architectures des rôles utilisateurs:
-Rôle utilisateur: le rôle le plus bas, convient parfaitement pour un nouveau membre
-Rôle modérateur: ...
+Rôle utilisateur: le rôle le plus bas, convient parfaitement pour un nouveau membre.
+Rôle modérateur: permet de faire la modération des articles et commentaires.
+Rôle administrateur: dispose de tous les droits.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Agenda
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Pour mettre en place un nouvel évènement, l'utilisateur doit avoir les droits administrateur.
+Il doit remplir le formulaire via le lien "ajouter un évènement" présent sur le panneau d'administrateur.
+
+Une fois les informations saisies et le formulaire validé, chaque visiteur du site à la possibilité de s'inscrire à l'évènement,
+uniquement si l'inscription à l'évènement est possible et qu'il n'est pas terminé. Il faut également qu'il reste des places 
+disponibles.
+
+Un utilisateur peut uniquement s'inscrire à l'évènement
+Un modérateur peut éditer un adhérent pour indiquer que son paiement a bien été éffectué pour que son inscription 
+soit prise en compte.

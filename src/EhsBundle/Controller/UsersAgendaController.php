@@ -21,18 +21,25 @@ class UsersAgendaController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        
-        $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
-        
-        $event = $request->request->get('agenda');
-        
-        $usersAgendas = $em->getRepository('EhsBundle:UsersAgenda')->findUserFromAgenda($event);
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+            $em = $this->getDoctrine()->getManager();
+            
+            $agendas = $em->getRepository('EhsBundle:Agenda')->findEvent();
+            
+            $event = $request->request->get('agenda');
+            
+            $usersAgendas = $em->getRepository('EhsBundle:UsersAgenda')->findUserFromAgenda($event);
 
-        return $this->render('usersagenda/index.html.twig', array(
-            'usersAgendas' => $usersAgendas,
-            'agendas' => $agendas,
-        ));
+            return $this->render('usersagenda/index.html.twig', array(
+                'usersAgendas' => $usersAgendas,
+                'agendas' => $agendas,
+            ));
+        
+        } else {
+            $this->get('session')->getFlashBag()->set('danger', 'Vous n\'avez pas l\'autorisation d\'accéder à cette page.');
+
+            return $this->redirectToRoute('articles_index');
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class UsersAgendaController extends Controller
             $em->persist($usersAgenda);
             $em->flush();
 
-            return $this->redirectToRoute('usersagenda_show', array('id' => $usersAgenda->getId()));
+            return $this->redirectToRoute('articles_index');
         }
 
         return $this->render('usersagenda/new.html.twig', array(
