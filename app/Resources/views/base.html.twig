@@ -34,7 +34,7 @@
                 <li class="menuItem"><a href="{{ path('articles_index') }}">Accueil</a></li>
                 <li class="menuItem"><a href="{{ path('presentation_index') }}">L'association</a></li>
                 <li class="menuItem"><a href="{{ path('image_index') }}">Galerie</a></li>
-                <li class="menuItem"><a href="{{ path('contact_new') }}">Contact</a></li>
+                <li class="menuItem"><a href="{{ path('contact_index') }}">Contact</a></li>
                 {% if app.user %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="menuItem"><a href="{{ path('admin_index') }}">Administration</a></li>

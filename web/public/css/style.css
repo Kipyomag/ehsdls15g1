@@ -54,19 +54,19 @@ footer {
 	bottom: 8%;
 }
 
-.progressArticle a {
+.progressArticle a, .progressArticle {
 	color: black;
 }
 
-.submitArticle a {
+.submitArticle a, .submitArticle {
 	color: blue;
 }
 
-.publishedArticle a {
+.publishedArticle a, .publishedArticle {
 	color: green;
 }
 
-.refusedArticle a {
+.refusedArticle a, .refusedArticle {
 	color: red;
 }
 

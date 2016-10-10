@@ -5,12 +5,10 @@
 {% block body %}
 
 <div class="col-xs-12">
-    <ul>
-        <li><a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers la liste</a></li>
+        <a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers la liste</a>
         
         {% if is_granted('ROLE_MODERATEUR') %}
-            <li><a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a></li>
-            <li>
+            <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a>
                 {{ form_start(delete_form) }}
                     <input type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
@@ -18,6 +16,9 @@
                     {{ form_start(refused_form) }}
                         <input type="submit" value="Ne pas publier">
                     {{ form_end(refused_form) }}
+                    {{ form_start(publish_form) }}
+                        <input type="submit" value="Publier">
+                    {{ form_end(publish_form) }}
                 {% elseif article.status == 'progress' %}
                     {{ form_start(publish_form) }}
                         <input type="submit" value="Publier">
@@ -27,10 +28,19 @@
                         <input type="submit" value="Ne plus publier">
                     {{ form_end(refused_form) }}
                 {% endif %}
-            </li>
         {% endif %}
-    </ul>
 
+    {% if article.status == 'refused' %}
+        <p class="refusedArticle">Article refusé</p>
+    {% endif %}
+
+    {% if article.status == 'progress' %}
+        <p class="progressArticle">Article en cours de rédaction</p>
+    {% endif %}
+
+    {% if article.status == 'submit' %}
+        <p class="submitArticle">Article refusé</p>
+    {% endif %}
 
     <h1>{{ article.titre }}</h1>
     <div>

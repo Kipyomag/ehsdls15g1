@@ -50,13 +50,21 @@ security:
         - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/agenda/new, role: ROLE_ADMIN }
         - { path: ^/contact/[0-9]+/show, role: ROLE_ADMIN }
-        - { path: ^/archive/new, role: ROLE_ADMIN }
+        - { path: ^/archive, role: ROLE_ADMIN }
+        - { path: ^/archive/new, role: ROLE_USER }
         - { path: ^/archive/index, role: ROLE_USER }
         - { path: ^/archive/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/archive/[0-9]+/show, role: ROLE_USER }
         - { path: ^/archive/[0-9]+/delete, role: ROLE_ADMIN }
         - { path: ^/imagecollection/new, role: ROLE_ADMIN }
         - { path: ^/image/[0-9]+/delete, role: ROLE_ADMIN }
+        - { path: ^/usersagenda, role: ROLE_ADMIN }
+        - { path: ^/admin/new, role: ROLE_ADMIN }
+        - { path: ^/admin/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/admin/listeMembres, role: ROLE_ADMIN }
+        - { path: ^/admin/listeArticles, role: ROLE_ADMIN }
+        - { path: ^/admin/[0-9]+/editComment, role: ROLE_ADMIN }
+        - { path: ^/admin/searchUsers, role: ROLE_ADMIN }
 
 
             # activate different ways to authenticate
