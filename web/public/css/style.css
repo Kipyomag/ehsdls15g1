@@ -5,6 +5,11 @@
 	min-height: 80vh;
 }
 
+
+body{
+	background-color: #FDF6E2;
+}
+
 footer {
 	padding: 30px 0;
 	text-align: center;
@@ -20,7 +25,7 @@ footer {
 h1, h2 {
 	font-family: 'Roboto', arial, sans-serif;
 	font-weight: 900;
-	color: #825887;
+	color: #826586;
 }
 
 p {
@@ -28,7 +33,7 @@ p {
 }
 
 label {
-	color: #825887;
+	color: #826586;
 	font-family: 'Raleway', arial, sans-serif;
 }
 
@@ -37,7 +42,7 @@ label {
 }
 
 .pageTitle {
-	color: #825887;
+	color: #826586;
 	text-align: center;
 }
 
@@ -53,17 +58,17 @@ hr {
 .btn, button, input[type='submit'] {
 	font-family: 'Roboto', arial, sans-serif;
 	font-weight: 900;
-	border: 1px solid #825887;
+	border: 1px solid #826586;
 	padding: 5px;
-	background-color: #825887;
+	background-color: #826586;
 	color: white;
 	border-radius: 0;
 }
 
 .btn:hover, button:hover, input[type='submit']:hover {
 	background-color: white;
-	color: #825887;
-	border-color: #825887;
+	color: #826586;
+	border-color: #826586;
 }
 
 
@@ -193,7 +198,7 @@ hr {
 }
 
 .articleForm h1 {
-	color: #825887;
+	color: #826586;
 	text-align: center;
 	margin-top: 50px;
 }
@@ -301,7 +306,7 @@ hr {
 #mainArticle-inside {
 	height: 100%;
 	width: 100%;
-  	background-color: #ece6d7;
+  	background-color: #FAEDC6;
 	box-shadow: 0px 5px 5px grey;
 }
 
@@ -327,7 +332,7 @@ hr {
 
 /* sidebar */
 #rightSidebar{
-	background-color: #825887;
+	background-color: #826586;
 }
 #calendar {
 	min-height: 21em;
@@ -345,7 +350,7 @@ hr {
 }
 
 #calendar h2 {
-	color: #825887;
+	color: #826586;
 	font-size: 20px;
 	margin-top: 0;
 }
@@ -355,9 +360,6 @@ hr {
 	overflow: hidden;
 }
 
-body{
-	background-color: #FAEDC6;
-}
 
 
 /*topmenu*/
