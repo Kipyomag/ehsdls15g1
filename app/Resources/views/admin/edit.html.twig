@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="col-xs-12">
-    <h1 align="center">Edition du profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+    <h1  class='pageTitle'>Edition du profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
         {{ form_start(edit_form) }}
             <table align="center">
             {% for emailField in edit_form.email %}

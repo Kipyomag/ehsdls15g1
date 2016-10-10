@@ -4,7 +4,7 @@
 
 {% block body %}
 <div id="archivePage" class="col-xs-12">
-    <h1>Archives</h1>
+    <h1 class='pageTitle'>Archives</h1>
     {% if is_granted('ROLE_ADMIN') %}
         <a class="btn btn-default" href="{{ path('archive_new') }}">Ajouter une archive</a>
     {%endif%}
