@@ -342,6 +342,7 @@ hr {
 #calendar>.agenda {
 	min-height: 21em;
 	background-color: #93BD58;
+	border: none;
 }
 
 .list-group {
