@@ -88,7 +88,7 @@ class AgendaController extends Controller
             $em->persist($usersAgenda);
             $em->flush();
             $this->get('session')->getFlashBag()->set('success', 'Votre inscription a bien été prise en compte.');
-            return $this->redirectToRoute('usersagenda_show', array('id' => $usersAgenda->getId()));
+            return $this->redirectToRoute('articles_index');
         }
 
         return $this->render('agenda/show.html.twig', array(
