@@ -369,10 +369,13 @@ hr {
 }
 #sidebarActions .list-group-item:nth-child(odd), #calendar .list-group-item a:nth-child(odd) {
 	background-color: #826586;
+
 }
 #sidebarActions .list-group-item:hover, #calendar .list-group-item a:hover {
 	background-color: #C3ABC7;
 }
+
+
 
 
 
@@ -412,3 +415,10 @@ hr {
 	max-height: 40vh;
 }
 
+#admin{
+	background-color: #826586;
+}
+
+#admin .list-group-item{
+	margin-top: 10px;
+}
