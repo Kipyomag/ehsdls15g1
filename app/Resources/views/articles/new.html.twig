@@ -5,7 +5,7 @@
 {% block body %}
 <div class="col-xs-12">
 <div id="myArticles">
-    <h1>Mes articles</h1>
+    <h1 class='pageTitle'>Mes articles</h1>
         <a class="btn btn-default" href="{{ path('articles_index') }}">Retour aux articles</a>
 
     <div class="list-group">
@@ -25,7 +25,7 @@
 
 
 <div class="articleForm">
-    <h1>Créer un article</h1>
+    <h1 class='pageTitle'>Créer un article</h1>
     {{ form_start(form) }}
         {{ form_row(form.titre, {'label':'Titre:'}) }}
         {{ form_row(form.chapeau, {'label':'Chapeau:'}) }}

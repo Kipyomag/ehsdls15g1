@@ -32,23 +32,11 @@
                         <input type="submit" value="Ne plus publier">
                     {{ form_end(refused_form) }}
                 {% endif %}
+
+        </div>
         {% endif %}
 
-
-        {% if article.status == 'refused' %}
-            <p class="refusedArticle">Article refusé</p>
-        {% endif %}
-
-        {% if article.status == 'progress' %}
-            <p class="progressArticle">Article en cours de rédaction</p>
-        {% endif %}
-
-        {% if article.status == 'submit' %}
-            <p class="submitArticle">Article en attente de validation</p>
-        {% endif %}
-    </div>
-
-    <h1>{{ article.titre }}</h1>
+    <h1 class='pageTitle'>{{ article.titre }}</h1>
     <p class='chapeau'>{{ article.chapeau }}</p>
     <p class='content'>{{ article.contenu | raw }}</p>
     <div class="author">{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</div>
@@ -58,7 +46,7 @@
 
     {% if article.status == 'published' %}
     <div class="comments">
-        <h1>Commentaires</h1>
+        <h1 class='pageTitle'>Commentaires</h1>
         <div class="commentForm">
         {{ form_start(comment_form) }}
             {{ form_row(comment_form.content, {'label': 'Ecrire un commentaire:'}) }}
