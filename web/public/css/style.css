@@ -380,3 +380,12 @@ hr {
 	max-width: 100%;
 	max-height: 40vh;
 }
+
+/* sidebar */
+#rightSidebar{
+	background-color: #93BD58;
+}
+#calendar .list-group-item{
+	margin-top: 5px;
+	overflow: hidden;
+}
