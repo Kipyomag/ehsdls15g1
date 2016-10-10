@@ -15,9 +15,9 @@
                         <p>{{ articles[0].chapeau }}</p>
                     </div>
                     <p class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</p>
-                    <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button">Voir</a>
+                    <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-chevron-right"></span> Voir</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button">Modifier</a>
+                        <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-pencil"></span>Modifier</a>
                     {% endif %}
 
                     {% endif %}
@@ -33,20 +33,21 @@
                                 <h2>{{ article.titre }}</h2>
                                 <p class='chapeau'>{{ article.chapeau }}</p>
                             </div>
+                            <hr/>
                             <div class='author'>
                                 <p>{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</p>
                             </div>
 
-                            <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
+                            <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button"><span class="glyphicon glyphicon-chevron-right"></span> Voir</a>
                             {% if is_granted('ROLE_ADMIN') %}
-                                <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                                <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button"><span class="glyphicon glyphicon-pencil"></span>Modifier</a>
                             {% endif %}
 
                         </div> <!-- end .article-inside -->
                     </div>
                 {% endif %}
                 {% endfor %}
-                <a href="{{ path('articles_page', { 'nbr': 1 }) }}" class="btn btn-default seeAll">Voir tous les articles</a>
+                <a href="{{ path('articles_page', { 'nbr': 1 }) }}" class="btn btn-default seeAll"><span class="glyphicon glyphicon-chevron-right"></span> Voir tous les articles</a>
             </div>
         </div>
 
