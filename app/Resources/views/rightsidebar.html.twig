@@ -9,7 +9,7 @@
                         <p class="list-group-item-text">{{ agenda.startingDate|date('d-m-Y') }}</p>
                     </a>
             {% endfor %}
-                <a class="list-group-item" href="{{ path('agenda_index') }}">Voir tous les évènements</a>
+                <a class="list-group-item" href="{{ path('agenda_index') }}"><span class="glyphicon glyphicon-chevron-right"></span> Voir tous les évènements</a>
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="list-group-item" href="{{ path('agenda_new') }}">+ Ajouter un évènement</a>
             {% endif %}

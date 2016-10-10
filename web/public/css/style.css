@@ -332,17 +332,16 @@ hr {
 
 /* sidebar */
 #rightSidebar{
-	background-color: #826586;
+	/*background-color: #93BD58;*/
 }
 #calendar {
 	min-height: 21em;
-	background-color: #FAEDC6;
+	background-color: #826586;
 	margin-bottom: 55px;
-	margin-top: 10px;
 }
 #calendar>.agenda {
 	min-height: 21em;
-	background-color: #FAEDC6;
+	background-color: #93BD58;
 }
 
 .list-group {
@@ -350,15 +349,30 @@ hr {
 }
 
 #calendar h2 {
-	color: #826586;
+	color: white;
 	font-size: 20px;
 	margin-top: 0;
 }
 
-.list-group-item{
-	background-color: #FAEDC6;
+#rightSidebar .list-group-item{
+	background-color: #826586;
 	overflow: hidden;
 }
+
+#calendar .list-group-item a, #rightSidebar h4, #sidebarActions .list-group-item {
+	color: white;
+}
+
+#sidebarActions .list-group-item, #calendar .list-group-item a {
+	background-color: #A68BAA;
+}
+#sidebarActions .list-group-item:nth-child(odd), #calendar .list-group-item a:nth-child(odd) {
+	background-color: #826586;
+}
+#sidebarActions .list-group-item:hover, #calendar .list-group-item a:hover {
+	background-color: #C3ABC7;
+}
+
 
 
 
