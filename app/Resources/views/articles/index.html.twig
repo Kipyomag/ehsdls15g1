@@ -16,7 +16,7 @@
                     </div>
                     <p class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</p>
                     <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button">Voir</a>
-                    {% if is_granted('ROLE_MODERATEUR') %}
+                    {% if is_granted('ROLE_ADMIN') %}
                         <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button">Modifier</a>
                     {% endif %}
 
@@ -38,7 +38,7 @@
                             </div>
 
                             <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
-                            {% if is_granted('ROLE_MODERATEUR') %}
+                            {% if is_granted('ROLE_ADMIN') %}
                                 <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                             {% endif %}
 

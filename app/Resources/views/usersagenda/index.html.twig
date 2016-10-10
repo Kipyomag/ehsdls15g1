@@ -36,7 +36,7 @@
         {% for usersAgenda in usersAgendas %}
             <tr>
                 <td>
-                    {% if is_granted('ROLE_MODERATEUR') %}
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-warning" href="{{ path('usersagenda_edit', { 'id': usersAgenda.id }) }}">Editer</a>
                     {% endif %}
                 </td>
@@ -47,7 +47,7 @@
                 <td>{% if usersAgenda.payment < 1 %}Non{% else %}Oui{% endif %}</td>
                 <td>{{ usersAgenda.event.title }}</td>
                 <td>
-                    {% if is_granted('ROLE_MODERATEUR') %}
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-primary" href="{{ path('usersagenda_show', { 'id': usersAgenda.id }) }}">Voir</a>
                     {% endif %}
                 </td>

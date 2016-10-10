@@ -23,7 +23,7 @@
                 <tbody>
                 {% for agenda in agendas %}
                     <tr>
-                        {% if is_granted('ROLE_MODERATEUR') %}
+                        {% if is_granted('ROLE_ADMIN') %}
                         <td><a type="button" class="btn btn-warning btn-xs" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a></td>
                         {% endif %}
                         <td>{{ agenda.title }}</td>

@@ -53,10 +53,10 @@
         </tbody>
     </table>
         <p align="center">
-                <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
+                <a href="{{ path('agenda_index') }}">Voir tous les évènements</a>
         </p>
         <p align="center">    
-        {% if is_granted('ROLE_MODERATEUR') %}
+        {% if is_granted('ROLE_ADMIN') %}
             <a class="btn btn-warning" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Editer</a>
         </p>
             {{ form_start(delete_form) }}

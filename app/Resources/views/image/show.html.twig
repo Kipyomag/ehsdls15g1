@@ -17,7 +17,7 @@
     </table>
 
 
-        {% if is_granted('ROLE_MODERATEUR') %}
+        {% if is_granted('ROLE_ADMIN') %}
             {{ form_start(delete_form) }}
                 <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}

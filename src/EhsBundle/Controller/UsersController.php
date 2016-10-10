@@ -100,13 +100,13 @@ Pays:\n" . $user->getPays() . "\n"
      */
     public function showProfilAction(Users $user)
     {
-        if ($this->get('security.token_storage')->getToken()->getUser()->getId() == $user->getId()) {
-        $deleteForm = $this->createDeleteForm($user);
+        if ($this->get('security.token_storage')->getToken()->getUser()->getId() === $user->getId()) {
+            $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('users/showProfil.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('users/showProfil.html.twig', array(
+                'user' => $user,
+                'delete_form' => $deleteForm->createView(),
+            ));
         }else{
 
             $this->get('session')->getFlashBag()->set('danger', 'Vous n\'avez pas l\'autorisation pour accéder à cette page.');

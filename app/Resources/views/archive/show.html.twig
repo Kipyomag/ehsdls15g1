@@ -32,10 +32,12 @@
     </table>
 
 
-    <a class='btn btn-default' href="{{ path('archive_edit', { 'id': archive.id }) }}">Editer</a>
-    {{ form_start(delete_form) }}
-        <input type="submit" value="Supprimer">
-    {{ form_end(delete_form) }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class='btn btn-default' href="{{ path('archive_edit', { 'id': archive.id }) }}">Editer</a>
+        {{ form_start(delete_form) }}
+            <input type="submit" value="Supprimer">
+        {{ form_end(delete_form) }}
+    {%endif%}
 
 </div>
 {% endblock %}

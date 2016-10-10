@@ -4,6 +4,8 @@
 
 {% block body %}
 <div class="jumbotron">
+
+    <a class="btn btn-default" href="{{ path('agenda_index') }}">Retourner aux évènements</a>
     <h1 class='pageTitle'>Ajouter un évènement</h1>
     {{ form_start(form) }}
         <table>
@@ -39,11 +41,5 @@
             <tr><td><button type="submit" class="btn btn-success">Ajouter</button></td></tr>
         </table>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('agenda_index') }}">Voir tout les évènements</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}

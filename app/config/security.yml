@@ -37,9 +37,10 @@ security:
 
     access_control:
         # - { path: ^/users/new, role: ROLE_ADMIN }
-        - { path: ^/users/show, role: ROLE_ADMIN }
+        - { path: ^/users/[0-9]+/show, role: ROLE_USER }
+        - { path: ^/users/[0-9]+/edit, role: ROLE_USER }
         - { path: ^/articles/new, role: ROLE_USER }
-        - { path: ^/articles/[0-9]+/edit, role: ROLE_MODERATEUR }
+        - { path: ^/articles/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/articles/[0-9]+/publish, role: ROLE_ADMIN }
         - { path: ^/articles/[0-9]+/refused, role: ROLE_ADMIN }
         - { path: ^/comment/new, role: ROLE_USER }
@@ -50,22 +51,25 @@ security:
         - { path: ^/agenda/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/agenda/new, role: ROLE_ADMIN }
         - { path: ^/contact/[0-9]+/show, role: ROLE_ADMIN }
-        - { path: ^/archive, role: ROLE_ADMIN }
-        - { path: ^/archive/new, role: ROLE_USER }
+        - { path: ^/contact/[0-9]+/edit, role: ROLE_ADMIN }
+        - { path: ^/contact/[0-9]+/delete, role: ROLE_ADMIN }
+        - { path: ^/archive/new, role: ROLE_ADMIN }
         - { path: ^/archive/index, role: ROLE_USER }
         - { path: ^/archive/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/archive/[0-9]+/show, role: ROLE_USER }
         - { path: ^/archive/[0-9]+/delete, role: ROLE_ADMIN }
+        - { path: ^/archive, role: ROLE_USER }
         - { path: ^/imagecollection/new, role: ROLE_ADMIN }
         - { path: ^/image/[0-9]+/delete, role: ROLE_ADMIN }
         - { path: ^/usersagenda, role: ROLE_ADMIN }
         - { path: ^/admin/new, role: ROLE_ADMIN }
         - { path: ^/admin/[0-9]+/edit, role: ROLE_ADMIN }
         - { path: ^/admin/listeMembres, role: ROLE_ADMIN }
-        - { path: ^/admin/listeArticles, role: ROLE_ADMIN }
+        - { path: ^/admin/listeArticle0s, role: ROLE_ADMIN }
         - { path: ^/admin/[0-9]+/editComment, role: ROLE_ADMIN }
         - { path: ^/admin/searchUsers, role: ROLE_ADMIN }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/newsletter/[0-9]+/edit, role: ROLE_ADMIN }
 
 
             # activate different ways to authenticate

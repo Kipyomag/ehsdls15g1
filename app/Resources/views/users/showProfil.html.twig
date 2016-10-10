@@ -43,10 +43,22 @@
                             <th>Pays</th>
                             <td>{{ user.pays }}</td>
                         </tr>
+                                {% if user.role == 'ROLE_ADMIN' %}
                         <tr>
                             <th>Role</th>
-                            <td>{{ user.role }}</td>
+                            <td>
+                                Administrateur
+                            </td>
                         </tr>
+                                {%elseif user.role == 'ROLE_MODERATEUR' %}
+                        <tr>
+                            <th>Role</th>
+                            <td>
+                                Modérateur
+                            </td>
+                        </tr>
+                            {%endif%}
+
                     </table>
                 <ul>
                     <li>

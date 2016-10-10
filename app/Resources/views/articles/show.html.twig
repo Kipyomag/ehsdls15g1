@@ -9,7 +9,7 @@
         
 
     <div class='fullArticle'>
-        {% if is_granted('ROLE_MODERATEUR') %}
+        {% if is_granted('ROLE_ADMIN') %}
 
             <div class='adminActions'>
                 <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}">Editer</a>
