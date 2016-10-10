@@ -413,3 +413,11 @@ hr {
 	max-width: 100%;
 	max-height: 40vh;
 }
+
+#admin{
+	background-color: #826586;
+}
+
+#admin .list-group-item{
+	margin-top: 10px;
+}
