@@ -46,7 +46,7 @@
 
                 {% if app.user %}
                     <li class="menuItem"><a href="{{ path('users_show_profil', { 'id': app.user.id }) }}">Profil</a></li>   
-                    <li class="menuItem"><a href="{{ path('users_logout') }}">Déconnexion</a></li>
+                    <li class="menuItem"><a href="{{ path('users_logout') }}"><span class="glyphicon glyphicon-off"></span>Déconnexion</a></li>
                 {% else %}
                     <li class="menuItem"><a href="{{ path('users_login') }}">Connexion</a></li>
                     <li class="menuItem"><a href="{{ path('users_new') }}">Inscription</a></li>

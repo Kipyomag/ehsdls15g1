@@ -40,6 +40,13 @@ label {
 	text-align: center;
 }
 
+hr {
+	background-color: lightgrey;
+	margin: 0;
+	padding: 0;
+	height: 1px;
+}
+
 
 /* all buttons */
 .btn, button, input[type='submit'] {
@@ -80,11 +87,12 @@ label {
 .articleContent {
     max-height: 18em;
     min-height: 18em;
+    padding: 0 10px 0 10px;
     overflow: hidden;
 }
 
 .articleContent h2 {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-top: 0;
 }
 

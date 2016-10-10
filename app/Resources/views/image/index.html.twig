@@ -11,7 +11,7 @@
 <a href="{{ path('image_show', { 'id': image.id }) }}"><img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="Photo de l'association"></a>
 {% endfor %}
 </div>
-<a href="{{ path('image_page', { 'nbr': 1 }) }}" class="btn btn-default">Voir toutes les images</a>
+<a href="{{ path('image_page', { 'nbr': 1 }) }}" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span> Voir toutes les images</a>
 
 
 </div>

@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="col-xs-12">
-    <a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers les articles</a>
+    <a class="btn btn-default" href="{{ path('articles_index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Retour vers les articles</a>
         
 
     <div class='fullArticle'>
@@ -41,7 +41,7 @@
     <p class='content'>{{ article.contenu | raw }}</p>
     <div class="author">{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</div>
     </div>
-    <a class="btn btn-default" href="{{ path('articles_index') }}">Retour vers les articles</a>
+    <a class="btn btn-default" href="{{ path('articles_index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Retour vers les articles</a>
 
 
     {% if article.status == 'published' %}
@@ -65,7 +65,7 @@
 
             {% if is_granted('ROLE_MODERATEUR') %}
                 <div class="modoActions" >
-                    <a class='btn btn-default' href="{{ path('comment_delete', { 'id': comment.id }) }}">Supprimer</a>
+                    <a class='btn btn-default' href="{{ path('comment_delete', { 'id': comment.id }) }}"><span class="glyphicon glyphicon-trash"></span>Supprimer</a>
                 </div>
             {% endif %}
         </div>

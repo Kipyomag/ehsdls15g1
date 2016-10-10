@@ -14,10 +14,10 @@
     </div>
         
     {% if pageNbr != 1 %}
-        <a href="{{ path('image_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
+        <a href="{{ path('image_page', { 'nbr': pageNbr-1 }) }}"><span class="glyphicon glyphicon-chevron-left"></span> Page précédente</a>
     {% endif %}
     {% if pageNbr < nbrOfPages %}
-        <a href="{{ path('image_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+        <a href="{{ path('image_page', { 'nbr': pageNbr+1 }) }}">Page suivante <span class="glyphicon glyphicon-chevron-right"></span></a>
     {% endif %}
     </div>
 
