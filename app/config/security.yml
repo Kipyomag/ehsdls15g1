@@ -65,6 +65,7 @@ security:
         - { path: ^/admin/listeArticles, role: ROLE_ADMIN }
         - { path: ^/admin/[0-9]+/editComment, role: ROLE_ADMIN }
         - { path: ^/admin/searchUsers, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: ROLE_ADMIN }
 
 
             # activate different ways to authenticate

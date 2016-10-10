@@ -3,10 +3,10 @@ agenda_index:
     defaults: { _controller: "EhsBundle:Agenda:index" }
     methods:  [GET, POST]
 
-agenda_apercu:
-    path:     /apercu
-    defaults: { _controller: "EhsBundle:Agenda:apercu" }
-    methods:  GET
+agenda_old_event:
+    path:     /oldEvent
+    defaults: { _controller: "EhsBundle:Agenda:oldEvent" }
+    methods:  [GET, POST]
 
 agenda_show:
     path:     /{id}/show

@@ -43,11 +43,7 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100)
-     * @Assert\Regex(
-     *     pattern="/\d/",
-     *     match=false,
-     *     message="Votre nom ne peut pas contenir de nombre"
-     * )
+     * @Assert\Regex(pattern="/\D/")
      */
     private $nom;
 
@@ -55,11 +51,7 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=100)
-     * @Assert\Regex(
-     *     pattern="/\d/",
-     *     match=false,
-     *     message="Votre nom ne peut pas contenir de nombre"
-     * )
+     * @Assert\Regex(pattern="/\D/")
      */
     private $prenom;
 
@@ -81,6 +73,7 @@ class Users implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=10)
+     * @Assert\Regex(pattern="/^(\(0\))?[0-9]{10}$/")
      */
     private $telephone;
 

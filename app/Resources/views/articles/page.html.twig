@@ -7,7 +7,7 @@
 <div class="col-xs-12">
 
     <!-- ALL ARTICLES OF THIS PAGE -->
-    <div id="articles" class="rowArticle">
+    <div id="articles" class="rowArticle col-xs-12">
         {% for article in articles %}
             <div class="article col-xs-12 col-md-4 text-center">
                 <div class="article-inside">
@@ -16,12 +16,12 @@
                         <p class='chapeau'>{{ article.chapeau }}</p>
                     </div>
                     <div class='author'>
-                        <p>{{ article.date|date("d/m/Y") }} auteur: {{ article.author.nom }} {{ article.author.prenom }}</p>
+                        <p>{{ article.date|date("d/m/Y") }} {{ article.author.nom }} {{ article.author.prenom }}</p>
                     </div>
 
                     <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': article.id }) }}" role="button">Voir</a>
                     {% if is_granted('ROLE_MODERATEUR') %}
-                        <a class="btn btn-default" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
+                        <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': article.id }) }}" role="button">Modifier</a>
                     {% endif %}
 
                 </div> <!-- end .article-inside -->
@@ -29,10 +29,10 @@
         {% endfor %}
         
         {% if pageNbr != 1 %}
-            <a href="{{ path('articles_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
+            <a class="btn btn-default prevButton" href="{{ path('articles_page', { 'nbr': pageNbr-1 }) }}">Page précédente</a>
         {% endif %}
         {% if pageNbr < nbrOfPages %}
-            <a href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
+            <a class="btn btn-default nextButton" href="{{ path('articles_page', { 'nbr': pageNbr+1 }) }}">Page suivante</a>
         {% endif %}
     </div>
 

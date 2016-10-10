@@ -25,7 +25,7 @@ class ArticlesType extends AbstractType
                 'filebrowserBrowseRouteParameters' => array('instance' => 'default')
                 ),
             ))
-            ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
+            ->add('save', SubmitType::class, array('label' => 'Sauvegarder et terminer plus tard'))
             ->add('send', SubmitType::class, array('label' => 'Envoyer'))
 
         ;

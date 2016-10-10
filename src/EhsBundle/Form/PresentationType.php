@@ -15,7 +15,12 @@ class PresentationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content',null,array('attr' => array('class' => 'ckeditor'), 'label' => 'Présentation:'))
+            ->add('content','ckeditor', array(
+            'config' => array(
+                'filebrowserBrowseRoute' => 'elfinder',
+                'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                )
+            ))
         ;
     }
     

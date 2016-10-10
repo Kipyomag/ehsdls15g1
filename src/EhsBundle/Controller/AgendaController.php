@@ -22,20 +22,20 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $agendas = $em->getRepository('EhsBundle:Agenda')->findAll();
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findNewEvent();
 
         return $this->render('agenda/index.html.twig', array(
             'agendas' => $agendas,
         ));
     }
 
-    public function apercuAction()
+    public function oldEventAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $agendas = $em->getRepository('EhsBundle:Agenda')->findAll();
+        $agendas = $em->getRepository('EhsBundle:Agenda')->findOldEvent();
 
-        return $this->render('agenda/apercu.html.twig', array(
+        return $this->render('agenda/oldEvent.html.twig', array(
             'agendas' => $agendas,
         ));
     }

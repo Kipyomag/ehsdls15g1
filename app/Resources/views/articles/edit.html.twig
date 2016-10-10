@@ -3,31 +3,29 @@
 {% block title %}Edition Article{% endblock %}
 
 {% block body %}
-<div class="col-xs-12">
-    <h1>Edition des articles</h1>
+<div id="editArticlePage" class="col-xs-12">
+        <a class="btn btn-default" href="{{ path('articles_index') }}">Retour aux articles</a>
+    <div class="articleForm">
+        <h1>Editer un article</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_row(edit_form.titre) }}
-        {{ form_row(edit_form.chapeau) }}
-        {{ form_row(edit_form.contenu) }}
-        {% if article.status == 'progress' %}
-            {{ form_row(edit_form.save) }}
-            {{ form_row(edit_form.send) }}
-        {% elseif is_granted('ROLE_MODERATEUR') %}
-            <input type="submit" value="Modifier" />
-        {% endif %}
-        {{ form_widget(edit_form._token) }}
-    {{ form_end(edit_form, {'render_rest': false}) }}
+        {{ form_start(edit_form) }}
+            {{ form_row(edit_form.titre, {'label':'Titre:'}) }}
+            {{ form_row(edit_form.chapeau, {'label':'Chapeau:'}) }}
+            {{ form_row(edit_form.contenu, {'label':'Article:'}) }}
+            {% if article.status == 'progress' %}
+                {{ form_row(edit_form.save) }}
+                {{ form_row(edit_form.send) }}
+            {% elseif is_granted('ROLE_MODERATEUR') %}
+                <input type="submit" value="Modifier" />
+            {% endif %}
+            {{ form_widget(edit_form._token) }}
+        {{ form_end(edit_form, {'render_rest': false}) }}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('articles_index') }}">Retourner à la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="deleteForm">
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+    </div>
 </div>
 {% endblock %}

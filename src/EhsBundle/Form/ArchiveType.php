@@ -17,7 +17,12 @@ class ArchiveType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('text',null,array('attr' => array('class' => 'ckeditor')))
+            ->add('text','ckeditor', array(
+            'config' => array(
+                'filebrowserBrowseRoute' => 'elfinder',
+                'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                )
+            ))
             ->add('documentFile', FileType::class, array(
                 'label' => 'Document',
                 'required' => false,
