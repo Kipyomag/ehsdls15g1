@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block header %}{% endblock %}
 {% block title %}Edition adhésion {{ usersAgenda.nom }} {{ usersAgenda.prenom }}{% endblock %}
 
 {% block body %}
-<div class="col-xs-12">
+<div class="col-xs-12" id="content">
     <h1 class='pageTitle'>Edition {{ usersAgenda.nom }} {{ usersAgenda.prenom }} - {{ usersAgenda.mail }}</h1>
     <p>Adhésion pour l'évènement :{{ usersAgenda.event.title }}</p>
 

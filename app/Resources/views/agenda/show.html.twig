@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{% block header %}{% endblock %}
 {% block title %}Evènement{% endblock %}
 
 {% block body %}
-<div class="jumbotron">
-    <h1 align="center" class='pageTitle'>{{ agenda.title }}</h1>
+<div id="content">
+    <h1 class='pageTitle'>{{ agenda.title }}</h1>
 
-    <table align="center">
+    <table>
         <tbody>
             <tr>
                 <th>Début</th>               

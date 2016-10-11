@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block header %}{% endblock %}
 {% block title %}Adhésion {{ usersAgenda.nom }} {{ usersAgenda.prenom }}{% endblock %}
 {% block body %}
-<div class="col-xs-12">
+<div class="col-xs-12" id="content">
     <h1 class='pageTitle'>Adhésion de {{ usersAgenda.nom }} {{ usersAgenda.prenom }} - {{ usersAgenda.mail }}</h1>
 
     <table>

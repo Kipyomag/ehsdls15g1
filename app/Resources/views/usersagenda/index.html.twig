@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block header %}{% endblock %}
 {% block title %}Adhésions évènements{% endblock %}
 
 {% block body %}
-<div class="col-xs-12">
+<div class="col-xs-12" id="content">
     <h1 class='pageTitle'>Liste des adhésions aux évènements</h1>
     <div class="col-lg-6">
         <form action="{{ path('usersagenda_index') }}" method="post">

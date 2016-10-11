@@ -91,7 +91,7 @@ Votre mot de passe: " . $password
             $this->get('mailer')->send($message);
 
             $this->get('session')->getFlashBag()->set('success', 'Membre inscrit avec succès !');
-            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('admin_index');
         }
 
         return $this->render('admin/new.html.twig', array(

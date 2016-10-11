@@ -1,29 +1,27 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'baseArticles.html.twig' %}
 
     {% block title %}Actualités{% endblock %}
+
+    {% block firstArticle %}
+    <div class="firstArticle">
+            {% if articles[0] is defined %}
+                <h1>{{ articles[0].titre }}</h1>
+                <p>{{ articles[0].chapeau }}</p>
+    </div>
+            <p class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</p>
+            <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-chevron-right"></span> Voir</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-pencil"></span>Modifier</a>
+            {% endif %}
+
+            {% endif %}
+        
+    {% endblock %}
 
     {% block body %}
         <div class="col-xs-12 col-md-9">
 
             <!--MAIN ARTICLE-->
-            <div id="mainArticle">
-                <div id="mainArticle-inside" class="col-xs-12">
-                    {% if articles[0] is defined %}
-                    <div class="mainArticleContent">
-                        <h1>{{ articles[0].titre }}</h1>
-                        <p>{{ articles[0].chapeau }}</p>
-                    </div>
-                    <p class="author">{{ articles[0].date|date("d/m/Y") }} {{ articles[0].author.nom }} {{ articles[0].author.prenom }}</p>
-                    <a class="btn btn-default showButton" href="{{ path('articles_show', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-chevron-right"></span> Voir</a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a class="btn btn-default editButton" href="{{ path('articles_edit', { 'id': articles[0].id }) }}" role="button"><span class="glyphicon glyphicon-pencil"></span>Modifier</a>
-                    {% endif %}
-
-                    {% endif %}
-                </div>
-            </div>
-            
             <div id="articles" class="col-xs-12">
                 {% for article in articles %}
                 {% if article.id != articles[0].id %}

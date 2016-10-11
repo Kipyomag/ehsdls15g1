@@ -7,7 +7,7 @@
 
 
 body{
-	background-color: #FDF6E2;
+	background-color: white;
 }
 
 footer {
@@ -331,17 +331,9 @@ hr {
 
 
 /* sidebar */
-#rightSidebar{
-	/*background-color: #93BD58;*/
-}
 #calendar {
 	min-height: 21em;
-	background-color: #826586;
 	margin-bottom: 55px;
-}
-#calendar>.agenda {
-	min-height: 21em;
-	background-color: #93BD58;
 }
 
 .list-group {
@@ -349,30 +341,32 @@ hr {
 }
 
 #calendar h2 {
-	color: white;
+	color: #FFFADA;
 	font-size: 20px;
-	margin-top: 0;
+	margin-top: 10px;
 }
 
 #rightSidebar .list-group-item{
-	background-color: #826586;
+	background-color: #CD3158;
 	overflow: hidden;
 }
 
 #calendar .list-group-item a, #rightSidebar h4, #sidebarActions .list-group-item {
-	color: white;
+	color: #8A0868;
 }
 
 #sidebarActions .list-group-item, #calendar .list-group-item a {
-	background-color: #A68BAA;
+	background-color: #F9F2C2;
+	color: #8A0868;
 }
 #sidebarActions .list-group-item:nth-child(odd), #calendar .list-group-item a:nth-child(odd) {
-	background-color: #826586;
+	background-color: #F9F2C2;
 
 }
 #sidebarActions .list-group-item:hover, #calendar .list-group-item a:hover {
-	background-color: #C3ABC7;
+	background-color: white;
 }
+
 
 
 
@@ -381,7 +375,7 @@ hr {
 
 /*topmenu*/
 #topNavbar {
-	background-color: #93BD58;
+	background-image:linear-gradient(to right, #FF0040, #8A0868);
 	box-shadow: 0px 5px 20px grey;
 	height: 50px;
 
@@ -390,7 +384,6 @@ hr {
 	height: 50px;
 }
 
-#topNavbar a {background-color: #93BD58;}
 #topNavbar li a:link {color: white;}
 #topNavbar li a:visited {color: white;}
 #topNavbar li a:hover {
@@ -414,10 +407,21 @@ hr {
 	max-height: 40vh;
 }
 
-#admin{
-	background-color: #826586;
+/* Admin */
+#content{
+	background-color: #F9F2C2;
+	margin-top: 20px;
+	padding: 10px;
 }
 
-#admin .list-group-item{
-	margin-top: 10px;
+
+
+
+.firstArticle{
+	overflow: hidden;
+	max-height: 360px;
+}
+
+.footer{
+	background-image:linear-gradient(to right, #FF0040, #8A0868);
 }

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="{{ asset('public/img/favicon.gif') }}" />
+    <title>{% block title %}{% endblock %} | EHS</title>
+{% block stylesheets %}
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" media="all" />
+        
+        <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/simple-line-icons.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/device-mockups.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/new-age.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/font1.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/font2.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('public/css/font3.css') }}" type="text/css" media="all" />
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto+Slab|Roboto:400,900" rel="stylesheet">
+
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" type="text/css" media="all" />
+
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a href="{{ path('articles_index') }}"><img src="{{ asset('public/img/wip_ehs6.png') }}" width="125px" alt="logo association"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="menuItem"><a href="{{ path('articles_index') }}">Accueil</a></li>
+                    <li class="menuItem"><a href="{{ path('presentation_index') }}">L'association</a></li>
+                    <li class="menuItem"><a href="{{ path('image_index') }}">Galerie</a></li>
+                    <li class="menuItem"><a href="{{ path('contact_index') }}">Contact</a></li>
+                    {% if app.user %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="menuItem"><a href="{{ path('admin_index') }}">Administration</a></li>
+                        {% endif %}
+                        <li class="menuItem"><a href="{{ path('archive_index') }}">Archives</a></li>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <li class="menuItem"><a href="{{ path('users_show_profil', { 'id': app.user.id }) }}">Profil</a></li>   
+                        <li class="menuItem"><a href="{{ path('users_logout') }}"><span class="glyphicon glyphicon-off"></span>Déconnexion</a></li>
+                    {% else %}
+                        <li class="menuItem"><a href="{{ path('users_login') }}">Connexion</a></li>
+                        <li class="menuItem"><a href="{{ path('users_new') }}">Inscription</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+{% block header %}
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            {% block firstArticle %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen">
+                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="button">
+                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+    <section class="features">
+        <div class="container">
+            
+                        {% block body %}
+            {% endblock %}
+           
+            </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; IMIE - 2016 - dl15</p>
+        </div>
+    </footer>
+{% block javascripts %}
+        <script src="{{ asset('public/ckeditor/ckeditor.js') }}"></script>
+        
+        <script src="{{ asset('public/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('public/js/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('public/js/new-age.min.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>
+
+
+
+
+

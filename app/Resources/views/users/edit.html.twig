@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block header %}{% endblock %}
 {% block title %}Edition du profil{% endblock %}
 
 {% block body %}
-<div class="col-xs-12">
+<div class="col-xs-12" id="content">
     <h1 align="center" class='pageTitle'>Edition du profil</h1>
         {{ form_start(edit_form) }}
             <table align="center">
